@@ -288,6 +288,14 @@ body {
     margin-bottom: 0;
 }
 
+.feature.signature {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-style: italic;
+    color: #696969
+}
+
 .feature.signature hr {
     border: none;
 }
@@ -298,7 +306,10 @@ body {
 }
 
 .feature.signature img {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
     max-width: 150px;
+    display: block;
 }
 
 /* Footer */
