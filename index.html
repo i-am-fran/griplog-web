@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Primary Meta Tags -->
+    <title>Griplog • One app, all your routes</title>
+    <meta name="title" content="Griplog • One app, all your routes">
+    <meta name="description" content="A private climbing logbook that does one thing well: help you track your climbing. Log any route from any discipline. Indoor or outdoor.">
+    <meta name="keywords" content="climbing, bouldering, rock climbing, climbing tracker, climbing app, route tracker, climbing logbook">
+    <meta name="author" content="Griplog">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://griplog.app/">
+    <meta property="og:title" content="Griplog • One app, all your routes">
+    <meta property="og:description" content="A private climbing logbook that does one thing well: help you track your climbing.">
+    <meta property="og:image" content="https://griplog.app/assets/social.png">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://griplog.app/">
+    <meta property="twitter:title" content="Griplog • One app, all your routes">
+    <meta property="twitter:description" content="A private climbing logbook that does one thing well: help you track your climbing.">
+    <meta property="twitter:image" content="https://griplog.app/assets/social.png">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="assets/android-chrome-192x192.png">
+    <link rel="icon" type="image/png" sizes="512x512" href="assets/android-chrome-512x512.png">
+
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <img src="images/app-icon.png" alt="Griplog App Icon" class="app-icon">
+            <h1 class="hero-title">
+                <span class="word">One app.</span>
+                <!-- <span class="word">app.</span> -->
+                <br />
+                <span class="word">All your routes.</span>
+                <!-- <span class="word">your</span> -->
+                <!-- <span class="word">routes</span> -->
+            </h1>
+            <p class="hero-subtitle">
+                <span class="word">Subscribe</span>
+                <span class="word">to</span>
+                <span class="word">be</span>
+                <span class="word">notified</span>
+                <span class="word">when</span>
+                <span class="word">we</span>
+                <span class="word">launch</span>
+                <span class="word">and</span>
+                <span class="word">get</span>
+                <span class="word">early</span>
+                <span class="word">access</span>
+                <span class="word">to</span>
+                <span class="word">the</span>
+                <span class="word">app.</span>
+            </p>
+            <!-- Email Form -->
+            <div class="newsletter-form-container">
+                <form class="newsletter-form" action="https://app.loops.so/api/newsletter-form/cmj5p0ogv0cij0iwkecvznw1v" method="POST">
+                    <input
+                        type="email"
+                        name="email"
+                        placeholder="Your Email Address"
+                        class="newsletter-form-input"
+                        required
+                        aria-label="Email address"
+                    >
+                    <button type="submit" class="newsletter-form-button">Subscribe</button>
+                    <button type="button" class="newsletter-loading-button" style="display: none;">Please wait...</button>
+                </form>
+                <div class="newsletter-success" style="display: none;">
+                    <p>Thanks! We'll be in touch!</p>
+                </div>
+                <div class="newsletter-error" style="display: none;">
+                    <p>Oops! Something went wrong, please try again</p>
+                </div>
+                <button class="newsletter-back-button" type="button" style="display: none;">&larr; Back</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Content Section -->
+    <section class="content">
+        <div class="container">
+            <!-- Manifesto -->
+            <div class="manifesto">
+                <h3>Our Manifesto</h3>
+                <p>All of our apps are turning into social networks. Your climbing became content. Your projects became posts. Progress turned into performance.</p>
+                <p>Griplog is different. It's a private logbook that does one thing well: help you track your climbing.</p>
+            </div>
+
+            <!-- Features -->
+            <div class="features">
+                <div class="feature">
+                    <h4>For You, Not for Feeds</h4>
+                    <p>Log any route from any discipline. Bouldering, sport climbing, trad, deep water solo. Indoor or outdoor.</p>
+                    <p>Your entire climbing life in one app, kept private unless you choose to share specific routes with friends.</p>
+                </div>
+
+                <div class="feature">
+                    <h4>Built for Speed</h4>
+                    <p>We follow Apple's design guidelines to make sure the app feels native and fast. The interface gets out of your way.</p>
+                    <p>No gamification. No streaks, achievements, or artificial goals designed to keep you opening the app.</p>
+                </div>
+
+                <div class="feature">
+                    <h4>You're in Control</h4>
+                    <p>Track everything or only what matters to you. Use it to plan trips, study beta, or remember where you've been. It's your tool, use it your way.</p>
+                    <p>Your data belongs to you. Export it whenever you want. Delete it if you need to. Full ownership, always.</p>
+                </div>
+                <div class="feature signature">
+                    <hr  />
+                </div>
+                <div class="feature signature">
+                    <img src="/images/signature.png" />
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>© 2025 • @ Griplog</p>
+    </footer>
+
+    <!-- Loops Form Handler -->
+    <script>
+    function submitHandler(event) {
+      event.preventDefault();
+      var container = event.target.parentNode;
+      var form = container.querySelector(".newsletter-form");
+      var formInput = container.querySelector(".newsletter-form-input");
+      var success = container.querySelector(".newsletter-success");
+      var errorContainer = container.querySelector(".newsletter-error");
+      var errorMessage = container.querySelector(".newsletter-error-message");
+      var backButton = container.querySelector(".newsletter-back-button");
+      var submitButton = container.querySelector(".newsletter-form-button");
+      var loadingButton = container.querySelector(".newsletter-loading-button");
+
+      const rateLimit = () => {
+        errorContainer.style.display = "flex";
+        errorMessage.innerText = "Too many signups, please try again in a little while";
+        submitButton.style.display = "none";
+        formInput.style.display = "none";
+        backButton.style.display = "block";
+      }
+
+      // Rate limiting
+      var time = new Date();
+      var timestamp = time.valueOf();
+      var previousTimestamp = localStorage.getItem("loops-form-timestamp");
+
+      if (previousTimestamp && Number(previousTimestamp) + 60000 > timestamp) {
+        rateLimit();
+        return;
+      }
+      localStorage.setItem("loops-form-timestamp", timestamp);
+
+      submitButton.style.display = "none";
+      loadingButton.style.display = "flex";
+
+      var formBody = "userGroup=Framer%2001&mailingLists=cmj5p9cz61o8s0ixtgcf49gxv&email="
+        + encodeURIComponent(formInput.value);
+
+      fetch(event.target.action, {
+        method: "POST",
+        body: formBody,
+        headers: {
+          "Content-Type": "application/x-www-form-urlencoded",
+        },
+      })
+        .then((res) => [res.ok, res.json(), res])
+        .then(([ok, dataPromise, res]) => {
+          if (ok) {
+            window.location.href = 'success.html';
+          } else {
+            dataPromise.then(data => {
+              errorContainer.style.display = "flex";
+              errorMessage.innerText = data.message ? data.message : res.statusText;
+            });
+          }
+        })
+        .catch(error => {
+          if (error.message === "Failed to fetch") {
+            rateLimit();
+            return;
+          }
+          errorContainer.style.display = "flex";
+          if (error.message) errorMessage.innerText = error.message;
+          localStorage.setItem("loops-form-timestamp", '');
+        })
+        .finally(() => {
+          formInput.style.display = "none";
+          loadingButton.style.display = "none";
+          backButton.style.display = "block";
+        });
+    }
+
+    function resetFormHandler(event) {
+      var container = event.target.parentNode;
+      var formInput = container.querySelector(".newsletter-form-input");
+      var success = container.querySelector(".newsletter-success");
+      var errorContainer = container.querySelector(".newsletter-error");
+      var errorMessage = container.querySelector(".newsletter-error-message");
+      var backButton = container.querySelector(".newsletter-back-button");
+      var submitButton = container.querySelector(".newsletter-form-button");
+
+      success.style.display = "none";
+      errorContainer.style.display = "none";
+      errorMessage.innerText = "Oops! Something went wrong, please try again";
+      backButton.style.display = "none";
+      formInput.style.display = "flex";
+      submitButton.style.display = "flex";
+    }
+
+    var formContainers = document.getElementsByClassName("newsletter-form-container");
+    for (var i = 0; i < formContainers.length; i++) {
+      var formContainer = formContainers[i]
+      var handlersAdded = formContainer.classList.contains('newsletter-handlers-added')
+      if (handlersAdded) continue;
+      formContainer
+        .querySelector(".newsletter-form")
+        .addEventListener("submit", submitHandler);
+      formContainer
+        .querySelector(".newsletter-back-button")
+        .addEventListener("click", resetFormHandler);
+      formContainer.classList.add("newsletter-handlers-added");
+    }
+    </script>
+
+    <!-- Main JavaScript -->
+    <script src="js/main.js"></script>
+</body>
+</html>
