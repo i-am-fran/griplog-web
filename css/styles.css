@@ -31,10 +31,6 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    background-image: url('../images/hero-bg-03.png');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
     position: relative;
     padding: 2rem;
     padding-top: max(2rem, env(safe-area-inset-top, 0));
@@ -50,6 +46,19 @@ body {
     bottom: 0;
     background: linear-gradient(to bottom, #0A0A0A30, #0A0A0A);
     z-index: 1;
+}
+
+.hero-bg {
+    display: block;
+    height: 100vh;
+    width: 100vw;
+    position: absolute;
+    top: 0;
+    background-image: url('../images/hero-bg-02.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    filter: grayscale(1);
 }
 
 .hero-content {
