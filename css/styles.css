@@ -318,6 +318,7 @@ body {
 .feature.signature hr::before {
     content: "•••";
     display: block;
+    color: var(--color-highlight);
 }
 
 .feature.signature img {
