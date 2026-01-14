@@ -102,20 +102,156 @@
 				<div class="changelog-entries">
 					<article class="changelog-entry">
 						<div class="changelog-header">
-							<h2 class="changelog-version">Coming Soon</h2>
-							<time class="changelog-date">2025</time>
+							<h2 class="changelog-version">Week of January 18, 2026</h2>
+							<time class="changelog-date">January 18, 2026</time>
 						</div>
 						<div class="changelog-content">
-							<h3>Initial Release</h3>
 							<ul class="changelog-list">
-								<li>
-									Track routes from any discipline - bouldering, sport, trad, or indoor
-								</li>
-								<li>Create and manage climbing projects</li>
-								<li>Plan trips and link routes to events</li>
-								<li>Document beta and personal notes</li>
-								<li>Fast, native iOS experience</li>
-								<li>Private and secure - your data stays yours</li>
+								<li>Scroll position tracking and restoration for the Routes list (improves UX with very large lists)</li>
+								<li>Smart caching with fingerprint-based invalidation for overview statistics</li>
+								<li>Pagination and virtual scrolling optimizations for large route collections</li>
+								<li>Position indicators, boundary haptics and VoiceOver accessibility support for swipeable detail views</li>
+								<li>Half-sheet map presentation with swipe navigation and synced map camera for route/location detail views</li>
+								<li>Timeline (RouteHistory) view with date-grouped journal entries</li>
+								<li>Timestamped journal entries for routes (notes grouped by date, swipe-to-delete)</li>
+								<li>Optional status-change tracking for journal entries (Attempt status)</li>
+								<li>Automatic location matching: auto-match routes to nearby locations when GPS coordinates are added</li>
+								<li>Progressive photo loading and gallery improvements: 300px thumbnails, processing placeholders and beta preview thumbnails</li>
+								<li>Photo viewer fix so the selected photo opens correctly</li>
+								<li>Map pin positioning and header layout fixes</li>
+								<li>Upcoming trip widget added to Home view</li>
+								<li>Stone type metadata added to location records</li>
+								<li>Import/export validation and ZIP error-handling improvements</li>
+								<li>Toast notification style and placement refinements (smaller, inverted colors, bottom position)</li>
+								<li>Deletion rules documentation for all models</li>
+								<li>Orphaned media utility for better data management</li>
+							</ul>
+						</div>
+					</article>
+
+					<article class="changelog-entry">
+						<div class="changelog-header">
+							<h2 class="changelog-version">Week of January 11, 2026</h2>
+							<time class="changelog-date">January 11, 2026</time>
+						</div>
+						<div class="changelog-content">
+							<ul class="changelog-list">
+								<li>GPS coordinate input for routes with current location support</li>
+								<li>Recent Projects section added to HomeView (last 30 days)</li>
+								<li>Area removed from Location model (moved to routes for better organization)</li>
+								<li>Hierarchical location/area display in routes list</li>
+								<li>Statistics widgets: Average grades section for events and locations</li>
+								<li>Best grade widgets with indoor/outdoor differentiation</li>
+								<li>Favorite toggle for routes with UI feedback</li>
+								<li>Hold type selection in beta drawing with colored labels</li>
+								<li>Three-screen onboarding flow with swipeable pages</li>
+								<li>Image preview cropping fixes for beta overlay</li>
+								<li>Scroll position preservation in form views</li>
+								<li>Import/Export JSON system implementation</li>
+							</ul>
+						</div>
+					</article>
+
+					<article class="changelog-entry">
+						<div class="changelog-header">
+							<h2 class="changelog-version">Week of January 4, 2026</h2>
+							<time class="changelog-date">January 4, 2026</time>
+						</div>
+						<div class="changelog-content">
+							<ul class="changelog-list">
+								<li>CloudKit sync status monitoring in Settings</li>
+								<li>Database mode tracking and comprehensive sync documentation</li>
+								<li>User recovery guide for sync issues</li>
+								<li>Photo viewer zoom functionality with pinch and double-tap gestures</li>
+								<li>Prominent note icons with tap-to-view functionality in route rows</li>
+								<li>Sport icons removed from best grade cards, increased grade size</li>
+								<li>Grading system preference settings (French, Ewbank, UIAA)</li>
+								<li>Settings page cleanup and reorganization</li>
+								<li>Area field added to Location model with search and grouping support</li>
+								<li>Region field for location-based grade conversion utilities</li>
+							</ul>
+						</div>
+					</article>
+
+					<article class="changelog-entry">
+						<div class="changelog-header">
+							<h2 class="changelog-version">Week of December 28, 2025</h2>
+							<time class="changelog-date">December 28, 2025</time>
+						</div>
+						<div class="changelog-content">
+							<ul class="changelog-list">
+								<li>Route duplication feature in context menu</li>
+								<li>Show/hide beta button in full-screen photo viewer</li>
+								<li>Beta-centered preview cropping in thumbnails</li>
+								<li>Dark mode fixes (color scheme persistence after photo editing)</li>
+								<li>Support for up to 30 hold markers in beta drawing with external storage</li>
+								<li>Hold marker UI feedback and validation</li>
+								<li>Event status badges updated</li>
+								<li>Featured event card layout for active/upcoming events</li>
+								<li>Event cover photo thumbnails in list view</li>
+								<li>Next upcoming event highlighting</li>
+							</ul>
+						</div>
+					</article>
+
+					<article class="changelog-entry">
+						<div class="changelog-header">
+							<h2 class="changelog-version">Week of December 21, 2025</h2>
+							<time class="changelog-date">December 21, 2025</time>
+						</div>
+						<div class="changelog-content">
+							<ul class="changelog-list">
+								<li>Beta drawing MVP: hold markers, notes, and route preview overlay</li>
+								<li>Haptic feedback and scale animation on hold drag activation</li>
+								<li>GitHub Actions workflow for automated Xcode builds</li>
+								<li>Unsplash integration for location and event cover photos</li>
+								<li>Location hero redesign with full-bleed cover photo management</li>
+								<li>RouteRow component with consistent display across views</li>
+								<li>Photo picker improvements and UI consistency</li>
+								<li>Aspect ratio handling for cover images</li>
+							</ul>
+						</div>
+					</article>
+
+					<article class="changelog-entry">
+						<div class="changelog-header">
+							<h2 class="changelog-version">Week of December 14, 2025</h2>
+							<time class="changelog-date">December 14, 2025</time>
+						</div>
+						<div class="changelog-content">
+							<ul class="changelog-list">
+								<li>Share Extension for image sharing to routes</li>
+								<li>Deep link integration for share workflows</li>
+								<li>Swipe navigation between routes in detail view</li>
+								<li>Photo gallery improvements with proper cropping</li>
+								<li>Design system centralization with comprehensive style infrastructure</li>
+								<li>Toast notification on route state changes</li>
+								<li>Search bar always visible in lists</li>
+								<li>Improved filters and sort by date by default</li>
+								<li>Larger tap areas for list rows</li>
+								<li>"Unknown" grade option for routes you're opening</li>
+								<li>Location website clickable links</li>
+							</ul>
+						</div>
+					</article>
+
+					<article class="changelog-entry">
+						<div class="changelog-header">
+							<h2 class="changelog-version">Initial Release</h2>
+							<time class="changelog-date">December 13, 2025</time>
+						</div>
+						<div class="changelog-content">
+							<ul class="changelog-list">
+								<li>Core route tracking with climbing grades (French, Sport Climbing)</li>
+								<li>Location management with maps integration</li>
+								<li>Sport type support (Bouldering, Sport Climbing)</li>
+								<li>Route states: Open, Send, Project</li>
+								<li>Photo gallery with route attachments</li>
+								<li>Basic statistics and overview</li>
+								<li>Settings and data management</li>
+								<li>SwiftData persistence with CloudKit sync</li>
+								<li>Notes and route details</li>
+								<li>Liked/favorite routes</li>
 							</ul>
 						</div>
 					</article>
@@ -125,13 +261,27 @@
 							<h2 class="changelog-version">In Development</h2>
 						</div>
 						<div class="changelog-content">
-							<h3>What We're Building</h3>
 							<ul class="changelog-list">
-								<li>Photo attachments for routes</li>
-								<li>Advanced filtering and search</li>
-								<li>Statistics and progress tracking</li>
-								<li>Export and backup options</li>
-								<li>Apple Watch companion app</li>
+								<li>Video upload support (hidden/unstable — being fixed)</li>
+								<li>RouteRow contextual menu redesign (WIP)</li>
+								<li>Continued large-list performance refinements and pagination/virtual-scrolling polish</li>
+								<li>CabinetGrotesk custom font integration (testing phase)</li>
+							</ul>
+						</div>
+					</article>
+
+					<article class="changelog-entry">
+						<div class="changelog-header">
+							<h2 class="changelog-version">Coming Soon</h2>
+						</div>
+						<div class="changelog-content">
+							<ul class="changelog-list">
+								<li>Further gallery &amp; beta-preview UX polish (thumbnails, previews)</li>
+								<li>Accessibility refinements across sheets and navigation</li>
+								<li>Export workflow improvements and orphaned media cleanup UX</li>
+								<li>Enhanced event management features</li>
+								<li>Advanced statistics and progress tracking</li>
+								<li>Social features and route sharing</li>
 							</ul>
 						</div>
 					</article>
