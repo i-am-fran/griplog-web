@@ -373,20 +373,19 @@ hr::before {
 	font-size: 0.9rem;
 }
 
-.footer-link {
+.footer a {
 	display: inline-block;
-	margin-top: 0.5rem;
-	color: var(--color-text-secondary);
 	text-decoration: none;
-	font-size: 0.9rem;
-	padding: 0.5rem 1rem;
-	border-radius: 8px;
 	transition: all 0.2s ease;
+	color: var(--color-text-secondary);
 }
 
-.footer-link:hover {
+.footer a:hover {
 	color: var(--color-text-primary);
-	background-color: rgba(255, 255, 255, 0.05);
+}
+
+body.changelog .hero {
+	height: 50vh;
 }
 
 /* Animations */
@@ -517,7 +516,7 @@ hr::before {
 }
 
 .changelog-entry::before {
-	content: '';
+	content: "";
 	position: absolute;
 	left: -6px;
 	top: 0;
@@ -572,7 +571,7 @@ hr::before {
 }
 
 .changelog-list li::before {
-	content: '→';
+	content: "→";
 	position: absolute;
 	left: 0;
 	color: var(--color-highlight);
