@@ -40,3 +40,4 @@ yarn-error.log*
 .env.*.local
 .DS_Store
 /.nova
+.nova
