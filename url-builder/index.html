@@ -1,0 +1,358 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta
+			name="viewport"
+			content="width=device-width, initial-scale=1.0, viewport-fit=cover"
+		/>
+
+		<!-- Primary Meta Tags -->
+		<title>URL Builder • Griplog</title>
+		<meta name="title" content="URL Builder • Griplog" />
+		<meta
+			name="description"
+			content="Create shareable URLs for climbing routes."
+		/>
+
+		<!-- Favicon -->
+		<link rel="icon" type="image/x-icon" href="../assets/favicon.ico" />
+		<link
+			rel="icon"
+			type="image/png"
+			sizes="32x32"
+			href="../assets/favicon-32x32.png"
+		/>
+		<link
+			rel="icon"
+			type="image/png"
+			sizes="16x16"
+			href="../assets/favicon-16x16.png"
+		/>
+		<link
+			rel="apple-touch-icon"
+			sizes="180x180"
+			href="../assets/apple-touch-icon.png"
+		/>
+
+		<!-- Stylesheet -->
+		<link rel="stylesheet" href="../css/styles.css" />
+	</head>
+
+	<body class="changelog">
+		<!-- Hero Section -->
+		<section class="hero">
+			<div class="hero-content">
+				<h1 class="hero-title">
+					<span class="word">URL Builder</span>
+				</h1>
+				<!-- Back to Home Link -->
+				<div class="changelog-nav">
+					<a href="/" class="back-link">← Back to Home</a>
+				</div>
+			</div>
+		</section>
+
+		<!-- Content Section -->
+		<section class="content">
+			<div class="container">
+				<!-- Overview
+				<div class="intro" style="margin-top: 4rem">
+					<h2 class="section-title">Overview</h2>
+					<p>
+						Share routes with friends or use them in automation tools like iOS
+						Shortcuts. The URL scheme lets you create deep links that open Griplog
+						with pre-filled route information.
+					</p>
+				</div>
+				-->
+
+				<!-- Builder Form -->
+				<div class="builder-container">
+					<div class="builder-form" id="builderForm">
+						<!-- Sport -->
+						<div class="form-field">
+							<div class="field-info">
+								<label class="field-label" for="sport"
+									>sport <span class="required-badge">required</span></label
+								>
+								<p class="field-description">
+									Sport type: bouldering, sport, or dws
+								</p>
+							</div>
+							<div class="field-input">
+								<select id="sport" name="sport" class="builder-input" required>
+									<option value="bouldering" selected>Bouldering</option>
+									<option value="sport">Sport Climbing</option>
+									<option value="dws">Deep Water Solo</option>
+								</select>
+							</div>
+						</div>
+
+						<!-- Grade -->
+						<div class="form-field">
+							<div class="field-info">
+								<label class="field-label" for="grade"
+									>grade <span class="required-badge">required</span></label
+								>
+								<p class="field-description">
+									Route difficulty grade. Changes based on sport type
+								</p>
+							</div>
+							<div class="field-input">
+								<select id="grade" name="grade" class="builder-input" required>
+									<option value="">Select grade</option>
+								</select>
+							</div>
+						</div>
+
+						<!-- Name -->
+						<div class="form-field">
+							<div class="field-info">
+								<label class="field-label" for="name">name</label>
+								<p class="field-description">The name of the route or problem</p>
+							</div>
+							<div class="field-input">
+								<input
+									type="text"
+									id="name"
+									name="name"
+									placeholder="Crimpy Problem"
+									class="builder-input"
+								/>
+							</div>
+						</div>
+
+						<!-- Location -->
+						<div class="form-field">
+							<div class="field-info">
+								<label class="field-label" for="location">location</label>
+								<p class="field-description">
+									Location name. Links to existing location if match found
+								</p>
+							</div>
+							<div class="field-input">
+								<input
+									type="text"
+									id="location"
+									name="location"
+									placeholder="Fontainebleau"
+									class="builder-input"
+								/>
+							</div>
+						</div>
+
+						<!-- Area -->
+						<div class="form-field">
+							<div class="field-info">
+								<label class="field-label" for="area">area</label>
+								<p class="field-description">Area or sector within the location</p>
+							</div>
+							<div class="field-input">
+								<input
+									type="text"
+									id="area"
+									name="area"
+									placeholder="Bas Cuvier"
+									class="builder-input"
+								/>
+							</div>
+						</div>
+
+						<!-- Height -->
+						<div class="form-field">
+							<div class="field-info">
+								<label class="field-label" for="height">height</label>
+								<p class="field-description">Route height in meters</p>
+							</div>
+							<div class="field-input">
+								<input
+									type="number"
+									id="height"
+									name="height"
+									placeholder="35"
+									class="builder-input"
+									step="0.1"
+								/>
+							</div>
+						</div>
+
+						<!-- Bolts -->
+						<div class="form-field">
+							<div class="field-info">
+								<label class="field-label" for="bolts">bolts</label>
+								<p class="field-description">Number of bolts on sport routes</p>
+							</div>
+							<div class="field-input">
+								<input
+									type="number"
+									id="bolts"
+									name="bolts"
+									placeholder="12"
+									class="builder-input"
+								/>
+							</div>
+						</div>
+
+						<!-- Angle -->
+						<div class="form-field">
+							<div class="field-info">
+								<label class="field-label" for="angle">angle</label>
+								<p class="field-description">
+									Wall angle: slab, vertical, overhang, or roof
+								</p>
+							</div>
+							<div class="field-input">
+								<select id="angle" name="angle" class="builder-input">
+									<option value="">Select angle</option>
+									<option value="slab">slab</option>
+									<option value="vertical">vertical</option>
+									<option value="overhang">overhang</option>
+									<option value="roof">roof</option>
+								</select>
+							</div>
+						</div>
+
+						<!-- Latitude -->
+						<div class="form-field">
+							<div class="field-info">
+								<label class="field-label" for="lat">lat</label>
+								<p class="field-description">
+									Latitude coordinate (requires lon as well)
+								</p>
+							</div>
+							<div class="field-input">
+								<input
+									type="number"
+									id="lat"
+									name="lat"
+									placeholder="48.448611"
+									class="builder-input"
+									step="any"
+								/>
+							</div>
+						</div>
+
+						<!-- Longitude -->
+						<div class="form-field">
+							<div class="field-info">
+								<label class="field-label" for="lon">lon</label>
+								<p class="field-description">
+									Longitude coordinate (requires lat as well)
+								</p>
+							</div>
+							<div class="field-input">
+								<input
+									type="number"
+									id="lon"
+									name="lon"
+									placeholder="2.649444"
+									class="builder-input"
+									step="any"
+								/>
+							</div>
+						</div>
+
+						<!-- X-Success -->
+						<div class="form-field">
+							<div class="field-info">
+								<label class="field-label" for="xSuccess">x-success</label>
+								<p class="field-description">
+									URL to open when import succeeds (e.g., shortcuts://)
+								</p>
+							</div>
+							<div class="field-input">
+								<input
+									type="text"
+									id="xSuccess"
+									name="xSuccess"
+									placeholder="shortcuts://"
+									class="builder-input"
+								/>
+							</div>
+						</div>
+
+						<!-- X-Error -->
+						<div class="form-field">
+							<div class="field-info">
+								<label class="field-label" for="xError">x-error</label>
+								<p class="field-description">URL to open when import fails</p>
+							</div>
+							<div class="field-input">
+								<input
+									type="text"
+									id="xError"
+									name="xError"
+									placeholder="shortcuts://"
+									class="builder-input"
+								/>
+							</div>
+						</div>
+					</div>
+
+					<!-- Result -->
+					<div class="result-container" id="resultContainer" style="display: none">
+						<div class="result-url-wrapper">
+							<div class="result-url" id="resultUrl"></div>
+							<button class="copy-icon-btn" id="copyIconBtn" title="Copy URL">
+								<svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+									<path d="M5.5 2.5H2.5V13.5H9.5V10.5M6.5 5.5H13.5V12.5H10.5M6.5 5.5V2.5H13.5V9.5H10.5M6.5 5.5H10.5V9.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+								</svg>
+							</button>
+						</div>
+						<button class="open-url-btn" id="openBtn">
+							Open URL
+						</button>
+					</div>
+				</div>
+
+				<!-- How It Works
+				<div class="features">
+					<div class="feature">
+						<h3>1. Build URL</h3>
+						<p>
+							Enter the grade and sport type. Add optional details like name, location,
+							or height.
+						</p>
+					</div>
+
+					<div class="feature">
+						<h3>2. Share</h3>
+						<p>
+							Copy the URL and send it via Messages, Notes, or any app. Recipients tap
+							to open.
+						</p>
+					</div>
+
+					<div class="feature">
+						<h3>3. Import</h3>
+						<p>
+							The URL opens Griplog with a preview. They can review and import to their
+							journal.
+						</p>
+					</div>
+				</div>-->
+			</div>
+		</section>
+
+		<!-- Notification Toast -->
+		<div class="notification-toast" id="notificationToast">
+			<svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+				<path d="M13.5 4.5L6.5 11.5L3 8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+			</svg>
+			<span>Copied to clipboard</span>
+		</div>
+
+		<!-- Footer -->
+		<footer class="footer">
+			<p>
+				© 2025 • Griplog • <a href="/">Home</a> •
+				<a href="/changelog.html">Changelog</a> •
+				<a href="/url-builder">URL Builder</a>
+			</p>
+		</footer>
+
+		<!-- JavaScript -->
+		<script src="../builder.js"></script>
+	</body>
+</html>
