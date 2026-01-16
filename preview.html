@@ -1,780 +1,843 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-
-    <!-- Primary Meta Tags -->
-    <title id="page-title">Shared Route • Griplog</title>
-    <meta name="title" content="Check out this climbing route on Griplog">
-    <meta name="description" id="page-description" content="A climbing route shared from Griplog">
-
-    <!-- Open Graph / Facebook -->
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://griplog.app/preview">
-    <meta property="og:title" id="og-title" content="Check out this climbing route on Griplog">
-    <meta property="og:description" id="og-description" content="A climbing route shared from Griplog">
-    <meta property="og:image" content="https://griplog.app/assets/social.png">
-
-    <!-- Twitter -->
-    <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="https://griplog.app/preview">
-    <meta property="twitter:title" id="twitter-title" content="Check out this climbing route on Griplog">
-    <meta property="twitter:description" id="twitter-description" content="A climbing route shared from Griplog">
-    <meta property="twitter:image" content="https://griplog.app/assets/social.png">
-
-    <!-- Favicon -->
-    <meta rel="icon" type="image/x-icon" href="assets/favicon.ico">
-    <link rel="apple-touch-icon" sizes="180x180" href="assets/apple-touch-icon.png">
-
-    <!-- Stylesheet -->
-    <link rel="stylesheet" href="css/styles.css">
-
-    <style>
-        .preview-hero {
-            min-height: 50vh;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            background-image: url("images/hero-bg-02.jpg");
-            background-size: cover;
-            background-position: center;
-            position: relative;
-            padding: 4rem 2rem;
-        }
-
-        .preview-hero::before {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(to bottom, #0a0a0a30, #0a0a0a);
-            z-index: 1;
-        }
-
-        .preview-hero-content {
-            position: relative;
-            z-index: 2;
-            text-align: center;
-            max-width: 600px;
-        }
-
-        .preview-container {
-            max-width: 600px;
-            margin: -4rem auto 4rem;
-            position: relative;
-            z-index: 10;
-        }
-
-        .route-card {
-            background: rgba(0, 0, 0, 0.95);
-            border: 1px solid rgba(255, 255, 255, 0.15);
-            border-radius: 20px;
-            padding: 0;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
-            overflow: hidden;
-        }
-
-        .route-header {
-            background: linear-gradient(135deg, rgba(248, 33, 61, 0.1) 0%, rgba(0, 0, 0, 0.2) 100%);
-            padding: 2.5rem 2rem;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-            text-align: center;
-        }
-
-        .route-grade {
-            font-family: 'CabinetGrotesk-Variable', -apple-system, sans-serif;
-            font-size: 4rem;
-            font-weight: 900;
-            color: var(--color-highlight);
-            margin-bottom: 0.5rem;
-            letter-spacing: -0.02em;
-        }
-
-        .route-sport {
-            font-size: 1rem;
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-            color: rgba(255, 255, 255, 0.6);
-            font-weight: 600;
-        }
-
-        .route-body {
-            padding: 2rem;
-        }
-
-        .route-name {
-            font-family: 'CabinetGrotesk-Variable', -apple-system, sans-serif;
-            font-size: 1.75rem;
-            font-weight: 700;
-            margin-bottom: 1.5rem;
-            color: var(--color-text-primary);
-            text-align: center;
-        }
-
-        .route-name.unnamed {
-            font-style: italic;
-            color: rgba(255, 255, 255, 0.5);
-        }
-
-        .route-details {
-            display: flex;
-            flex-direction: column;
-            gap: 1rem;
-            margin-bottom: 2rem;
-        }
-
-        .detail-row {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 0.75rem 0;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-        }
-
-        .detail-row:last-child {
-            border-bottom: none;
-        }
-
-        .detail-label {
-            font-size: 0.875rem;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-            color: rgba(255, 255, 255, 0.5);
-            font-weight: 600;
-        }
-
-        .detail-value {
-            font-size: 1rem;
-            color: var(--color-text-primary);
-            font-weight: 500;
-            text-align: right;
-        }
-
-        .route-actions {
-            display: flex;
-            flex-direction: column;
-            gap: 0.75rem;
-        }
-
-        .add-button {
-            width: 100%;
-            padding: 1rem 2rem;
-            font-size: 1.05rem;
-            font-weight: 600;
-            border: none;
-            border-radius: 12px;
-            background: linear-gradient(135deg, var(--color-highlight) 0%, #d91639 100%);
-            color: white;
-            cursor: pointer;
-            transition: all 0.2s ease;
-            text-decoration: none;
-            display: inline-block;
-            text-align: center;
-        }
-
-        .add-button:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 24px rgba(248, 33, 61, 0.3);
-        }
-
-        .add-button:active {
-            transform: translateY(0);
-        }
-
-        .secondary-button {
-            width: 100%;
-            padding: 0.875rem 2rem;
-            font-size: 0.95rem;
-            font-weight: 500;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            border-radius: 12px;
-            background: transparent;
-            color: rgba(255, 255, 255, 0.8);
-            cursor: pointer;
-            transition: all 0.2s ease;
-            text-decoration: none;
-            display: inline-block;
-            text-align: center;
-        }
-
-        .secondary-button:hover {
-            background: rgba(255, 255, 255, 0.05);
-            border-color: rgba(255, 255, 255, 0.3);
-            color: var(--color-text-primary);
-        }
-
-        .app-badge {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 0.5rem;
-            padding: 0.75rem;
-            background: rgba(255, 255, 255, 0.03);
-            border-radius: 12px;
-            margin-top: 1.5rem;
-            font-size: 0.85rem;
-            color: rgba(255, 255, 255, 0.6);
-        }
-
-        .app-badge img {
-            width: 24px;
-            height: 24px;
-            border-radius: 6px;
-        }
-
-        .map-preview {
-            width: 100%;
-            height: 200px;
-            border-radius: 12px;
-            overflow: hidden;
-            margin-bottom: 1.5rem;
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            transition: all 0.2s ease;
-            position: relative;
-        }
-
-        .map-preview:hover {
-            border-color: rgba(255, 255, 255, 0.3);
-            transform: translateY(-2px);
-            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
-        }
-
-        .map-preview img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: opacity 0.2s ease;
-        }
-
-        .map-preview:hover img {
-            opacity: 0.9;
-        }
-
-        .map-preview::after {
-            content: 'Click to open in OpenStreetMap';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            padding: 0.5rem;
-            background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
-            color: rgba(255, 255, 255, 0.8);
-            font-size: 0.75rem;
-            text-align: center;
-            opacity: 0;
-            transition: opacity 0.2s ease;
-        }
-
-        .map-preview:hover::after {
-            opacity: 1;
-        }
-
-        .error-state {
-            text-align: center;
-            padding: 3rem 2rem;
-        }
-
-        .error-icon {
-            font-size: 4rem;
-            margin-bottom: 1rem;
-        }
-
-        .error-title {
-            font-size: 1.5rem;
-            font-weight: 700;
-            margin-bottom: 0.5rem;
-            color: var(--color-text-primary);
-        }
-
-        .error-message {
-            color: rgba(255, 255, 255, 0.6);
-            margin-bottom: 2rem;
-        }
-
-        @media (max-width: 640px) {
-            .preview-container {
-                margin: -3rem 1rem 2rem;
-            }
-
-            .route-grade {
-                font-size: 3rem;
-            }
-
-            .route-header {
-                padding: 2rem 1.5rem;
-            }
-
-            .route-body {
-                padding: 1.5rem;
-            }
-        }
-    </style>
-</head>
-<body>
-    <div class="preview-hero">
-        <div class="preview-hero-content">
-            <img src="images/app-icon.png" alt="Griplog App Icon" class="app-icon" style="width: 80px; height: 80px; border-radius: 18px;">
-            <h1 class="hero-title">
-                <span class="word">Shared Route</span>
-            </h1>
-        </div>
-    </div>
-
-    <section class="content">
-        <div class="preview-container">
-            <!-- Loading State -->
-            <div id="loading-state" class="route-card">
-                <div class="error-state">
-                    <div class="error-icon">⏳</div>
-                    <div class="error-title">Loading route...</div>
-                </div>
-            </div>
-
-            <!-- Error State -->
-            <div id="error-state" class="route-card" style="display: none;">
-                <div class="error-state">
-                    <div class="error-icon">⚠️</div>
-                    <div class="error-title">Invalid Link</div>
-                    <p class="error-message">
-                        This link appears to be invalid or corrupted. Please ask the sender to share it again.
-                    </p>
-                    <a href="/" class="secondary-button">Back to Home</a>
-                </div>
-            </div>
-
-            <!-- Route Display -->
-            <div id="route-display" class="route-card" style="display: none;">
-                <div class="route-header">
-                    <div class="route-grade" id="route-grade">7B</div>
-                    <div class="route-sport" id="route-sport">Bouldering</div>
-                </div>
-
-                <div class="route-body">
-                    <h2 class="route-name" id="route-name">Unnamed Route</h2>
-
-                    <div class="route-details" id="route-details">
-                        <!-- Details will be inserted by JavaScript -->
-                    </div>
-
-                    <div class="route-actions">
-                        <a href="#" id="add-to-griplog-btn" class="add-button">
-                            Add to Griplog
-                        </a>
-                        <a href="/" class="secondary-button">
-                            Explore Griplog
-                        </a>
-                    </div>
-
-                    <div class="app-badge">
-                        <img src="images/app-icon.png" alt="Griplog">
-                        <span>Shared from Griplog</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="container" style="margin-top: 4rem;">
-            <div class="intro">
-                <p>
-                    Griplog is a private climbing logbook for tracking routes, planning trips, and documenting beta.
-                    Download the app to save this route and build your personal climbing collection.
-                </p>
-            </div>
-        </div>
-    </section>
-
-    <footer class="footer">
-        <p>
-            © 2025 • Griplog • <a href="/">Home</a> •
-            <a href="/changelog">Changelog</a> •
-            <a href="/url-builder">URL Builder</a>
-        </p>
-    </footer>
-
-    <script>
-        // Parse parameters directly from URL
-        const urlParams = new URLSearchParams(window.location.search);
-
-        const loadingState = document.getElementById('loading-state');
-        const errorState = document.getElementById('error-state');
-        const routeDisplay = document.getElementById('route-display');
-
-        // Detect entity type (default to 'route' for backward compatibility)
-        const entityType = urlParams.get('type') || 'route';
-
-        if (entityType === 'location') {
-            // Location sharing
-            const name = urlParams.get('name');
-            const accessType = urlParams.get('accessType');
-            const sportType = urlParams.get('sportType');
-
-            // Validate required fields for location
-            if (!name || !accessType || !sportType) {
-                showError();
-            } else {
-                // Get optional fields
-                const country = urlParams.get('country');
-                const region = urlParams.get('region');
-                const area = urlParams.get('area');
-                const address = urlParams.get('address');
-                const website = urlParams.get('website');
-                const lat = urlParams.get('lat');
-                const lon = urlParams.get('lon');
-                const parkingLat = urlParams.get('parkingLat');
-                const parkingLon = urlParams.get('parkingLon');
-                const stoneTypes = urlParams.get('stoneTypes');
-
-                const locationData = {
-                    name,
-                    accessType,
-                    sportType,
-                    country,
-                    region,
-                    area,
-                    address,
-                    website,
-                    lat,
-                    lon,
-                    parkingLat,
-                    parkingLon,
-                    stoneTypes
-                };
-
-                displayLocation(locationData);
-            }
-        } else {
-            // Route sharing (original functionality)
-            const grade = urlParams.get('grade');
-            const sport = urlParams.get('sport');
-
-            // Validate required fields for route
-            if (!grade || !sport) {
-                showError();
-            } else {
-                // Get optional fields
-                const name = urlParams.get('name');
-                const location = urlParams.get('location');
-                const area = urlParams.get('area');
-                const height = urlParams.get('height');
-                const bolts = urlParams.get('bolts');
-                const angle = urlParams.get('angle');
-                const lat = urlParams.get('lat');
-                const lon = urlParams.get('lon');
-
-                const routeData = {
-                    grade,
-                    sport,
-                    name,
-                    location,
-                    area,
-                    height,
-                    bolts,
-                    angle,
-                    lat,
-                    lon
-                };
-
-                displayRoute(routeData);
-            }
-        }
-
-        function displayRoute(data) {
-            // Hide loading, show route
-            loadingState.style.display = 'none';
-            routeDisplay.style.display = 'block';
-
-            // Update grade and sport
-            document.getElementById('route-grade').textContent = data.grade;
-            document.getElementById('route-sport').textContent = formatSportType(data.sport);
-
-            // Update name
-            const nameEl = document.getElementById('route-name');
-            if (data.name) {
-                nameEl.textContent = data.name;
-                nameEl.classList.remove('unnamed');
-            } else {
-                nameEl.textContent = 'Unnamed Route';
-                nameEl.classList.add('unnamed');
-            }
-
-            // Update meta tags for social sharing
-            const title = data.name
-                ? `${data.name} - ${data.grade}`
-                : `${data.grade} ${formatSportType(data.sport)} Route`;
-
-            const description = data.location
-                ? `Check out this ${data.grade} ${formatSportType(data.sport).toLowerCase()} route at ${data.location} on Griplog`
-                : `Check out this ${data.grade} ${formatSportType(data.sport).toLowerCase()} route on Griplog`;
-
-            document.getElementById('page-title').textContent = title + ' • Griplog';
-            document.getElementById('page-description').content = description;
-            document.getElementById('og-title').content = title;
-            document.getElementById('og-description').content = description;
-            document.getElementById('twitter-title').content = title;
-            document.getElementById('twitter-description').content = description;
-
-            // Build details list
-            const detailsContainer = document.getElementById('route-details');
-            detailsContainer.innerHTML = '';
-
-            // Add map preview if GPS coordinates are available
-            if (data.lat && data.lon) {
-                addMapPreview(data.lat, data.lon, detailsContainer);
-            }
-
-            if (data.location) {
-                addDetail('Location', data.location);
-            }
-
-            if (data.area) {
-                addDetail('Area', data.area);
-            }
-
-            if (data.height) {
-                addDetail('Height', `${data.height}m`);
-            }
-
-            if (data.bolts) {
-                addDetail('Bolts', data.bolts);
-            }
-
-            if (data.angle) {
-                addDetail('Angle', formatAngle(data.angle));
-            }
-
-            if (data.lat && data.lon) {
-                addDetail('GPS', `${parseFloat(data.lat).toFixed(4)}, ${parseFloat(data.lon).toFixed(4)}`);
-            }
-
-            // Generate x-callback-url for "Add to Griplog" button
-            const xCallbackUrl = generateXCallbackURL(data);
-            document.getElementById('add-to-griplog-btn').href = xCallbackUrl;
-        }
-
-        function generateXCallbackURL(data) {
-            // Build query parameters for x-callback-url
-            const params = new URLSearchParams();
-
-            // Required fields
-            params.append('grade', data.grade);
-            params.append('sport', data.sport);
-
-            // Optional fields
-            if (data.name) params.append('name', data.name);
-            if (data.location) params.append('location', data.location);
-            if (data.area) params.append('area', data.area);
-            if (data.height) params.append('height', data.height);
-            if (data.bolts) params.append('bolts', data.bolts);
-            if (data.angle) params.append('angle', data.angle);
-            if (data.lat) params.append('lat', data.lat);
-            if (data.lon) params.append('lon', data.lon);
-
-            return `griplog://x-callback-url/route?${params.toString()}`;
-        }
-
-        function addDetail(label, value) {
-            const detailsContainer = document.getElementById('route-details');
-            const row = document.createElement('div');
-            row.className = 'detail-row';
-            row.innerHTML = `
+	<head>
+		<meta charset="UTF-8" />
+		<meta
+			name="viewport"
+			content="width=device-width, initial-scale=1.0, viewport-fit=cover"
+		/>
+
+		<!-- Primary Meta Tags -->
+		<title id="page-title">Shared Route • Griplog</title>
+		<meta name="title" content="Check out this climbing route on Griplog" />
+		<meta
+			name="description"
+			id="page-description"
+			content="A climbing route shared from Griplog"
+		/>
+
+		<!-- Open Graph / Facebook -->
+		<meta property="og:type" content="website" />
+		<meta property="og:url" content="https://griplog.app/preview" />
+		<meta
+			property="og:title"
+			id="og-title"
+			content="Check out this climbing route on Griplog"
+		/>
+		<meta
+			property="og:description"
+			id="og-description"
+			content="A climbing route shared from Griplog"
+		/>
+		<meta property="og:image" content="https://griplog.app/assets/social.png" />
+
+		<!-- Twitter -->
+		<meta property="twitter:card" content="summary_large_image" />
+		<meta property="twitter:url" content="https://griplog.app/preview" />
+		<meta
+			property="twitter:title"
+			id="twitter-title"
+			content="Check out this climbing route on Griplog"
+		/>
+		<meta
+			property="twitter:description"
+			id="twitter-description"
+			content="A climbing route shared from Griplog"
+		/>
+		<meta
+			property="twitter:image"
+			content="https://griplog.app/assets/social.png"
+		/>
+
+		<!-- Favicon -->
+		<meta rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+		<link
+			rel="apple-touch-icon"
+			sizes="180x180"
+			href="assets/apple-touch-icon.png"
+		/>
+
+		<!-- Stylesheet -->
+		<link rel="stylesheet" href="css/styles.css" />
+
+		<style>
+			.preview-hero {
+				min-height: 50vh;
+				display: flex;
+				flex-direction: column;
+				align-items: center;
+				justify-content: center;
+				background-image: url("images/hero-bg-02.jpg");
+				background-size: cover;
+				background-position: center;
+				position: relative;
+				padding: 4rem 2rem;
+			}
+
+			.preview-hero::before {
+				content: "";
+				position: absolute;
+				top: 0;
+				left: 0;
+				right: 0;
+				bottom: 0;
+				background: linear-gradient(to bottom, #0a0a0a30, #0a0a0a);
+				z-index: 1;
+			}
+
+			.preview-hero-content {
+				position: relative;
+				z-index: 2;
+				text-align: center;
+				max-width: 600px;
+			}
+
+			.preview-container {
+				max-width: 600px;
+				margin: -4rem auto 4rem;
+				position: relative;
+				z-index: 10;
+			}
+
+			.route-card {
+				background: rgba(0, 0, 0, 0.95);
+				border: 1px solid rgba(255, 255, 255, 0.15);
+				border-radius: 20px;
+				padding: 0;
+				box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+				overflow: hidden;
+			}
+
+			.route-header {
+				background: linear-gradient(
+					135deg,
+					rgba(248, 33, 61, 0.1) 0%,
+					rgba(0, 0, 0, 0.2) 100%
+				);
+				padding: 2.5rem 2rem;
+				border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+				text-align: center;
+			}
+
+			.route-grade {
+				font-family:
+					"CabinetGrotesk-Variable",
+					-apple-system,
+					sans-serif;
+				font-size: 4rem;
+				font-weight: 900;
+				color: var(--color-highlight);
+				margin-bottom: 0.5rem;
+				letter-spacing: -0.02em;
+			}
+
+			.route-sport {
+				font-size: 1rem;
+				text-transform: uppercase;
+				letter-spacing: 0.1em;
+				color: rgba(255, 255, 255, 0.6);
+				font-weight: 600;
+			}
+
+			.route-body {
+				padding: 2rem;
+			}
+
+			.route-name {
+				font-family:
+					"CabinetGrotesk-Variable",
+					-apple-system,
+					sans-serif;
+				font-size: 1.75rem;
+				font-weight: 700;
+				margin-bottom: 1.5rem;
+				color: var(--color-text-primary);
+				text-align: center;
+			}
+
+			.route-name.unnamed {
+				font-style: italic;
+				color: rgba(255, 255, 255, 0.5);
+			}
+
+			.route-details {
+				display: flex;
+				flex-direction: column;
+				gap: 1rem;
+				margin-bottom: 2rem;
+			}
+
+			.detail-row {
+				display: flex;
+				align-items: center;
+				justify-content: space-between;
+				padding: 0.75rem 0;
+				border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+			}
+
+			.detail-row:last-child {
+				border-bottom: none;
+			}
+
+			.detail-label {
+				font-size: 0.875rem;
+				text-transform: uppercase;
+				letter-spacing: 0.05em;
+				color: rgba(255, 255, 255, 0.5);
+				font-weight: 600;
+			}
+
+			.detail-value {
+				font-size: 1rem;
+				color: var(--color-text-primary);
+				font-weight: 500;
+				text-align: right;
+			}
+
+			.route-actions {
+				display: flex;
+				flex-direction: column;
+				gap: 0.75rem;
+			}
+
+			.add-button {
+				width: 100%;
+				padding: 1rem 2rem;
+				font-size: 1.05rem;
+				font-weight: 600;
+				border: none;
+				border-radius: 12px;
+				background: linear-gradient(
+					135deg,
+					var(--color-highlight) 0%,
+					#d91639 100%
+				);
+				color: white;
+				cursor: pointer;
+				transition: all 0.2s ease;
+				text-decoration: none;
+				display: inline-block;
+				text-align: center;
+			}
+
+			.add-button:hover {
+				transform: translateY(-2px);
+				box-shadow: 0 8px 24px rgba(248, 33, 61, 0.3);
+			}
+
+			.add-button:active {
+				transform: translateY(0);
+			}
+
+			.secondary-button {
+				width: 100%;
+				padding: 0.875rem 2rem;
+				font-size: 0.95rem;
+				font-weight: 500;
+				border: 1px solid rgba(255, 255, 255, 0.2);
+				border-radius: 12px;
+				background: transparent;
+				color: rgba(255, 255, 255, 0.8);
+				cursor: pointer;
+				transition: all 0.2s ease;
+				text-decoration: none;
+				display: inline-block;
+				text-align: center;
+			}
+
+			.secondary-button:hover {
+				background: rgba(255, 255, 255, 0.05);
+				border-color: rgba(255, 255, 255, 0.3);
+				color: var(--color-text-primary);
+			}
+
+			.app-badge {
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				gap: 0.5rem;
+				padding: 0.75rem;
+				background: rgba(255, 255, 255, 0.03);
+				border-radius: 12px;
+				margin-top: 1.5rem;
+				font-size: 0.85rem;
+				color: rgba(255, 255, 255, 0.6);
+			}
+
+			.app-badge img {
+				width: 24px;
+				height: 24px;
+				border-radius: 6px;
+			}
+
+			.map-preview {
+				width: 100%;
+				height: 200px;
+				border-radius: 12px;
+				overflow: hidden;
+				margin-bottom: 1.5rem;
+				background: rgba(255, 255, 255, 0.05);
+				border: 1px solid rgba(255, 255, 255, 0.1);
+				transition: all 0.2s ease;
+				position: relative;
+			}
+
+			.map-preview:hover {
+				border-color: rgba(255, 255, 255, 0.3);
+				transform: translateY(-2px);
+				box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+			}
+
+			.map-preview img {
+				width: 100%;
+				height: 100%;
+				object-fit: cover;
+				transition: opacity 0.2s ease;
+			}
+
+			.map-preview:hover img {
+				opacity: 0.9;
+			}
+
+			.map-preview::after {
+				content: "Click to open in OpenStreetMap";
+				position: absolute;
+				bottom: 0;
+				left: 0;
+				right: 0;
+				padding: 0.5rem;
+				background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
+				color: rgba(255, 255, 255, 0.8);
+				font-size: 0.75rem;
+				text-align: center;
+				opacity: 0;
+				transition: opacity 0.2s ease;
+			}
+
+			.map-preview:hover::after {
+				opacity: 1;
+			}
+
+			.error-state {
+				text-align: center;
+				padding: 3rem 2rem;
+			}
+
+			.error-icon {
+				font-size: 4rem;
+				margin-bottom: 1rem;
+			}
+
+			.error-title {
+				font-size: 1.5rem;
+				font-weight: 700;
+				margin-bottom: 0.5rem;
+				color: var(--color-text-primary);
+			}
+
+			.error-message {
+				color: rgba(255, 255, 255, 0.6);
+				margin-bottom: 2rem;
+			}
+
+			@media (max-width: 640px) {
+				.preview-container {
+					margin: -3rem 1rem 2rem;
+				}
+
+				.route-grade {
+					font-size: 3rem;
+				}
+
+				.route-header {
+					padding: 2rem 1.5rem;
+				}
+
+				.route-body {
+					padding: 1.5rem;
+				}
+			}
+		</style>
+	</head>
+	<body>
+		<div class="preview-hero">
+			<div class="preview-hero-content">
+				<img
+					src="images/app-icon.png"
+					alt="Griplog App Icon"
+					class="app-icon"
+					style="width: 80px; height: 80px; border-radius: 18px"
+				/>
+				<h1 class="hero-title">
+					<span class="word">Shared Route</span>
+				</h1>
+			</div>
+		</div>
+
+		<section class="content">
+			<div class="preview-container">
+				<!-- Loading State -->
+				<div id="loading-state" class="route-card">
+					<div class="error-state">
+						<div class="error-icon">⏳</div>
+						<div class="error-title">Loading route...</div>
+					</div>
+				</div>
+
+				<!-- Error State -->
+				<div id="error-state" class="route-card" style="display: none">
+					<div class="error-state">
+						<div class="error-icon">⚠️</div>
+						<div class="error-title">Invalid Link</div>
+						<p class="error-message">
+							This link appears to be invalid or corrupted. Please ask the sender to
+							share it again.
+						</p>
+						<a href="/" class="secondary-button">Back to Home</a>
+					</div>
+				</div>
+
+				<!-- Route Display -->
+				<div id="route-display" class="route-card" style="display: none">
+					<div class="route-header">
+						<div class="route-grade" id="route-grade">7B</div>
+						<div class="route-sport" id="route-sport">Bouldering</div>
+					</div>
+
+					<div class="route-body">
+						<h2 class="route-name" id="route-name">Unnamed Route</h2>
+
+						<div class="route-details" id="route-details">
+							<!-- Details will be inserted by JavaScript -->
+						</div>
+
+						<div class="route-actions">
+							<a href="#" id="add-to-griplog-btn" class="add-button">
+								Add to Griplog
+							</a>
+							<a href="/" class="secondary-button"> Explore Griplog </a>
+						</div>
+
+						<div class="app-badge">
+							<img src="images/app-icon.png" alt="Griplog" />
+							<span>Shared from Griplog</span>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="container" style="margin-top: 4rem">
+				<div class="intro">
+					<p>
+						Griplog is a private climbing logbook for tracking routes, planning trips,
+						and documenting beta. Download the app to save this route and build your
+						personal climbing collection.
+					</p>
+				</div>
+			</div>
+		</section>
+
+		<footer class="footer">
+			<p>
+				© 2025 • Griplog • <a href="/">Home</a> •
+				<a href="/changelog">Changelog</a> •
+				<a href="/url-builder">URL Builder</a>
+			</p>
+		</footer>
+
+		<script>
+			// Parse parameters directly from URL
+			const urlParams = new URLSearchParams(window.location.search);
+
+			const loadingState = document.getElementById("loading-state");
+			const errorState = document.getElementById("error-state");
+			const routeDisplay = document.getElementById("route-display");
+
+			// Detect entity type (default to 'route' for backward compatibility)
+			const entityType = urlParams.get("type") || "route";
+
+			if (entityType === "location") {
+				// Location sharing
+				const name = urlParams.get("name");
+				const accessType = urlParams.get("accessType");
+				const sportType = urlParams.get("sportType");
+
+				// Validate required fields for location
+				if (!name || !accessType || !sportType) {
+					showError();
+				} else {
+					// Get optional fields
+					const country = urlParams.get("country");
+					const region = urlParams.get("region");
+					const area = urlParams.get("area");
+					const address = urlParams.get("address");
+					const website = urlParams.get("website");
+					const lat = urlParams.get("lat");
+					const lon = urlParams.get("lon");
+					const parkingLat = urlParams.get("parkingLat");
+					const parkingLon = urlParams.get("parkingLon");
+					const stoneTypes = urlParams.get("stoneTypes");
+
+					const locationData = {
+						name,
+						accessType,
+						sportType,
+						country,
+						region,
+						area,
+						address,
+						website,
+						lat,
+						lon,
+						parkingLat,
+						parkingLon,
+						stoneTypes,
+					};
+
+					displayLocation(locationData);
+				}
+			} else {
+				// Route sharing (original functionality)
+				const grade = urlParams.get("grade");
+				const sport = urlParams.get("sport");
+
+				// Validate required fields for route
+				if (!grade || !sport) {
+					showError();
+				} else {
+					// Get optional fields
+					const name = urlParams.get("name");
+					const location = urlParams.get("location");
+					const area = urlParams.get("area");
+					const height = urlParams.get("height");
+					const bolts = urlParams.get("bolts");
+					const angle = urlParams.get("angle");
+					const lat = urlParams.get("lat");
+					const lon = urlParams.get("lon");
+
+					const routeData = {
+						grade,
+						sport,
+						name,
+						location,
+						area,
+						height,
+						bolts,
+						angle,
+						lat,
+						lon,
+					};
+
+					displayRoute(routeData);
+				}
+			}
+
+			function displayRoute(data) {
+				// Hide loading, show route
+				loadingState.style.display = "none";
+				routeDisplay.style.display = "block";
+
+				// Update grade and sport
+				document.getElementById("route-grade").textContent = data.grade;
+				document.getElementById("route-sport").textContent = formatSportType(
+					data.sport,
+				);
+
+				// Update name
+				const nameEl = document.getElementById("route-name");
+				if (data.name) {
+					nameEl.textContent = data.name;
+					nameEl.classList.remove("unnamed");
+				} else {
+					nameEl.textContent = "Unnamed Route";
+					nameEl.classList.add("unnamed");
+				}
+
+				// Update meta tags for social sharing
+				const title = data.name
+					? `${data.name} - ${data.grade}`
+					: `${data.grade} ${formatSportType(data.sport)} Route`;
+
+				const description = data.location
+					? `Check out this ${data.grade} ${formatSportType(data.sport).toLowerCase()} route at ${data.location} on Griplog`
+					: `Check out this ${data.grade} ${formatSportType(data.sport).toLowerCase()} route on Griplog`;
+
+				document.getElementById("page-title").textContent = title + " • Griplog";
+				document.getElementById("page-description").content = description;
+				document.getElementById("og-title").content = title;
+				document.getElementById("og-description").content = description;
+				document.getElementById("twitter-title").content = title;
+				document.getElementById("twitter-description").content = description;
+
+				// Build details list
+				const detailsContainer = document.getElementById("route-details");
+				detailsContainer.innerHTML = "";
+
+				// Add map preview if GPS coordinates are available
+				if (data.lat && data.lon) {
+					addMapPreview(data.lat, data.lon, detailsContainer);
+				}
+
+				if (data.location) {
+					addDetail("Location", data.location);
+				}
+
+				if (data.area) {
+					addDetail("Area", data.area);
+				}
+
+				if (data.height) {
+					addDetail("Height", `${data.height}m`);
+				}
+
+				if (data.bolts) {
+					addDetail("Bolts", data.bolts);
+				}
+
+				if (data.angle) {
+					addDetail("Angle", formatAngle(data.angle));
+				}
+
+				if (data.lat && data.lon) {
+					addDetail(
+						"GPS",
+						`${parseFloat(data.lat).toFixed(4)}, ${parseFloat(data.lon).toFixed(4)}`,
+					);
+				}
+
+				// Generate x-callback-url for "Add to Griplog" button
+				const xCallbackUrl = generateXCallbackURL(data);
+				document.getElementById("add-to-griplog-btn").href = xCallbackUrl;
+			}
+
+			function generateXCallbackURL(data) {
+				// Build query parameters for x-callback-url
+				const params = new URLSearchParams();
+
+				// Required fields
+				params.append("grade", data.grade);
+				params.append("sport", data.sport);
+
+				// Optional fields
+				if (data.name) params.append("name", data.name);
+				if (data.location) params.append("location", data.location);
+				if (data.area) params.append("area", data.area);
+				if (data.height) params.append("height", data.height);
+				if (data.bolts) params.append("bolts", data.bolts);
+				if (data.angle) params.append("angle", data.angle);
+				if (data.lat) params.append("lat", data.lat);
+				if (data.lon) params.append("lon", data.lon);
+
+				return `griplog://x-callback-url/route?${params.toString()}`;
+			}
+
+			function addDetail(label, value) {
+				const detailsContainer = document.getElementById("route-details");
+				const row = document.createElement("div");
+				row.className = "detail-row";
+				row.innerHTML = `
                 <span class="detail-label">${label}</span>
                 <span class="detail-value">${value}</span>
             `;
-            detailsContainer.appendChild(row);
-        }
+				detailsContainer.appendChild(row);
+			}
 
-        function formatSportType(sport) {
-            const sportMap = {
-                'bouldering': 'Bouldering',
-                'sport': 'Sport Climbing',
-                'trad': 'Trad Climbing',
-                'dws': 'Deep Water Solo'
-            };
-            return sportMap[sport.toLowerCase()] || sport;
-        }
+			function formatSportType(sport) {
+				const sportMap = {
+					bouldering: "Bouldering",
+					sport: "Sport Climbing",
+					trad: "Trad Climbing",
+					dws: "Deep Water Solo",
+				};
+				return sportMap[sport.toLowerCase()] || sport;
+			}
 
-        function formatAngle(angle) {
-            const angleMap = {
-                'slab': 'Slab',
-                'vertical': 'Vertical',
-                'overhang': 'Overhang',
-                'roof': 'Roof'
-            };
-            return angleMap[angle.toLowerCase()] || angle;
-        }
+			function formatAngle(angle) {
+				const angleMap = {
+					slab: "Slab",
+					vertical: "Vertical",
+					overhang: "Overhang",
+					roof: "Roof",
+				};
+				return angleMap[angle.toLowerCase()] || angle;
+			}
 
-        function addMapPreview(lat, lon, container) {
-            const mapDiv = document.createElement('div');
-            mapDiv.className = 'map-preview';
+			function addMapPreview(lat, lon, container) {
+				const mapDiv = document.createElement("div");
+				mapDiv.className = "map-preview";
 
-            // Use OpenStreetMap static map (no API key required)
-            // Format: https://staticmap.openstreetmap.de/staticmap.php?center=LAT,LON&zoom=ZOOM&size=WIDTHxHEIGHT&maptype=mapnik&markers=LAT,LON,red-pushpin
-            const zoom = 13; // Good zoom level for climbing locations
-            const width = 600;
-            const height = 200;
-            const mapUrl = `https://staticmap.openstreetmap.de/staticmap.php?center=${lat},${lon}&zoom=${zoom}&size=${width}x${height}&maptype=mapnik&markers=${lat},${lon},red-pushpin`;
+				// Use OpenStreetMap static map (no API key required)
+				// Format: https://staticmap.openstreetmap.de/staticmap.php?center=LAT,LON&zoom=ZOOM&size=WIDTHxHEIGHT&maptype=mapnik&markers=LAT,LON,red-pushpin
+				const zoom = 13; // Good zoom level for climbing locations
+				const width = 600;
+				const height = 200;
+				const mapUrl = `https://maps.wikimedia.org/img/osm-intl,${zoom},${lat},${lon},${width}x${height}.png?lang=en`;
 
-            const img = document.createElement('img');
-            img.src = mapUrl;
-            img.alt = 'Map location';
-            img.loading = 'lazy';
+				const img = document.createElement("img");
+				img.src = mapUrl;
+				img.alt = "Map location";
+				img.loading = "lazy";
 
-            // Add click handler to open full map
-            mapDiv.style.cursor = 'pointer';
-            mapDiv.addEventListener('click', function() {
-                window.open(`https://www.openstreetmap.org/?mlat=${lat}&mlon=${lon}#map=15/${lat}/${lon}`, '_blank');
-            });
+				// Add click handler to open full map
+				mapDiv.style.cursor = "pointer";
+				mapDiv.addEventListener("click", function () {
+					window.open(
+						`https://www.openstreetmap.org/?mlat=${lat}&mlon=${lon}#map=15/${lat}/${lon}`,
+						"_blank",
+					);
+				});
 
-            mapDiv.appendChild(img);
-            container.appendChild(mapDiv);
-        }
+				mapDiv.appendChild(img);
+				container.appendChild(mapDiv);
+			}
 
-        function showError() {
-            loadingState.style.display = 'none';
-            errorState.style.display = 'block';
-        }
+			function showError() {
+				loadingState.style.display = "none";
+				errorState.style.display = "block";
+			}
 
-        function displayLocation(data) {
-            // Hide loading, show location
-            loadingState.style.display = 'none';
-            routeDisplay.style.display = 'block';
+			function displayLocation(data) {
+				// Hide loading, show location
+				loadingState.style.display = "none";
+				routeDisplay.style.display = "block";
 
-            // Update the hero title
-            document.querySelector('.hero-title .word').textContent = 'Shared Location';
+				// Update the hero title
+				document.querySelector(".hero-title .word").textContent = "Shared Location";
 
-            // Update header to show location type instead of grade
-            const gradeEl = document.getElementById('route-grade');
-            gradeEl.textContent = formatAccessType(data.accessType);
-            gradeEl.style.fontSize = '2.5rem';  // Smaller for text
+				// Update header to show location type instead of grade
+				const gradeEl = document.getElementById("route-grade");
+				gradeEl.textContent = formatAccessType(data.accessType);
+				gradeEl.style.fontSize = "2.5rem"; // Smaller for text
 
-            document.getElementById('route-sport').textContent = formatSportType(data.sportType);
+				document.getElementById("route-sport").textContent = formatSportType(
+					data.sportType,
+				);
 
-            // Update name
-            const nameEl = document.getElementById('route-name');
-            nameEl.textContent = data.name;
-            nameEl.classList.remove('unnamed');
+				// Update name
+				const nameEl = document.getElementById("route-name");
+				nameEl.textContent = data.name;
+				nameEl.classList.remove("unnamed");
 
-            // Update meta tags for social sharing
-            const title = `${data.name} - ${formatAccessType(data.accessType)} ${formatSportType(data.sportType)}`;
-            const description = data.country && data.region
-                ? `Check out ${data.name} in ${data.region}, ${data.country} on Griplog`
-                : `Check out ${data.name} on Griplog`;
+				// Update meta tags for social sharing
+				const title = `${data.name} - ${formatAccessType(data.accessType)} ${formatSportType(data.sportType)}`;
+				const description =
+					data.country && data.region
+						? `Check out ${data.name} in ${data.region}, ${data.country} on Griplog`
+						: `Check out ${data.name} on Griplog`;
 
-            document.getElementById('page-title').textContent = title + ' • Griplog';
-            document.getElementById('page-description').content = description;
-            document.getElementById('og-title').content = title;
-            document.getElementById('og-description').content = description;
-            document.getElementById('twitter-title').content = title;
-            document.getElementById('twitter-description').content = description;
+				document.getElementById("page-title").textContent = title + " • Griplog";
+				document.getElementById("page-description").content = description;
+				document.getElementById("og-title").content = title;
+				document.getElementById("og-description").content = description;
+				document.getElementById("twitter-title").content = title;
+				document.getElementById("twitter-description").content = description;
 
-            // Build details list
-            const detailsContainer = document.getElementById('route-details');
-            detailsContainer.innerHTML = '';
+				// Build details list
+				const detailsContainer = document.getElementById("route-details");
+				detailsContainer.innerHTML = "";
 
-            // Add map preview if GPS coordinates are available
-            if (data.lat && data.lon) {
-                addMapPreview(data.lat, data.lon, detailsContainer);
-            }
+				// Add map preview if GPS coordinates are available
+				if (data.lat && data.lon) {
+					addMapPreview(data.lat, data.lon, detailsContainer);
+				}
 
-            if (data.country) {
-                addDetail('Country', data.country);
-            }
+				if (data.country) {
+					addDetail("Country", data.country);
+				}
 
-            if (data.region) {
-                addDetail('Region', data.region);
-            }
+				if (data.region) {
+					addDetail("Region", data.region);
+				}
 
-            if (data.area) {
-                addDetail('Area', data.area);
-            }
+				if (data.area) {
+					addDetail("Area", data.area);
+				}
 
-            if (data.address) {
-                addDetail('Address', data.address);
-            }
+				if (data.address) {
+					addDetail("Address", data.address);
+				}
 
-            if (data.stoneTypes) {
-                const formattedStoneTypes = data.stoneTypes
-                    .split(',')
-                    .map(type => type.charAt(0).toUpperCase() + type.slice(1))
-                    .join(', ');
-                addDetail('Stone Types', formattedStoneTypes);
-            }
+				if (data.stoneTypes) {
+					const formattedStoneTypes = data.stoneTypes
+						.split(",")
+						.map((type) => type.charAt(0).toUpperCase() + type.slice(1))
+						.join(", ");
+					addDetail("Stone Types", formattedStoneTypes);
+				}
 
-            if (data.lat && data.lon) {
-                const gpsValue = `${parseFloat(data.lat).toFixed(4)}, ${parseFloat(data.lon).toFixed(4)}`;
-                addDetail('GPS Coordinates', gpsValue);
-            }
+				if (data.lat && data.lon) {
+					const gpsValue = `${parseFloat(data.lat).toFixed(4)}, ${parseFloat(data.lon).toFixed(4)}`;
+					addDetail("GPS Coordinates", gpsValue);
+				}
 
-            if (data.parkingLat && data.parkingLon) {
-                const parkingValue = `${parseFloat(data.parkingLat).toFixed(4)}, ${parseFloat(data.parkingLon).toFixed(4)}`;
-                addDetail('Parking GPS', parkingValue);
-            }
+				if (data.parkingLat && data.parkingLon) {
+					const parkingValue = `${parseFloat(data.parkingLat).toFixed(4)}, ${parseFloat(data.parkingLon).toFixed(4)}`;
+					addDetail("Parking GPS", parkingValue);
+				}
 
-            if (data.website) {
-                addDetail('Website', `<a href="${data.website}" target="_blank" style="color: var(--color-highlight); text-decoration: none;">${formatWebsiteDisplay(data.website)}</a>`);
-            }
+				if (data.website) {
+					addDetail(
+						"Website",
+						`<a href="${data.website}" target="_blank" style="color: var(--color-highlight); text-decoration: none;">${formatWebsiteDisplay(data.website)}</a>`,
+					);
+				}
 
-            // Generate x-callback-url for "Add to Griplog" button
-            const xCallbackUrl = generateLocationXCallbackURL(data);
-            document.getElementById('add-to-griplog-btn').href = xCallbackUrl;
+				// Generate x-callback-url for "Add to Griplog" button
+				const xCallbackUrl = generateLocationXCallbackURL(data);
+				document.getElementById("add-to-griplog-btn").href = xCallbackUrl;
 
-            // Add "Open in Maps" button if GPS coordinates available
-            if (data.lat && data.lon) {
-                const actionsContainer = document.querySelector('.route-actions');
-                const mapsButton = document.createElement('a');
-                mapsButton.href = `http://maps.apple.com/?ll=${data.lat},${data.lon}&q=${encodeURIComponent(data.name)}`;
-                mapsButton.className = 'secondary-button';
-                mapsButton.textContent = 'Open in Maps';
-                mapsButton.target = '_blank';
-                actionsContainer.insertBefore(mapsButton, actionsContainer.children[1]);
-            }
-        }
+				// Add "Open in Maps" button if GPS coordinates available
+				if (data.lat && data.lon) {
+					const actionsContainer = document.querySelector(".route-actions");
+					const mapsButton = document.createElement("a");
+					mapsButton.href = `http://maps.apple.com/?ll=${data.lat},${data.lon}&q=${encodeURIComponent(data.name)}`;
+					mapsButton.className = "secondary-button";
+					mapsButton.textContent = "Open in Maps";
+					mapsButton.target = "_blank";
+					actionsContainer.insertBefore(mapsButton, actionsContainer.children[1]);
+				}
+			}
 
-        function generateLocationXCallbackURL(data) {
-            // Build query parameters for x-callback-url
-            const params = new URLSearchParams();
+			function generateLocationXCallbackURL(data) {
+				// Build query parameters for x-callback-url
+				const params = new URLSearchParams();
 
-            // Required fields
-            params.append('name', data.name);
-            params.append('accessType', data.accessType);
-            params.append('sportType', data.sportType);
+				// Required fields
+				params.append("name", data.name);
+				params.append("accessType", data.accessType);
+				params.append("sportType", data.sportType);
 
-            // Optional fields
-            if (data.country) params.append('country', data.country);
-            if (data.region) params.append('region', data.region);
-            if (data.area) params.append('area', data.area);
-            if (data.address) params.append('address', data.address);
-            if (data.website) params.append('website', data.website);
-            if (data.lat) params.append('lat', data.lat);
-            if (data.lon) params.append('lon', data.lon);
-            if (data.parkingLat) params.append('parkingLat', data.parkingLat);
-            if (data.parkingLon) params.append('parkingLon', data.parkingLon);
-            if (data.stoneTypes) params.append('stoneTypes', data.stoneTypes);
+				// Optional fields
+				if (data.country) params.append("country", data.country);
+				if (data.region) params.append("region", data.region);
+				if (data.area) params.append("area", data.area);
+				if (data.address) params.append("address", data.address);
+				if (data.website) params.append("website", data.website);
+				if (data.lat) params.append("lat", data.lat);
+				if (data.lon) params.append("lon", data.lon);
+				if (data.parkingLat) params.append("parkingLat", data.parkingLat);
+				if (data.parkingLon) params.append("parkingLon", data.parkingLon);
+				if (data.stoneTypes) params.append("stoneTypes", data.stoneTypes);
 
-            return `griplog://x-callback-url/location?${params.toString()}`;
-        }
+				return `griplog://x-callback-url/location?${params.toString()}`;
+			}
 
-        function formatAccessType(accessType) {
-            const accessMap = {
-                'indoor': 'Indoor',
-                'outdoor': 'Outdoor'
-            };
-            return accessMap[accessType.toLowerCase()] || accessType;
-        }
+			function formatAccessType(accessType) {
+				const accessMap = {
+					indoor: "Indoor",
+					outdoor: "Outdoor",
+				};
+				return accessMap[accessType.toLowerCase()] || accessType;
+			}
 
-        function formatWebsiteDisplay(url) {
-            try {
-                const urlObj = new URL(url);
-                return urlObj.hostname.replace('www.', '');
-            } catch {
-                return url;
-            }
-        }
-    </script>
-</body>
+			function formatWebsiteDisplay(url) {
+				try {
+					const urlObj = new URL(url);
+					return urlObj.hostname.replace("www.", "");
+				} catch {
+					return url;
+				}
+			}
+		</script>
+	</body>
 </html>
