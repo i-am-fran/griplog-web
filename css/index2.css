@@ -406,6 +406,7 @@
 	.newsletter-form-button,
 	.newsletter-loading-button {
 		width: 100%;
+		border-radius: 8px;
 	}
 }
 
