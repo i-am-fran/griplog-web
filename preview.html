@@ -573,11 +573,6 @@
 				const detailsContainer = document.getElementById("route-details");
 				detailsContainer.innerHTML = "";
 
-				// Add map preview if GPS coordinates are available
-				if (data.lat && data.lon) {
-					addMapPreview(data.lat, data.lon, detailsContainer);
-				}
-
 				if (data.location) {
 					addDetail("Location", data.location);
 				}
@@ -596,6 +591,11 @@
 
 				if (data.angle) {
 					addDetail("Angle", formatAngle(data.angle));
+				}
+
+				// Add map preview if GPS coordinates are available
+				if (data.lat && data.lon) {
+					addMapPreview(data.lat, data.lon, detailsContainer);
 				}
 
 				if (data.lat && data.lon) {
@@ -673,7 +673,7 @@
 					   target="_blank"
 					   class="detail-value"
 					   style="color: var(--color-highlight); text-decoration: none;">
-						→ Open in Google Maps
+						Google Maps →
 					</a>
 				`;
 				container.appendChild(row);
