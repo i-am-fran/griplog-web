@@ -663,32 +663,20 @@
 			}
 
 			function addMapPreview(lat, lon, container) {
-				const mapDiv = document.createElement("div");
-				mapDiv.className = "map-preview";
-
-				// Use OpenStreetMap static map (no API key required)
-				// Format: https://staticmap.openstreetmap.de/staticmap.php?center=LAT,LON&zoom=ZOOM&size=WIDTHxHEIGHT&maptype=mapnik&markers=LAT,LON,red-pushpin
-				const zoom = 13; // Good zoom level for climbing locations
-				const width = 600;
-				const height = 200;
-				const mapUrl = `https://staticmap.openstreetmap.org/staticmap.php?center=${lat},${lon}&zoom=${zoom}&size=${width}x${height}&maptype=mapnik&markers=${lat},${lon},red-pushpin`;
-
-				const img = document.createElement("img");
-				img.src = mapUrl;
-				img.alt = "Map location";
-				img.loading = "lazy";
-
-				// Add click handler to open full map
-				mapDiv.style.cursor = "pointer";
-				mapDiv.addEventListener("click", function () {
-					window.open(
-						`https://www.openstreetmap.org/?mlat=${lat}&mlon=${lon}#map=15/${lat}/${lon}`,
-						"_blank",
-					);
-				});
-
-				mapDiv.appendChild(img);
-				container.appendChild(mapDiv);
+				// Add "Open in Google Maps" link as a detail row
+				const row = document.createElement("div");
+				row.className = "detail-row";
+				row.style.cursor = "pointer";
+				row.innerHTML = `
+					<span class="detail-label">Directions</span>
+					<a href="https://www.google.com/maps?q=${lat},${lon}"
+					   target="_blank"
+					   class="detail-value"
+					   style="color: var(--color-highlight); text-decoration: none;">
+						→ Open in Google Maps
+					</a>
+				`;
+				container.appendChild(row);
 			}
 
 			function showError() {
