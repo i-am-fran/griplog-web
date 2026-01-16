@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+
+    <!-- Primary Meta Tags -->
+    <title id="page-title">Shared Route • Griplog</title>
+    <meta name="title" content="Check out this climbing route on Griplog">
+    <meta name="description" id="page-description" content="A climbing route shared from Griplog">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://griplog.app/preview">
+    <meta property="og:title" id="og-title" content="Check out this climbing route on Griplog">
+    <meta property="og:description" id="og-description" content="A climbing route shared from Griplog">
+    <meta property="og:image" content="https://griplog.app/assets/social.png">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://griplog.app/preview">
+    <meta property="twitter:title" id="twitter-title" content="Check out this climbing route on Griplog">
+    <meta property="twitter:description" id="twitter-description" content="A climbing route shared from Griplog">
+    <meta property="twitter:image" content="https://griplog.app/assets/social.png">
+
+    <!-- Favicon -->
+    <meta rel="icon" type="image/x-icon" href="assets/favicon.ico">
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/apple-touch-icon.png">
+
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="css/styles.css">
+
+    <style>
+        .preview-hero {
+            min-height: 50vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background-image: url("images/hero-bg-02.jpg");
+            background-size: cover;
+            background-position: center;
+            position: relative;
+            padding: 4rem 2rem;
+        }
+
+        .preview-hero::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(to bottom, #0a0a0a30, #0a0a0a);
+            z-index: 1;
+        }
+
+        .preview-hero-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            max-width: 600px;
+        }
+
+        .preview-container {
+            max-width: 600px;
+            margin: -4rem auto 4rem;
+            position: relative;
+            z-index: 10;
+        }
+
+        .route-card {
+            background: rgba(0, 0, 0, 0.95);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 20px;
+            padding: 0;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+            overflow: hidden;
+        }
+
+        .route-header {
+            background: linear-gradient(135deg, rgba(248, 33, 61, 0.1) 0%, rgba(0, 0, 0, 0.2) 100%);
+            padding: 2.5rem 2rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            text-align: center;
+        }
+
+        .route-grade {
+            font-family: 'CabinetGrotesk-Variable', -apple-system, sans-serif;
+            font-size: 4rem;
+            font-weight: 900;
+            color: var(--color-highlight);
+            margin-bottom: 0.5rem;
+            letter-spacing: -0.02em;
+        }
+
+        .route-sport {
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: rgba(255, 255, 255, 0.6);
+            font-weight: 600;
+        }
+
+        .route-body {
+            padding: 2rem;
+        }
+
+        .route-name {
+            font-family: 'CabinetGrotesk-Variable', -apple-system, sans-serif;
+            font-size: 1.75rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            color: var(--color-text-primary);
+            text-align: center;
+        }
+
+        .route-name.unnamed {
+            font-style: italic;
+            color: rgba(255, 255, 255, 0.5);
+        }
+
+        .route-details {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .detail-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0.75rem 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .detail-row:last-child {
+            border-bottom: none;
+        }
+
+        .detail-label {
+            font-size: 0.875rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: rgba(255, 255, 255, 0.5);
+            font-weight: 600;
+        }
+
+        .detail-value {
+            font-size: 1rem;
+            color: var(--color-text-primary);
+            font-weight: 500;
+            text-align: right;
+        }
+
+        .route-actions {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+
+        .add-button {
+            width: 100%;
+            padding: 1rem 2rem;
+            font-size: 1.05rem;
+            font-weight: 600;
+            border: none;
+            border-radius: 12px;
+            background: linear-gradient(135deg, var(--color-highlight) 0%, #d91639 100%);
+            color: white;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            text-decoration: none;
+            display: inline-block;
+            text-align: center;
+        }
+
+        .add-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(248, 33, 61, 0.3);
+        }
+
+        .add-button:active {
+            transform: translateY(0);
+        }
+
+        .secondary-button {
+            width: 100%;
+            padding: 0.875rem 2rem;
+            font-size: 0.95rem;
+            font-weight: 500;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 12px;
+            background: transparent;
+            color: rgba(255, 255, 255, 0.8);
+            cursor: pointer;
+            transition: all 0.2s ease;
+            text-decoration: none;
+            display: inline-block;
+            text-align: center;
+        }
+
+        .secondary-button:hover {
+            background: rgba(255, 255, 255, 0.05);
+            border-color: rgba(255, 255, 255, 0.3);
+            color: var(--color-text-primary);
+        }
+
+        .app-badge {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            padding: 0.75rem;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 12px;
+            margin-top: 1.5rem;
+            font-size: 0.85rem;
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        .app-badge img {
+            width: 24px;
+            height: 24px;
+            border-radius: 6px;
+        }
+
+        .error-state {
+            text-align: center;
+            padding: 3rem 2rem;
+        }
+
+        .error-icon {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+        }
+
+        .error-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            color: var(--color-text-primary);
+        }
+
+        .error-message {
+            color: rgba(255, 255, 255, 0.6);
+            margin-bottom: 2rem;
+        }
+
+        @media (max-width: 640px) {
+            .preview-container {
+                margin: -3rem 1rem 2rem;
+            }
+
+            .route-grade {
+                font-size: 3rem;
+            }
+
+            .route-header {
+                padding: 2rem 1.5rem;
+            }
+
+            .route-body {
+                padding: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="preview-hero">
+        <div class="preview-hero-content">
+            <img src="images/app-icon.png" alt="Griplog App Icon" class="app-icon" style="width: 80px; height: 80px; border-radius: 18px;">
+            <h1 class="hero-title">
+                <span class="word">Shared Route</span>
+            </h1>
+        </div>
+    </div>
+
+    <section class="content">
+        <div class="preview-container">
+            <!-- Loading State -->
+            <div id="loading-state" class="route-card">
+                <div class="error-state">
+                    <div class="error-icon">⏳</div>
+                    <div class="error-title">Loading route...</div>
+                </div>
+            </div>
+
+            <!-- Error State -->
+            <div id="error-state" class="route-card" style="display: none;">
+                <div class="error-state">
+                    <div class="error-icon">⚠️</div>
+                    <div class="error-title">Invalid Link</div>
+                    <p class="error-message">
+                        This link appears to be invalid or corrupted. Please ask the sender to share it again.
+                    </p>
+                    <a href="/" class="secondary-button">Back to Home</a>
+                </div>
+            </div>
+
+            <!-- Route Display -->
+            <div id="route-display" class="route-card" style="display: none;">
+                <div class="route-header">
+                    <div class="route-grade" id="route-grade">7B</div>
+                    <div class="route-sport" id="route-sport">Bouldering</div>
+                </div>
+
+                <div class="route-body">
+                    <h2 class="route-name" id="route-name">Unnamed Route</h2>
+
+                    <div class="route-details" id="route-details">
+                        <!-- Details will be inserted by JavaScript -->
+                    </div>
+
+                    <div class="route-actions">
+                        <a href="#" id="add-to-griplog-btn" class="add-button">
+                            Add to Griplog
+                        </a>
+                        <a href="/" class="secondary-button">
+                            Explore Griplog
+                        </a>
+                    </div>
+
+                    <div class="app-badge">
+                        <img src="images/app-icon.png" alt="Griplog">
+                        <span>Shared from Griplog</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="container" style="margin-top: 4rem;">
+            <div class="intro">
+                <p>
+                    Griplog is a private climbing logbook for tracking routes, planning trips, and documenting beta.
+                    Download the app to save this route and build your personal climbing collection.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <p>
+            © 2025 • Griplog • <a href="/">Home</a> •
+            <a href="/changelog">Changelog</a> •
+            <a href="/url-builder">URL Builder</a>
+        </p>
+    </footer>
+
+    <script>
+        // Parse x-callback-url from query parameter
+        const urlParams = new URLSearchParams(window.location.search);
+        const encodedUrl = urlParams.get('url');
+
+        const loadingState = document.getElementById('loading-state');
+        const errorState = document.getElementById('error-state');
+        const routeDisplay = document.getElementById('route-display');
+
+        if (!encodedUrl) {
+            // No URL provided
+            showError();
+        } else {
+            try {
+                // Decode the URL
+                const xCallbackUrl = decodeURIComponent(encodedUrl);
+
+                // Parse route data from x-callback-url
+                const routeData = parseXCallbackURL(xCallbackUrl);
+
+                if (!routeData) {
+                    showError();
+                } else {
+                    displayRoute(routeData, xCallbackUrl);
+                }
+            } catch (error) {
+                console.error('Failed to parse URL:', error);
+                showError();
+            }
+        }
+
+        function parseXCallbackURL(url) {
+            try {
+                // Extract query parameters from griplog://x-callback-url/route?... or griplog://route?...
+                const urlObj = new URL(url);
+
+                // Validate scheme
+                if (urlObj.protocol !== 'griplog:') {
+                    console.error('Invalid URL scheme:', urlObj.protocol);
+                    return null;
+                }
+
+                // Get query parameters
+                const params = new URLSearchParams(urlObj.search);
+
+                // Required fields
+                const grade = params.get('grade');
+                const sport = params.get('sport');
+
+                if (!grade || !sport) {
+                    console.error('Missing required fields:', { grade, sport });
+                    return null;
+                }
+
+                // Optional fields
+                const name = params.get('name');
+                const location = params.get('location');
+                const area = params.get('area');
+                const height = params.get('height');
+                const bolts = params.get('bolts');
+                const angle = params.get('angle');
+                const lat = params.get('lat');
+                const lon = params.get('lon');
+
+                return {
+                    grade,
+                    sport,
+                    name,
+                    location,
+                    area,
+                    height,
+                    bolts,
+                    angle,
+                    lat,
+                    lon
+                };
+            } catch (error) {
+                console.error('URL parsing error:', error);
+                return null;
+            }
+        }
+
+        function displayRoute(data, originalUrl) {
+            // Hide loading, show route
+            loadingState.style.display = 'none';
+            routeDisplay.style.display = 'block';
+
+            // Update grade and sport
+            document.getElementById('route-grade').textContent = data.grade;
+            document.getElementById('route-sport').textContent = formatSportType(data.sport);
+
+            // Update name
+            const nameEl = document.getElementById('route-name');
+            if (data.name) {
+                nameEl.textContent = data.name;
+                nameEl.classList.remove('unnamed');
+            } else {
+                nameEl.textContent = 'Unnamed Route';
+                nameEl.classList.add('unnamed');
+            }
+
+            // Update meta tags for social sharing
+            const title = data.name
+                ? `${data.name} - ${data.grade}`
+                : `${data.grade} ${formatSportType(data.sport)} Route`;
+
+            const description = data.location
+                ? `Check out this ${data.grade} ${formatSportType(data.sport).toLowerCase()} route at ${data.location} on Griplog`
+                : `Check out this ${data.grade} ${formatSportType(data.sport).toLowerCase()} route on Griplog`;
+
+            document.getElementById('page-title').textContent = title + ' • Griplog';
+            document.getElementById('page-description').content = description;
+            document.getElementById('og-title').content = title;
+            document.getElementById('og-description').content = description;
+            document.getElementById('twitter-title').content = title;
+            document.getElementById('twitter-description').content = description;
+
+            // Build details list
+            const detailsContainer = document.getElementById('route-details');
+            detailsContainer.innerHTML = '';
+
+            if (data.location) {
+                addDetail('Location', data.location);
+            }
+
+            if (data.area) {
+                addDetail('Area', data.area);
+            }
+
+            if (data.height) {
+                addDetail('Height', `${data.height}m`);
+            }
+
+            if (data.bolts) {
+                addDetail('Bolts', data.bolts);
+            }
+
+            if (data.angle) {
+                addDetail('Angle', formatAngle(data.angle));
+            }
+
+            if (data.lat && data.lon) {
+                addDetail('GPS', `${parseFloat(data.lat).toFixed(4)}, ${parseFloat(data.lon).toFixed(4)}`);
+            }
+
+            // Set up "Add to Griplog" button
+            document.getElementById('add-to-griplog-btn').href = originalUrl;
+        }
+
+        function addDetail(label, value) {
+            const detailsContainer = document.getElementById('route-details');
+            const row = document.createElement('div');
+            row.className = 'detail-row';
+            row.innerHTML = `
+                <span class="detail-label">${label}</span>
+                <span class="detail-value">${value}</span>
+            `;
+            detailsContainer.appendChild(row);
+        }
+
+        function formatSportType(sport) {
+            const sportMap = {
+                'bouldering': 'Bouldering',
+                'sport': 'Sport Climbing',
+                'trad': 'Trad Climbing',
+                'dws': 'Deep Water Solo'
+            };
+            return sportMap[sport.toLowerCase()] || sport;
+        }
+
+        function formatAngle(angle) {
+            const angleMap = {
+                'slab': 'Slab',
+                'vertical': 'Vertical',
+                'overhang': 'Overhang',
+                'roof': 'Roof'
+            };
+            return angleMap[angle.toLowerCase()] || angle;
+        }
+
+        function showError() {
+            loadingState.style.display = 'none';
+            errorState.style.display = 'block';
+        }
+    </script>
+</body>
+</html>
