@@ -90,7 +90,7 @@
 	-webkit-background-clip: text;
 	-webkit-text-fill-color: transparent;
 	background-clip: text;
-	/* font-size: 4rem; */
+	opacity: 0.8;
 }
 
 .v2-hero-subtitle {
