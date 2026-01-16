@@ -349,88 +349,48 @@
     </footer>
 
     <script>
-        // Parse x-callback-url from query parameter
+        // Parse route parameters directly from URL
         const urlParams = new URLSearchParams(window.location.search);
-        const encodedUrl = urlParams.get('url');
 
         const loadingState = document.getElementById('loading-state');
         const errorState = document.getElementById('error-state');
         const routeDisplay = document.getElementById('route-display');
 
-        if (!encodedUrl) {
-            // No URL provided
+        // Get route data from query parameters
+        const grade = urlParams.get('grade');
+        const sport = urlParams.get('sport');
+
+        // Validate required fields
+        if (!grade || !sport) {
             showError();
         } else {
-            try {
-                // Decode the URL
-                const xCallbackUrl = decodeURIComponent(encodedUrl);
+            // Get optional fields
+            const name = urlParams.get('name');
+            const location = urlParams.get('location');
+            const area = urlParams.get('area');
+            const height = urlParams.get('height');
+            const bolts = urlParams.get('bolts');
+            const angle = urlParams.get('angle');
+            const lat = urlParams.get('lat');
+            const lon = urlParams.get('lon');
 
-                // Parse route data from x-callback-url
-                const routeData = parseXCallbackURL(xCallbackUrl);
+            const routeData = {
+                grade,
+                sport,
+                name,
+                location,
+                area,
+                height,
+                bolts,
+                angle,
+                lat,
+                lon
+            };
 
-                if (!routeData) {
-                    showError();
-                } else {
-                    displayRoute(routeData, xCallbackUrl);
-                }
-            } catch (error) {
-                console.error('Failed to parse URL:', error);
-                showError();
-            }
+            displayRoute(routeData);
         }
 
-        function parseXCallbackURL(url) {
-            try {
-                // Extract query parameters from griplog://x-callback-url/route?... or griplog://route?...
-                const urlObj = new URL(url);
-
-                // Validate scheme
-                if (urlObj.protocol !== 'griplog:') {
-                    console.error('Invalid URL scheme:', urlObj.protocol);
-                    return null;
-                }
-
-                // Get query parameters
-                const params = new URLSearchParams(urlObj.search);
-
-                // Required fields
-                const grade = params.get('grade');
-                const sport = params.get('sport');
-
-                if (!grade || !sport) {
-                    console.error('Missing required fields:', { grade, sport });
-                    return null;
-                }
-
-                // Optional fields
-                const name = params.get('name');
-                const location = params.get('location');
-                const area = params.get('area');
-                const height = params.get('height');
-                const bolts = params.get('bolts');
-                const angle = params.get('angle');
-                const lat = params.get('lat');
-                const lon = params.get('lon');
-
-                return {
-                    grade,
-                    sport,
-                    name,
-                    location,
-                    area,
-                    height,
-                    bolts,
-                    angle,
-                    lat,
-                    lon
-                };
-            } catch (error) {
-                console.error('URL parsing error:', error);
-                return null;
-            }
-        }
-
-        function displayRoute(data, originalUrl) {
+        function displayRoute(data) {
             // Hide loading, show route
             loadingState.style.display = 'none';
             routeDisplay.style.display = 'block';
@@ -493,8 +453,30 @@
                 addDetail('GPS', `${parseFloat(data.lat).toFixed(4)}, ${parseFloat(data.lon).toFixed(4)}`);
             }
 
-            // Set up "Add to Griplog" button
-            document.getElementById('add-to-griplog-btn').href = originalUrl;
+            // Generate x-callback-url for "Add to Griplog" button
+            const xCallbackUrl = generateXCallbackURL(data);
+            document.getElementById('add-to-griplog-btn').href = xCallbackUrl;
+        }
+
+        function generateXCallbackURL(data) {
+            // Build query parameters for x-callback-url
+            const params = new URLSearchParams();
+
+            // Required fields
+            params.append('grade', data.grade);
+            params.append('sport', data.sport);
+
+            // Optional fields
+            if (data.name) params.append('name', data.name);
+            if (data.location) params.append('location', data.location);
+            if (data.area) params.append('area', data.area);
+            if (data.height) params.append('height', data.height);
+            if (data.bolts) params.append('bolts', data.bolts);
+            if (data.angle) params.append('angle', data.angle);
+            if (data.lat) params.append('lat', data.lat);
+            if (data.lon) params.append('lon', data.lon);
+
+            return `griplog://x-callback-url/route?${params.toString()}`;
         }
 
         function addDetail(label, value) {

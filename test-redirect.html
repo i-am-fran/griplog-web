@@ -1,182 +1,220 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Griplog URL Preview Test</title>
-    <link rel="stylesheet" href="css/styles.css">
-    <style>
-        .test-container {
-            max-width: 800px;
-            margin: 4rem auto;
-            padding: 2rem;
-        }
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Griplog URL Preview Test</title>
+		<link rel="stylesheet" href="css/styles.css" />
+		<style>
+			.test-container {
+				max-width: 800px;
+				margin: 4rem auto;
+				padding: 2rem;
+			}
 
-        .test-card {
-            background: rgba(255, 255, 255, 0.05);
-            border-radius: 12px;
-            padding: 2rem;
-            margin-bottom: 1.5rem;
-        }
+			.test-card {
+				background: rgba(255, 255, 255, 0.05);
+				border-radius: 12px;
+				padding: 2rem;
+				margin-bottom: 1.5rem;
+			}
 
-        .test-url {
-            background: rgba(0, 0, 0, 0.3);
-            padding: 1rem;
-            border-radius: 8px;
-            font-family: monospace;
-            font-size: 0.875rem;
-            word-break: break-all;
-            margin: 1rem 0;
-        }
+			.test-url {
+				background: rgba(0, 0, 0, 0.3);
+				padding: 1rem;
+				border-radius: 8px;
+				font-family: monospace;
+				font-size: 0.875rem;
+				word-break: break-all;
+				margin: 1rem 0;
+			}
 
-        .test-button {
-            display: inline-block;
-            padding: 0.75rem 1.5rem;
-            background: #007AFF;
-            color: white;
-            text-decoration: none;
-            border-radius: 8px;
-            font-weight: 600;
-            margin-right: 1rem;
-            margin-bottom: 0.5rem;
-        }
+			.test-button {
+				display: inline-block;
+				padding: 0.75rem 1.5rem;
+				background: #007aff;
+				color: white;
+				text-decoration: none;
+				border-radius: 8px;
+				font-weight: 600;
+				margin-right: 1rem;
+				margin-bottom: 0.5rem;
+			}
 
-        .test-button:hover {
-            opacity: 0.8;
-        }
+			.test-button:hover {
+				opacity: 0.8;
+			}
 
-        .success {
-            color: #34C759;
-        }
+			.success {
+				color: #34c759;
+			}
 
-        .info {
-            color: #5AC8FA;
-        }
-    </style>
-</head>
-<body>
-    <div class="test-container">
-        <h1>Griplog URL Preview Test</h1>
+			.info {
+				color: #5ac8fa;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="test-container">
+			<h1>Griplog URL Preview Test</h1>
 
-        <div class="test-card">
-            <h2>Test Case 1: Simple Boulder Route</h2>
-            <p>A basic boulder problem with minimal metadata.</p>
-            <div class="test-url" id="test1-url">Generating URL...</div>
-            <a href="#" id="test1-link" class="test-button" target="_blank">Test This Link</a>
-            <button onclick="copyToClipboard('test1-url')" class="test-button" style="background: #5856D6;">Copy URL</button>
-        </div>
+			<div class="test-card">
+				<h2>Test Case 1: Simple Boulder Route</h2>
+				<p>A basic boulder problem with minimal metadata.</p>
+				<div class="test-url" id="test1-url">Generating URL...</div>
+				<a href="#" id="test1-link" class="test-button" target="_blank"
+					>Test This Link</a
+				>
+				<button
+					onclick="copyToClipboard('test1-url')"
+					class="test-button"
+					style="background: #5856d6"
+				>
+					Copy URL
+				</button>
+			</div>
 
-        <div class="test-card">
-            <h2>Test Case 2: Sport Climb with Location</h2>
-            <p>A sport route with location, height, and bolt count.</p>
-            <div class="test-url" id="test2-url">Generating URL...</div>
-            <a href="#" id="test2-link" class="test-button" target="_blank">Test This Link</a>
-            <button onclick="copyToClipboard('test2-url')" class="test-button" style="background: #5856D6;">Copy URL</button>
-        </div>
+			<div class="test-card">
+				<h2>Test Case 2: Sport Climb with Location</h2>
+				<p>A sport route with location, height, and bolt count.</p>
+				<div class="test-url" id="test2-url">Generating URL...</div>
+				<a href="#" id="test2-link" class="test-button" target="_blank"
+					>Test This Link</a
+				>
+				<button
+					onclick="copyToClipboard('test2-url')"
+					class="test-button"
+					style="background: #5856d6"
+				>
+					Copy URL
+				</button>
+			</div>
 
-        <div class="test-card">
-            <h2>Test Case 3: Full Route Data</h2>
-            <p>A route with all optional fields populated.</p>
-            <div class="test-url" id="test3-url">Generating URL...</div>
-            <a href="#" id="test3-link" class="test-button" target="_blank">Test This Link</a>
-            <button onclick="copyToClipboard('test3-url')" class="test-button" style="background: #5856D6;">Copy URL</button>
-        </div>
+			<div class="test-card">
+				<h2>Test Case 3: Full Route Data</h2>
+				<p>A route with all optional fields populated.</p>
+				<div class="test-url" id="test3-url">Generating URL...</div>
+				<a href="#" id="test3-link" class="test-button" target="_blank"
+					>Test This Link</a
+				>
+				<button
+					onclick="copyToClipboard('test3-url')"
+					class="test-button"
+					style="background: #5856d6"
+				>
+					Copy URL
+				</button>
+			</div>
 
-        <div class="test-card">
-            <h2 class="info">How It Works</h2>
-            <ol style="line-height: 1.8;">
-                <li>User clicks "Share" in Griplog app</li>
-                <li>App generates a web URL: <code>https://griplog.app/preview?url=...</code></li>
-                <li>User shares this URL in WhatsApp, Messages, etc.</li>
-                <li>Recipient clicks the link → Opens <code>preview.html</code> in browser</li>
-                <li>Page shows route details with "Add to Griplog" button</li>
-                <li>User clicks "Add to Griplog" → iOS opens Griplog app with route data</li>
-            </ol>
-        </div>
+			<div class="test-card">
+				<h2 class="info">How It Works</h2>
+				<ol style="line-height: 1.8">
+					<li>User clicks "Share" in Griplog app</li>
+					<li>
+						App generates a web URL: <code>https://griplog.app/preview?url=...</code>
+					</li>
+					<li>User shares this URL in WhatsApp, Messages, etc.</li>
+					<li>
+						Recipient clicks the link → Opens <code>preview.html</code> in browser
+					</li>
+					<li>Page shows route details with "Add to Griplog" button</li>
+					<li>
+						User clicks "Add to Griplog" → iOS opens Griplog app with route data
+					</li>
+				</ol>
+			</div>
 
-        <div class="test-card">
-            <h2 class="success">✓ Expected Behavior</h2>
-            <ul style="line-height: 1.8;">
-                <li><strong>Preview page loads:</strong> Shows route details (grade, sport, name, location, etc.)</li>
-                <li><strong>Click "Add to Griplog":</strong> Opens Griplog app with route import preview</li>
-                <li><strong>Without app:</strong> Shows "Explore Griplog" link and app info</li>
-                <li><strong>Social sharing:</strong> Link preview shows route name and grade</li>
-            </ul>
-        </div>
-    </div>
+			<div class="test-card">
+				<h2 class="success">✓ Expected Behavior</h2>
+				<ul style="line-height: 1.8">
+					<li>
+						<strong>Preview page loads:</strong> Shows route details (grade, sport,
+						name, location, etc.)
+					</li>
+					<li>
+						<strong>Click "Add to Griplog":</strong> Opens Griplog app with route
+						import preview
+					</li>
+					<li>
+						<strong>Without app:</strong> Shows "Explore Griplog" link and app info
+					</li>
+					<li>
+						<strong>Social sharing:</strong> Link preview shows route name and grade
+					</li>
+				</ul>
+			</div>
+		</div>
 
-    <footer class="footer">
-        <p>
-            © 2025 • Griplog • <a href="/">Home</a> •
-            <a href="/changelog">Changelog</a> •
-            <a href="/url-builder">URL Builder</a>
-        </p>
-    </footer>
+		<footer class="footer">
+			<p>
+				© 2025 • Griplog • <a href="/">Home</a> •
+				<a href="/changelog">Changelog</a> •
+				<a href="/url-builder">URL Builder</a>
+			</p>
+		</footer>
 
-    <script>
-        // Generate test URLs
-        const testCases = {
-            test1: {
-                name: "Crimpy Problem",
-                grade: "7B",
-                sport: "bouldering"
-            },
-            test2: {
-                name: "Golden Ticket",
-                grade: "7c",
-                sport: "sport",
-                location: "Red River Gorge",
-                height: "25",
-                bolts: "9"
-            },
-            test3: {
-                name: "Biographie",
-                grade: "9a+",
-                sport: "sport",
-                location: "Céüse",
-                area: "Secteur Biographie",
-                height: "50",
-                bolts: "15",
-                angle: "overhang",
-                lat: "44.5167",
-                lon: "5.9333"
-            }
-        };
+		<script>
+			// Generate test URLs
+			const testCases = {
+				test1: {
+					name: "Crimpy Problem",
+					grade: "7B",
+					sport: "bouldering",
+				},
+				test2: {
+					name: "Golden Ticket",
+					grade: "7c",
+					sport: "sport",
+					location: "Red River Gorge",
+					height: "25",
+					bolts: "9",
+				},
+				test3: {
+					name: "Biographie",
+					grade: "9a+",
+					sport: "sport",
+					location: "Céüse",
+					area: "Secteur Biographie",
+					height: "50",
+					bolts: "15",
+					angle: "overhang",
+					lat: "44.5167",
+					lon: "5.9333",
+				},
+			};
 
-        function generateXCallbackURL(params) {
-            const queryString = Object.entries(params)
-                .map(([key, value]) => `${key}=${encodeURIComponent(value)}`)
-                .join('&');
-            return `griplog://x-callback-url/route?${queryString}`;
-        }
+			function generateWebPreviewURL(params) {
+				// Create URL with direct route parameters
+				const queryString = Object.entries(params)
+					.map(([key, value]) => `${key}=${encodeURIComponent(value)}`)
+					.join("&");
+				return `https://griplog.app/preview?${queryString}`;
+			}
 
-        function generateWebProxyURL(xCallbackURL) {
-            const encodedURL = encodeURIComponent(xCallbackURL);
-            return `https://griplog.app/preview?url=${encodedURL}`;
-        }
+			// Generate URLs for all test cases
+			Object.keys(testCases).forEach((testId) => {
+				const params = testCases[testId];
+				const webPreviewURL = generateWebPreviewURL(params);
 
-        // Generate URLs for all test cases
-        Object.keys(testCases).forEach(testId => {
-            const params = testCases[testId];
-            const xCallbackURL = generateXCallbackURL(params);
-            const webProxyURL = generateWebProxyURL(xCallbackURL);
+				// Display URL
+				document.getElementById(`${testId}-url`).textContent = webPreviewURL;
 
-            // Display URL
-            document.getElementById(`${testId}-url`).textContent = webProxyURL;
+				// Set link href
+				document.getElementById(`${testId}-link`).href = webPreviewURL;
+			});
 
-            // Set link href
-            document.getElementById(`${testId}-link`).href = webProxyURL;
-        });
-
-        // Copy to clipboard function
-        function copyToClipboard(elementId) {
-            const text = document.getElementById(elementId).textContent;
-            navigator.clipboard.writeText(text).then(() => {
-                alert('URL copied to clipboard!');
-            }).catch(err => {
-                console.error('Failed to copy:', err);
-            });
-        }
-    </script>
-</body>
+			// Copy to clipboard function
+			function copyToClipboard(elementId) {
+				const text = document.getElementById(elementId).textContent;
+				navigator.clipboard
+					.writeText(text)
+					.then(() => {
+						alert("URL copied to clipboard!");
+					})
+					.catch((err) => {
+						console.error("Failed to copy:", err);
+					});
+			}
+		</script>
+	</body>
 </html>
