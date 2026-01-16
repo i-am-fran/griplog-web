@@ -13,6 +13,7 @@
 	position: relative;
 	padding: 6rem 2rem;
 	overflow: hidden;
+	padding-top: calc(20px + env(safe-area-inset-top));
 }
 
 .v2-hero::before {
