@@ -349,45 +349,90 @@
     </footer>
 
     <script>
-        // Parse route parameters directly from URL
+        // Parse parameters directly from URL
         const urlParams = new URLSearchParams(window.location.search);
 
         const loadingState = document.getElementById('loading-state');
         const errorState = document.getElementById('error-state');
         const routeDisplay = document.getElementById('route-display');
 
-        // Get route data from query parameters
-        const grade = urlParams.get('grade');
-        const sport = urlParams.get('sport');
+        // Detect entity type (default to 'route' for backward compatibility)
+        const entityType = urlParams.get('type') || 'route';
 
-        // Validate required fields
-        if (!grade || !sport) {
-            showError();
-        } else {
-            // Get optional fields
+        if (entityType === 'location') {
+            // Location sharing
             const name = urlParams.get('name');
-            const location = urlParams.get('location');
-            const area = urlParams.get('area');
-            const height = urlParams.get('height');
-            const bolts = urlParams.get('bolts');
-            const angle = urlParams.get('angle');
-            const lat = urlParams.get('lat');
-            const lon = urlParams.get('lon');
+            const accessType = urlParams.get('accessType');
+            const sportType = urlParams.get('sportType');
 
-            const routeData = {
-                grade,
-                sport,
-                name,
-                location,
-                area,
-                height,
-                bolts,
-                angle,
-                lat,
-                lon
-            };
+            // Validate required fields for location
+            if (!name || !accessType || !sportType) {
+                showError();
+            } else {
+                // Get optional fields
+                const country = urlParams.get('country');
+                const region = urlParams.get('region');
+                const area = urlParams.get('area');
+                const address = urlParams.get('address');
+                const website = urlParams.get('website');
+                const lat = urlParams.get('lat');
+                const lon = urlParams.get('lon');
+                const parkingLat = urlParams.get('parkingLat');
+                const parkingLon = urlParams.get('parkingLon');
+                const stoneTypes = urlParams.get('stoneTypes');
 
-            displayRoute(routeData);
+                const locationData = {
+                    name,
+                    accessType,
+                    sportType,
+                    country,
+                    region,
+                    area,
+                    address,
+                    website,
+                    lat,
+                    lon,
+                    parkingLat,
+                    parkingLon,
+                    stoneTypes
+                };
+
+                displayLocation(locationData);
+            }
+        } else {
+            // Route sharing (original functionality)
+            const grade = urlParams.get('grade');
+            const sport = urlParams.get('sport');
+
+            // Validate required fields for route
+            if (!grade || !sport) {
+                showError();
+            } else {
+                // Get optional fields
+                const name = urlParams.get('name');
+                const location = urlParams.get('location');
+                const area = urlParams.get('area');
+                const height = urlParams.get('height');
+                const bolts = urlParams.get('bolts');
+                const angle = urlParams.get('angle');
+                const lat = urlParams.get('lat');
+                const lon = urlParams.get('lon');
+
+                const routeData = {
+                    grade,
+                    sport,
+                    name,
+                    location,
+                    area,
+                    height,
+                    bolts,
+                    angle,
+                    lat,
+                    lon
+                };
+
+                displayRoute(routeData);
+            }
         }
 
         function displayRoute(data) {
@@ -513,6 +558,138 @@
         function showError() {
             loadingState.style.display = 'none';
             errorState.style.display = 'block';
+        }
+
+        function displayLocation(data) {
+            // Hide loading, show location
+            loadingState.style.display = 'none';
+            routeDisplay.style.display = 'block';
+
+            // Update the hero title
+            document.querySelector('.hero-title .word').textContent = 'Shared Location';
+
+            // Update header to show location type instead of grade
+            const gradeEl = document.getElementById('route-grade');
+            gradeEl.textContent = formatAccessType(data.accessType);
+            gradeEl.style.fontSize = '2.5rem';  // Smaller for text
+
+            document.getElementById('route-sport').textContent = formatSportType(data.sportType);
+
+            // Update name
+            const nameEl = document.getElementById('route-name');
+            nameEl.textContent = data.name;
+            nameEl.classList.remove('unnamed');
+
+            // Update meta tags for social sharing
+            const title = `${data.name} - ${formatAccessType(data.accessType)} ${formatSportType(data.sportType)}`;
+            const description = data.country && data.region
+                ? `Check out ${data.name} in ${data.region}, ${data.country} on Griplog`
+                : `Check out ${data.name} on Griplog`;
+
+            document.getElementById('page-title').textContent = title + ' • Griplog';
+            document.getElementById('page-description').content = description;
+            document.getElementById('og-title').content = title;
+            document.getElementById('og-description').content = description;
+            document.getElementById('twitter-title').content = title;
+            document.getElementById('twitter-description').content = description;
+
+            // Build details list
+            const detailsContainer = document.getElementById('route-details');
+            detailsContainer.innerHTML = '';
+
+            if (data.country) {
+                addDetail('Country', data.country);
+            }
+
+            if (data.region) {
+                addDetail('Region', data.region);
+            }
+
+            if (data.area) {
+                addDetail('Area', data.area);
+            }
+
+            if (data.address) {
+                addDetail('Address', data.address);
+            }
+
+            if (data.stoneTypes) {
+                const formattedStoneTypes = data.stoneTypes
+                    .split(',')
+                    .map(type => type.charAt(0).toUpperCase() + type.slice(1))
+                    .join(', ');
+                addDetail('Stone Types', formattedStoneTypes);
+            }
+
+            if (data.lat && data.lon) {
+                const gpsValue = `${parseFloat(data.lat).toFixed(4)}, ${parseFloat(data.lon).toFixed(4)}`;
+                addDetail('GPS Coordinates', gpsValue);
+            }
+
+            if (data.parkingLat && data.parkingLon) {
+                const parkingValue = `${parseFloat(data.parkingLat).toFixed(4)}, ${parseFloat(data.parkingLon).toFixed(4)}`;
+                addDetail('Parking GPS', parkingValue);
+            }
+
+            if (data.website) {
+                addDetail('Website', `<a href="${data.website}" target="_blank" style="color: var(--color-highlight); text-decoration: none;">${formatWebsiteDisplay(data.website)}</a>`);
+            }
+
+            // Generate x-callback-url for "Add to Griplog" button
+            const xCallbackUrl = generateLocationXCallbackURL(data);
+            document.getElementById('add-to-griplog-btn').href = xCallbackUrl;
+
+            // Add "Open in Maps" button if GPS coordinates available
+            if (data.lat && data.lon) {
+                const actionsContainer = document.querySelector('.route-actions');
+                const mapsButton = document.createElement('a');
+                mapsButton.href = `http://maps.apple.com/?ll=${data.lat},${data.lon}&q=${encodeURIComponent(data.name)}`;
+                mapsButton.className = 'secondary-button';
+                mapsButton.textContent = 'Open in Maps';
+                mapsButton.target = '_blank';
+                actionsContainer.insertBefore(mapsButton, actionsContainer.children[1]);
+            }
+        }
+
+        function generateLocationXCallbackURL(data) {
+            // Build query parameters for x-callback-url
+            const params = new URLSearchParams();
+
+            // Required fields
+            params.append('name', data.name);
+            params.append('accessType', data.accessType);
+            params.append('sportType', data.sportType);
+
+            // Optional fields
+            if (data.country) params.append('country', data.country);
+            if (data.region) params.append('region', data.region);
+            if (data.area) params.append('area', data.area);
+            if (data.address) params.append('address', data.address);
+            if (data.website) params.append('website', data.website);
+            if (data.lat) params.append('lat', data.lat);
+            if (data.lon) params.append('lon', data.lon);
+            if (data.parkingLat) params.append('parkingLat', data.parkingLat);
+            if (data.parkingLon) params.append('parkingLon', data.parkingLon);
+            if (data.stoneTypes) params.append('stoneTypes', data.stoneTypes);
+
+            return `griplog://x-callback-url/location?${params.toString()}`;
+        }
+
+        function formatAccessType(accessType) {
+            const accessMap = {
+                'indoor': 'Indoor',
+                'outdoor': 'Outdoor'
+            };
+            return accessMap[accessType.toLowerCase()] || accessType;
+        }
+
+        function formatWebsiteDisplay(url) {
+            try {
+                const urlObj = new URL(url);
+                return urlObj.hostname.replace('www.', '');
+            } catch {
+                return url;
+            }
         }
     </script>
 </body>

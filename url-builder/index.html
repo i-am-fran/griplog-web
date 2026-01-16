@@ -68,22 +68,40 @@
 				<!-- Builder Form -->
 				<div class="builder-container">
 					<div class="builder-form" id="builderForm">
-						<!-- Sport -->
+						<!-- Entity Type Selector -->
 						<div class="form-field">
 							<div class="field-info">
-								<label class="field-label" for="sport"
-									>sport <span class="required-badge">required</span></label
+								<label class="field-label" for="entityType"
+									>type <span class="required-badge">required</span></label
 								>
-								<p class="field-description">Sport type: bouldering, sport, or dws</p>
+								<p class="field-description">What do you want to share?</p>
 							</div>
 							<div class="field-input">
-								<select id="sport" name="sport" class="builder-input" required>
-									<option value="bouldering" selected>Bouldering</option>
-									<option value="sport">Sport Climbing</option>
-									<option value="dws">Deep Water Solo</option>
+								<select id="entityType" name="entityType" class="builder-input" required>
+									<option value="route" selected>Route</option>
+									<option value="location">Location</option>
 								</select>
 							</div>
 						</div>
+
+						<!-- Route Fields (shown when type=route) -->
+						<div id="routeFields">
+							<!-- Sport -->
+							<div class="form-field">
+								<div class="field-info">
+									<label class="field-label" for="sport"
+										>sport <span class="required-badge">required</span></label
+									>
+									<p class="field-description">Sport type: bouldering, sport, or dws</p>
+								</div>
+								<div class="field-input">
+									<select id="sport" name="sport" class="builder-input" required>
+										<option value="bouldering" selected>Bouldering</option>
+										<option value="sport">Sport Climbing</option>
+										<option value="dws">Deep Water Solo</option>
+									</select>
+								</div>
+							</div>
 
 						<!-- Grade -->
 						<div class="form-field">
@@ -248,6 +266,249 @@
 								/>
 							</div>
 						</div>
+						</div>
+						<!-- End of Route Fields -->
+
+						<!-- Location Fields (shown when type=location) -->
+						<div id="locationFields" style="display: none;">
+							<!-- Name -->
+							<div class="form-field">
+								<div class="field-info">
+									<label class="field-label" for="locationName"
+										>name <span class="required-badge">required</span></label
+									>
+									<p class="field-description">The name of the climbing location</p>
+								</div>
+								<div class="field-input">
+									<input
+										type="text"
+										id="locationName"
+										name="locationName"
+										placeholder="Yosemite Valley"
+										class="builder-input"
+									/>
+								</div>
+							</div>
+
+							<!-- Access Type -->
+							<div class="form-field">
+								<div class="field-info">
+									<label class="field-label" for="accessType"
+										>accessType <span class="required-badge">required</span></label
+									>
+									<p class="field-description">Indoor or outdoor location</p>
+								</div>
+								<div class="field-input">
+									<select id="accessType" name="accessType" class="builder-input" required>
+										<option value="outdoor" selected>Outdoor</option>
+										<option value="indoor">Indoor</option>
+									</select>
+								</div>
+							</div>
+
+							<!-- Sport Type -->
+							<div class="form-field">
+								<div class="field-info">
+									<label class="field-label" for="locationSportType"
+										>sportType <span class="required-badge">required</span></label
+									>
+									<p class="field-description">Primary climbing style at this location</p>
+								</div>
+								<div class="field-input">
+									<select id="locationSportType" name="locationSportType" class="builder-input" required>
+										<option value="bouldering" selected>Bouldering</option>
+										<option value="sport">Sport Climbing</option>
+										<option value="trad">Trad Climbing</option>
+										<option value="dws">Deep Water Solo</option>
+									</select>
+								</div>
+							</div>
+
+							<!-- Country -->
+							<div class="form-field">
+								<div class="field-info">
+									<label class="field-label" for="country">country</label>
+									<p class="field-description">Country where the location is situated</p>
+								</div>
+								<div class="field-input">
+									<input
+										type="text"
+										id="country"
+										name="country"
+										placeholder="USA"
+										class="builder-input"
+									/>
+								</div>
+							</div>
+
+							<!-- Region -->
+							<div class="form-field">
+								<div class="field-info">
+									<label class="field-label" for="region">region</label>
+									<p class="field-description">State or region within the country</p>
+								</div>
+								<div class="field-input">
+									<input
+										type="text"
+										id="region"
+										name="region"
+										placeholder="California"
+										class="builder-input"
+									/>
+								</div>
+							</div>
+
+							<!-- Area -->
+							<div class="form-field">
+								<div class="field-info">
+									<label class="field-label" for="locationArea">area</label>
+									<p class="field-description">Specific area or sector within the location</p>
+								</div>
+								<div class="field-input">
+									<input
+										type="text"
+										id="locationArea"
+										name="locationArea"
+										placeholder="Valley Floor"
+										class="builder-input"
+									/>
+								</div>
+							</div>
+
+							<!-- Address -->
+							<div class="form-field">
+								<div class="field-info">
+									<label class="field-label" for="address">address</label>
+									<p class="field-description">Street address for indoor gyms</p>
+								</div>
+								<div class="field-input">
+									<input
+										type="text"
+										id="address"
+										name="address"
+										placeholder="123 Main St, City, State"
+										class="builder-input"
+									/>
+								</div>
+							</div>
+
+							<!-- Website -->
+							<div class="form-field">
+								<div class="field-info">
+									<label class="field-label" for="website">website</label>
+									<p class="field-description">Website URL for the location</p>
+								</div>
+								<div class="field-input">
+									<input
+										type="url"
+										id="website"
+										name="website"
+										placeholder="https://example.com"
+										class="builder-input"
+									/>
+								</div>
+							</div>
+
+							<!-- Latitude -->
+							<div class="form-field">
+								<div class="field-info">
+									<label class="field-label" for="locationLat">lat</label>
+									<p class="field-description">
+										Latitude coordinate (requires lon as well)
+									</p>
+								</div>
+								<div class="field-input">
+									<input
+										type="number"
+										id="locationLat"
+										name="locationLat"
+										placeholder="37.7456"
+										class="builder-input"
+										step="any"
+									/>
+								</div>
+							</div>
+
+							<!-- Longitude -->
+							<div class="form-field">
+								<div class="field-info">
+									<label class="field-label" for="locationLon">lon</label>
+									<p class="field-description">
+										Longitude coordinate (requires lat as well)
+									</p>
+								</div>
+								<div class="field-input">
+									<input
+										type="number"
+										id="locationLon"
+										name="locationLon"
+										placeholder="-119.5933"
+										class="builder-input"
+										step="any"
+									/>
+								</div>
+							</div>
+
+							<!-- Parking Latitude -->
+							<div class="form-field">
+								<div class="field-info">
+									<label class="field-label" for="parkingLat">parkingLat</label>
+									<p class="field-description">
+										Parking latitude (requires parkingLon)
+									</p>
+								</div>
+								<div class="field-input">
+									<input
+										type="number"
+										id="parkingLat"
+										name="parkingLat"
+										placeholder="37.7450"
+										class="builder-input"
+										step="any"
+									/>
+								</div>
+							</div>
+
+							<!-- Parking Longitude -->
+							<div class="form-field">
+								<div class="field-info">
+									<label class="field-label" for="parkingLon">parkingLon</label>
+									<p class="field-description">
+										Parking longitude (requires parkingLat)
+									</p>
+								</div>
+								<div class="field-input">
+									<input
+										type="number"
+										id="parkingLon"
+										name="parkingLon"
+										placeholder="-119.5940"
+										class="builder-input"
+										step="any"
+									/>
+								</div>
+							</div>
+
+							<!-- Stone Types -->
+							<div class="form-field">
+								<div class="field-info">
+									<label class="field-label" for="stoneTypes">stoneTypes</label>
+									<p class="field-description">
+										Rock types (comma-separated): granite, limestone, sandstone, etc.
+									</p>
+								</div>
+								<div class="field-input">
+									<input
+										type="text"
+										id="stoneTypes"
+										name="stoneTypes"
+										placeholder="granite,limestone"
+										class="builder-input"
+									/>
+								</div>
+							</div>
+						</div>
+						<!-- End of Location Fields -->
 
 						<!-- X-Success -->
 						<div class="form-field">

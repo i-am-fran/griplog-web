@@ -107,6 +107,54 @@
 			</div>
 
 			<div class="test-card">
+				<h2>Test Case 4: Outdoor Crag Location</h2>
+				<p>An outdoor climbing location with GPS coordinates and stone types.</p>
+				<div class="test-url" id="test4-url">Generating URL...</div>
+				<a href="#" id="test4-link" class="test-button" target="_blank"
+					>Test This Link</a
+				>
+				<button
+					onclick="copyToClipboard('test4-url')"
+					class="test-button"
+					style="background: #5856d6"
+				>
+					Copy URL
+				</button>
+			</div>
+
+			<div class="test-card">
+				<h2>Test Case 5: Indoor Gym Location</h2>
+				<p>An indoor climbing gym with address and website.</p>
+				<div class="test-url" id="test5-url">Generating URL...</div>
+				<a href="#" id="test5-link" class="test-button" target="_blank"
+					>Test This Link</a
+				>
+				<button
+					onclick="copyToClipboard('test5-url')"
+					class="test-button"
+					style="background: #5856d6"
+				>
+					Copy URL
+				</button>
+			</div>
+
+			<div class="test-card">
+				<h2>Test Case 6: Complete Location Data</h2>
+				<p>A location with all optional fields populated including parking coordinates.</p>
+				<div class="test-url" id="test6-url">Generating URL...</div>
+				<a href="#" id="test6-link" class="test-button" target="_blank"
+					>Test This Link</a
+				>
+				<button
+					onclick="copyToClipboard('test6-url')"
+					class="test-button"
+					style="background: #5856d6"
+				>
+					Copy URL
+				</button>
+			</div>
+
+			<div class="test-card">
 				<h2 class="info">How It Works</h2>
 				<ol style="line-height: 1.8">
 					<li>User clicks "Share" in Griplog app</li>
@@ -180,6 +228,40 @@
 					angle: "overhang",
 					lat: "44.5167",
 					lon: "5.9333",
+				},
+				test4: {
+					type: "location",
+					name: "Yosemite Valley",
+					accessType: "outdoor",
+					sportType: "trad",
+					country: "USA",
+					region: "California",
+					lat: "37.7456",
+					lon: "-119.5933",
+					stoneTypes: "granite",
+				},
+				test5: {
+					type: "location",
+					name: "Brooklyn Boulders",
+					accessType: "indoor",
+					sportType: "bouldering",
+					address: "575 Degraw St, Brooklyn, NY",
+					website: "https://brooklynboulders.com",
+				},
+				test6: {
+					type: "location",
+					name: "Red River Gorge",
+					accessType: "outdoor",
+					sportType: "sport",
+					country: "USA",
+					region: "Kentucky",
+					area: "PMRP",
+					lat: "37.7456",
+					lon: "-83.6831",
+					parkingLat: "37.7450",
+					parkingLon: "-83.6840",
+					stoneTypes: "sandstone,limestone",
+					website: "https://www.redriverclimbing.com",
 				},
 			};
 

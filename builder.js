@@ -21,6 +21,11 @@ document.addEventListener("DOMContentLoaded", function () {
 		return;
 	}
 
+	// Get entity type selector and field containers
+	const entityTypeInput = document.getElementById("entityType");
+	const routeFields = document.getElementById("routeFields");
+	const locationFields = document.getElementById("locationFields");
+
 	// Get all form inputs
 	const gradeInput = document.getElementById("grade");
 	const sportInput = document.getElementById("sport");
@@ -161,6 +166,27 @@ document.addEventListener("DOMContentLoaded", function () {
 		populateGrades(this.value);
 		generateURL();
 	});
+
+	// Toggle between route and location fields
+	function toggleEntityFields() {
+		const entityType = entityTypeInput.value;
+		if (entityType === "route") {
+			routeFields.style.display = "block";
+			locationFields.style.display = "none";
+		} else if (entityType === "location") {
+			routeFields.style.display = "none";
+			locationFields.style.display = "block";
+		}
+		generateURL();
+	}
+
+	// Initialize with route fields visible
+	toggleEntityFields();
+
+	// Update fields when entity type changes
+	entityTypeInput.addEventListener("change", toggleEntityFields);
+
+	// Get route-specific inputs
 	const nameInput = document.getElementById("name");
 	const locationInput = document.getElementById("location");
 	const areaInput = document.getElementById("area");
@@ -172,10 +198,36 @@ document.addEventListener("DOMContentLoaded", function () {
 	const xSuccessInput = document.getElementById("xSuccess");
 	const xErrorInput = document.getElementById("xError");
 
+	// Get location-specific inputs
+	const locationNameInput = document.getElementById("locationName");
+	const accessTypeInput = document.getElementById("accessType");
+	const locationSportTypeInput = document.getElementById("locationSportType");
+	const countryInput = document.getElementById("country");
+	const regionInput = document.getElementById("region");
+	const locationAreaInput = document.getElementById("locationArea");
+	const addressInput = document.getElementById("address");
+	const websiteInput = document.getElementById("website");
+	const locationLatInput = document.getElementById("locationLat");
+	const locationLonInput = document.getElementById("locationLon");
+	const parkingLatInput = document.getElementById("parkingLat");
+	const parkingLonInput = document.getElementById("parkingLon");
+	const stoneTypesInput = document.getElementById("stoneTypes");
+
 	// Generate URL function
 	function generateURL() {
 		console.log("Generating URL...");
 
+		const entityType = entityTypeInput.value;
+
+		if (entityType === "route") {
+			generateRouteURL();
+		} else if (entityType === "location") {
+			generateLocationURL();
+		}
+	}
+
+	// Generate route URL
+	function generateRouteURL() {
 		const grade = gradeInput.value.trim();
 		const sport = sportInput.value;
 
@@ -234,8 +286,80 @@ document.addEventListener("DOMContentLoaded", function () {
 		resultContainer.style.display = "block";
 	}
 
+	// Generate location URL
+	function generateLocationURL() {
+		const locationName = locationNameInput.value.trim();
+		const accessType = accessTypeInput.value;
+		const locationSportType = locationSportTypeInput.value;
+
+		// Only generate if required fields are filled
+		if (!locationName || !accessType || !locationSportType) {
+			resultContainer.style.display = "none";
+			return;
+		}
+
+		// Build URL
+		const params = [];
+		params.push(`name=${encodeURIComponent(locationName)}`);
+		params.push(`accessType=${encodeURIComponent(accessType)}`);
+		params.push(`sportType=${encodeURIComponent(locationSportType)}`);
+
+		// Optional fields - Location Information
+		const country = countryInput.value.trim();
+		if (country) params.push(`country=${encodeURIComponent(country)}`);
+
+		const region = regionInput.value.trim();
+		if (region) params.push(`region=${encodeURIComponent(region)}`);
+
+		const locationArea = locationAreaInput.value.trim();
+		if (locationArea) params.push(`area=${encodeURIComponent(locationArea)}`);
+
+		const address = addressInput.value.trim();
+		if (address) params.push(`address=${encodeURIComponent(address)}`);
+
+		const website = websiteInput.value.trim();
+		if (website) params.push(`website=${encodeURIComponent(website)}`);
+
+		// Optional fields - GPS Coordinates
+		const locationLat = locationLatInput.value.trim();
+		const locationLon = locationLonInput.value.trim();
+		// Both lat and lon must be provided together
+		if (locationLat && locationLon) {
+			params.push(`lat=${encodeURIComponent(locationLat)}`);
+			params.push(`lon=${encodeURIComponent(locationLon)}`);
+		}
+
+		// Optional fields - Parking Coordinates
+		const parkingLat = parkingLatInput.value.trim();
+		const parkingLon = parkingLonInput.value.trim();
+		// Both parkingLat and parkingLon must be provided together
+		if (parkingLat && parkingLon) {
+			params.push(`parkingLat=${encodeURIComponent(parkingLat)}`);
+			params.push(`parkingLon=${encodeURIComponent(parkingLon)}`);
+		}
+
+		// Optional fields - Stone Types
+		const stoneTypes = stoneTypesInput.value.trim();
+		if (stoneTypes) params.push(`stoneTypes=${encodeURIComponent(stoneTypes)}`);
+
+		// X-callback-url parameters
+		const xSuccess = xSuccessInput.value.trim();
+		const xError = xErrorInput.value.trim();
+
+		if (xSuccess) params.push(`x-success=${encodeURIComponent(xSuccess)}`);
+		if (xError) params.push(`x-error=${encodeURIComponent(xError)}`);
+
+		// Always use x-callback-url format
+		const url = `griplog://x-callback-url/location?${params.join("&")}`;
+
+		// Show result
+		resultUrl.textContent = url;
+		resultContainer.style.display = "block";
+	}
+
 	// Add input listeners to all fields
 	const allInputs = [
+		entityTypeInput,
 		gradeInput,
 		sportInput,
 		nameInput,
@@ -246,6 +370,19 @@ document.addEventListener("DOMContentLoaded", function () {
 		angleInput,
 		latInput,
 		lonInput,
+		locationNameInput,
+		accessTypeInput,
+		locationSportTypeInput,
+		countryInput,
+		regionInput,
+		locationAreaInput,
+		addressInput,
+		websiteInput,
+		locationLatInput,
+		locationLonInput,
+		parkingLatInput,
+		parkingLonInput,
+		stoneTypesInput,
 		xSuccessInput,
 		xErrorInput,
 	];
