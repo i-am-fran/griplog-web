@@ -482,7 +482,7 @@
 			// 4. When promoting SharedRouteImage schema to production, also change CLOUDKIT_ENV to 'production'
 			const CLOUDKIT_CONTAINER = 'iCloud.com.fran.griplog';
 			const CLOUDKIT_ENV = 'development'; // → change to 'production' after deploying schema
-			const CLOUDKIT_API_TOKEN = ''; // ← paste your CloudKit API token here
+			const CLOUDKIT_API_TOKEN = 'c9629e6df9db0889b1644a2214c26f619746fec60fe780360b063aeb4d5059b8'; // ← paste your CloudKit API token here
 
 			async function fetchSharedImage(recordName) {
 				if (!CLOUDKIT_API_TOKEN) return null;
