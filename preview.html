@@ -179,6 +179,40 @@
 				border-bottom: none;
 			}
 
+			.route-notes {
+				margin-bottom: 2rem;
+				padding: 1rem;
+				background: rgba(255, 255, 255, 0.04);
+				border-radius: 10px;
+				border: 1px solid rgba(255, 255, 255, 0.08);
+			}
+
+			.route-notes-label {
+				font-size: 0.875rem;
+				text-transform: uppercase;
+				letter-spacing: 0.05em;
+				color: rgba(255, 255, 255, 0.5);
+				font-weight: 600;
+				margin-bottom: 0.5rem;
+			}
+
+			.route-notes-text {
+				font-size: 0.9375rem;
+				color: var(--color-text-primary);
+				line-height: 1.6;
+				white-space: pre-wrap;
+				word-break: break-word;
+			}
+
+			.route-notes-text a {
+				color: var(--color-highlight);
+				text-decoration: none;
+			}
+
+			.route-notes-text a:hover {
+				text-decoration: underline;
+			}
+
 			.detail-label {
 				font-size: 0.875rem;
 				text-transform: uppercase;
@@ -588,6 +622,7 @@
 					const lon = urlParams.get("lon");
 
 					const imageRecordID = urlParams.get('imageRecordID');
+					const notes = urlParams.get("notes");
 
 					const routeData = {
 						grade,
@@ -600,6 +635,7 @@
 						angle,
 						lat,
 						lon,
+						notes,
 					};
 
 					displayRoute(routeData);
@@ -686,6 +722,17 @@
 					);
 				}
 
+				// Display notes if present
+				if (data.notes) {
+					const notesSection = document.createElement("div");
+					notesSection.className = "route-notes";
+					notesSection.innerHTML = `
+						<div class="route-notes-label">Notes</div>
+						<div class="route-notes-text">${linkifyText(escapeHtml(data.notes))}</div>
+					`;
+					detailsContainer.after(notesSection);
+				}
+
 				// Generate x-callback-url for "Add to Griplog" button
 				const xCallbackUrl = generateXCallbackURL(data);
 				document.getElementById("add-to-griplog-btn").href = xCallbackUrl;
@@ -708,8 +755,24 @@
 				if (data.angle) params.append("angle", data.angle);
 				if (data.lat) params.append("lat", data.lat);
 				if (data.lon) params.append("lon", data.lon);
+				if (data.notes) params.append("notes", data.notes);
 
 				return `griplog://x-callback-url/route?${params.toString()}`;
+			}
+
+			function escapeHtml(text) {
+				return text
+					.replace(/&/g, "&amp;")
+					.replace(/</g, "&lt;")
+					.replace(/>/g, "&gt;")
+					.replace(/"/g, "&quot;");
+			}
+
+			function linkifyText(text) {
+				const urlPattern = /https?:\/\/[^\s<>"]+/g;
+				return text.replace(urlPattern, (url) => {
+					return `<a href="${url}" target="_blank" rel="noopener noreferrer">${url}</a>`;
+				});
 			}
 
 			function addDetail(label, value) {
