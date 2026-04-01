@@ -1433,3 +1433,101 @@ select.builder-input:hover {
 		font-size: 0.8rem;
 	}
 }
+
+/* Privacy Page */
+.privacy-container {
+	max-width: 680px;
+	margin: 0 auto;
+	padding: 0 1.5rem 4rem;
+}
+
+.privacy-nav {
+	margin-bottom: 2.5rem;
+}
+
+.privacy-nav a {
+	color: rgba(255, 255, 255, 0.5);
+	text-decoration: none;
+	font-size: 0.9rem;
+	transition: color 0.2s ease;
+}
+
+.privacy-nav a:hover {
+	color: rgba(255, 255, 255, 0.9);
+}
+
+.privacy-updated {
+	font-size: 0.85rem;
+	color: rgba(255, 255, 255, 0.4);
+	margin-bottom: 3rem;
+}
+
+.privacy-section {
+	margin-bottom: 2.5rem;
+}
+
+.privacy-section h2 {
+	font-size: 1.1rem;
+	font-weight: 600;
+	color: rgba(255, 255, 255, 0.9);
+	margin-bottom: 0.75rem;
+	letter-spacing: -0.01em;
+}
+
+.privacy-section p {
+	font-size: 0.95rem;
+	color: rgba(255, 255, 255, 0.55);
+	line-height: 1.7;
+	margin-bottom: 0.75rem;
+}
+
+.privacy-section p:last-child {
+	margin-bottom: 0;
+}
+
+.privacy-section ul {
+	list-style: none;
+	padding: 0;
+	margin: 0;
+}
+
+.privacy-section ul li {
+	font-size: 0.95rem;
+	color: rgba(255, 255, 255, 0.55);
+	line-height: 1.7;
+	padding: 0.3rem 0;
+	padding-left: 1.25rem;
+	position: relative;
+}
+
+.privacy-section ul li::before {
+	content: "–";
+	position: absolute;
+	left: 0;
+	color: rgba(255, 255, 255, 0.25);
+}
+
+.privacy-section a {
+	color: rgba(255, 255, 255, 0.7);
+	text-decoration: underline;
+	text-underline-offset: 3px;
+}
+
+.privacy-section a:hover {
+	color: rgba(255, 255, 255, 0.95);
+}
+
+.privacy-section strong {
+	color: rgba(255, 255, 255, 0.7);
+}
+
+.privacy-divider {
+	border: none;
+	border-top: 1px solid rgba(255, 255, 255, 0.08);
+	margin: 2.5rem 0;
+}
+
+/* Reuse roadmap hero styles */
+.roadmap .hero {
+	min-height: 30vh;
+}
