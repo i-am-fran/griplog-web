@@ -79,16 +79,24 @@
 		<link rel="stylesheet" href="../css/styles.css" />
 	</head>
 	<body class="roadmap">
+
+		<!-- Site Header -->
+		<header class="site-header">
+			<div class="site-header-inner">
+				<a href="/" class="site-nav-logo">Griplog</a>
+				<nav class="site-nav-links">
+					<a href="/features/" class="site-nav-link">Features</a>
+					<a href="/duotimer/" class="site-nav-link">DuoTimer</a>
+				</nav>
+			</div>
+		</header>
+
 		<!-- Hero Section -->
 		<section class="hero">
 			<div class="hero-content">
 				<h1 class="hero-title">
 					<span class="word">Changelog</span>
 				</h1>
-				<!-- Back to Home Link -->
-				<div class="roadmap-nav">
-					<a href="/" class="back-link">← Back to Home</a>
-				</div>
 			</div>
 		</section>
 
@@ -247,6 +255,7 @@
 		<footer class="footer">
 			<p>
 				© 2025 • <a href="/">Griplog</a> • <a href="/features">Features</a> •
+				<a href="/duotimer">DuoTimer</a> •
 				<a href="/roadmap">Changelog</a> •
 				<a href="/privacy">Privacy</a>
 			</p>
@@ -254,5 +263,15 @@
 
 		<!-- Main JavaScript -->
 		<script src="js/main.js"></script>
+
+		<!-- Header scroll transparency -->
+		<script>
+			(function () {
+				var header = document.querySelector('.site-header');
+				function update() { header.classList.toggle('scrolled', window.scrollY > 10); }
+				window.addEventListener('scroll', update, { passive: true });
+				update();
+			})();
+		</script>
 	</body>
 </html>

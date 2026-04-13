@@ -1,0 +1,332 @@
+- generic [active] [ref=e1]:
+  - banner [ref=e2]:
+    - generic [ref=e3]:
+      - link "Griplog" [ref=e4] [cursor=pointer]:
+        - /url: /
+      - navigation [ref=e5]:
+        - link "Features" [ref=e6] [cursor=pointer]:
+          - /url: /features/
+        - link "DuoTimer" [ref=e7] [cursor=pointer]:
+          - /url: /duotimer/
+        - link "Changelog" [ref=e8] [cursor=pointer]:
+          - /url: /roadmap/
+  - heading "Changelog" [level=1] [ref=e11]:
+    - generic [ref=e12]: Changelog
+  - generic [ref=e15]:
+    - article [ref=e16]:
+      - heading "April 2026" [level=2] [ref=e18]
+      - generic [ref=e19]:
+        - heading "New" [level=3] [ref=e20]
+        - list [ref=e21]:
+          - listitem [ref=e22]:
+            - text: →
+            - strong [ref=e23]: Share as image
+            - text: — Generate a branded route card to share on Instagram and social media, complete with your photo and route details
+          - listitem [ref=e24]:
+            - text: →
+            - strong [ref=e25]: Share as .griplog file
+            - text: — Export a route as a file that others can import directly into their Griplog
+          - listitem [ref=e26]:
+            - text: →
+            - strong [ref=e27]: Share from Photos
+            - text: — Share a photo or video from the iOS Photos app straight into a route
+          - listitem [ref=e28]:
+            - text: →
+            - strong [ref=e29]: Journal date picker
+            - text: — Choose a custom date when logging a journal entry instead of defaulting to today
+        - heading "Improved" [level=3] [ref=e30]
+        - list [ref=e31]:
+          - listitem [ref=e32]:
+            - text: →
+            - strong [ref=e33]: Full-page navigation
+            - text: — Routes, locations, and events now open as full pages instead of sheets, with cleaner navigation throughout
+          - listitem [ref=e34]:
+            - text: →
+            - strong [ref=e35]: Editable journal entries
+            - text: — Tap any journal entry to edit it
+          - listitem [ref=e36]:
+            - text: →
+            - strong [ref=e37]: Actions menu
+            - text: — Edit, delete, and like are grouped into a single tidy menu on every detail page
+          - listitem [ref=e38]:
+            - text: →
+            - strong [ref=e39]: Event countdown
+            - text: — Event rows now show how many days until the event starts
+          - listitem [ref=e40]:
+            - text: →
+            - strong [ref=e41]: Yellow bookmarks
+            - text: — Liked routes now show a distinct yellow bookmark so they're easier to spot at a glance
+          - listitem [ref=e42]:
+            - text: →
+            - strong [ref=e43]: Reorder media
+            - text: — Long-press to drag and reorder photos and videos in the route form
+          - listitem [ref=e44]:
+            - text: →
+            - strong [ref=e45]: Photo thumbnails in events
+            - text: — Route items in events now show their attached photo
+          - listitem [ref=e46]:
+            - text: →
+            - strong [ref=e47]: Consistent sort controls
+            - text: — Sorting works the same way across Routes, Locations, and Events
+          - listitem [ref=e48]:
+            - text: →
+            - strong [ref=e49]: Analytics
+            - text: — Anonymous usage tracking helps improve the app. No personal data is collected
+        - heading "Fixed" [level=3] [ref=e50]
+        - list [ref=e51]:
+          - listitem [ref=e52]:
+            - text: →
+            - strong [ref=e53]: Photo GPS and date
+            - text: — Photos from your Camera Roll now correctly capture their original location and date
+          - listitem [ref=e54]:
+            - text: →
+            - strong [ref=e55]: Media errors
+            - text: — Clear error messages when a file is unsupported, too large, or a video is too long
+    - article [ref=e56]:
+      - heading "March 2026" [level=2] [ref=e58]
+      - generic [ref=e59]:
+        - heading "New" [level=3] [ref=e60]
+        - list [ref=e61]:
+          - listitem [ref=e62]:
+            - text: →
+            - strong [ref=e63]: Copy address
+            - text: — Tap to copy a location's address to your clipboard directly from the location detail view
+          - listitem [ref=e64]:
+            - text: →
+            - strong [ref=e65]: Images filter
+            - text: — Filter your routes list to show only routes that have photos attached
+          - listitem [ref=e66]:
+            - text: →
+            - strong [ref=e67]: Long press previews
+            - text: — Press and hold on any route, location, or event to peek at the details without fully opening it
+          - listitem [ref=e68]:
+            - text: →
+            - strong [ref=e69]: Clickable links in notes
+            - text: — URLs in route and location notes are now tappable and open in Safari
+        - heading "Improved" [level=3] [ref=e70]
+        - list [ref=e71]:
+          - listitem [ref=e72]:
+            - text: →
+            - strong [ref=e73]: Bookmark icon
+            - text: — Replaced the heart icon with a bookmark across all screens — more intuitive for saving routes to revisit
+          - listitem [ref=e74]:
+            - text: →
+            - strong [ref=e75]: Event route detail
+            - text: — Tapping a route in an event now opens the full route detail sheet directly
+          - listitem [ref=e76]:
+            - text: →
+            - strong [ref=e77]: Event route rows
+            - text: — Route rows in events now show the area and location name for better context
+          - listitem [ref=e78]:
+            - text: →
+            - strong [ref=e79]: Shared routes include notes
+            - text: — When you share a route, notes are now included in the shared link
+          - listitem [ref=e80]:
+            - text: →
+            - strong [ref=e81]: Route actions in Overview
+            - text: — Swipe actions on route rows in the home view are now consistent with the main routes list
+          - listitem [ref=e82]:
+            - text: →
+            - strong [ref=e83]: Cleaner lists
+            - text: — Removed item counters from section headers — the list itself is the count
+          - listitem [ref=e84]:
+            - text: →
+            - strong [ref=e85]: Performance
+            - text: — Various improvements throughout the app
+        - heading "Fixed" [level=3] [ref=e86]
+        - list [ref=e87]:
+          - listitem [ref=e88]:
+            - text: →
+            - strong [ref=e89]: Error messages
+            - text: — Errors now show as clear, human-readable messages with a retry option
+          - listitem [ref=e90]:
+            - text: →
+            - strong [ref=e91]: Routes list scroll
+            - text: — The routes list now always opens from the top
+    - article [ref=e92]:
+      - heading "February 2026" [level=2] [ref=e94]
+      - generic [ref=e95]:
+        - heading "Fixed" [level=3] [ref=e96]
+        - list [ref=e97]:
+          - listitem [ref=e98]:
+            - text: →
+            - strong [ref=e99]: Grade sorting
+            - text: — "Unknown" grades now always sort to the bottom regardless of sort direction
+          - listitem [ref=e100]:
+            - text: →
+            - strong [ref=e101]: Map filter default
+            - text: — The full-screen map now shows all routes by default instead of opening empty
+    - article [ref=e102]:
+      - heading "January 2026" [level=2] [ref=e104]
+      - generic [ref=e105]:
+        - heading "New" [level=3] [ref=e106]
+        - list [ref=e107]:
+          - listitem [ref=e108]:
+            - text: →
+            - strong [ref=e109]: Route sharing
+            - text: — Share any route as a link. Recipients open it in Griplog and see a pre-filled form ready to save
+          - listitem [ref=e110]:
+            - text: →
+            - strong [ref=e111]: Events
+            - text: — Create events (trips, competitions, outdoor days) and attach the routes you climbed
+          - listitem [ref=e112]:
+            - text: →
+            - strong [ref=e113]: Route history
+            - text: — A dedicated timeline view shows every status change and journal entry for a route over time
+          - listitem [ref=e114]:
+            - text: →
+            - strong [ref=e115]: Journal entries
+            - text: — Add timestamped notes to any route to track your attempts, beta discoveries, and progress
+          - listitem [ref=e116]:
+            - text: →
+            - strong [ref=e117]: Attempt state
+            - text: — Log a session on a project without marking it complete
+          - listitem [ref=e118]:
+            - text: →
+            - strong [ref=e119]: Unsplash photos
+            - text: — Search and add cover photos to locations and events directly from Unsplash
+          - listitem [ref=e120]:
+            - text: →
+            - strong [ref=e121]: Beta drawings
+            - text: "— Experimental: draw holds and movement sequences directly on a route photo"
+            - emphasis [ref=e122]: (beta, may be rough)
+          - listitem [ref=e123]:
+            - text: →
+            - strong [ref=e124]: Auto location matching
+            - text: — When adding a route, Griplog uses your GPS position to pre-select the nearest location
+          - listitem [ref=e125]:
+            - text: →
+            - strong [ref=e126]: Map in detail view
+            - text: — Location and route detail views now show a map with a pin
+          - listitem [ref=e127]:
+            - text: →
+            - strong [ref=e128]: Haptic feedback
+            - text: — Swiping between detail views now has a satisfying physical response
+        - heading "Improved" [level=3] [ref=e129]
+        - list [ref=e130]:
+          - listitem [ref=e131]:
+            - text: →
+            - strong [ref=e132]: Route form
+            - text: — Split into focused sections for easier scanning and editing
+          - listitem [ref=e133]:
+            - text: →
+            - strong [ref=e134]: Location hero
+            - text: — Locations now have a full-bleed cover photo header with photo management built in
+          - listitem [ref=e135]:
+            - text: →
+            - strong [ref=e136]: Overview statistics
+            - text: — Results are cached and update in the background — no more waiting on the home screen
+          - listitem [ref=e137]:
+            - text: →
+            - strong [ref=e138]: Journal grouped by date
+            - text: — Journal entries are organised into date sections for easier reading
+          - listitem [ref=e139]:
+            - text: →
+            - strong [ref=e140]: Recent routes
+            - text: — The home screen limits recent activity to the last 30 days to stay focused
+          - listitem [ref=e141]:
+            - text: →
+            - strong [ref=e142]: Accessibility
+            - text: — All text now scales properly with your iOS text size settings
+        - heading "Fixed" [level=3] [ref=e143]
+        - list [ref=e144]:
+          - listitem [ref=e145]:
+            - text: →
+            - strong [ref=e146]: Location search
+            - text: — Map search now finds locations worldwide, not just in your immediate region
+          - listitem [ref=e147]:
+            - text: →
+            - strong [ref=e148]: Shared link import
+            - text: — Tapping a shared route link now reliably opens the import sheet on the first tap
+          - listitem [ref=e149]:
+            - text: →
+            - strong [ref=e150]: Photo viewer
+            - text: — Tapping a photo in the gallery now opens the correct photo instead of always the first one
+    - article [ref=e151]:
+      - heading "December 2025" [level=2] [ref=e153]
+      - generic [ref=e154]:
+        - heading "New" [level=3] [ref=e155]
+        - list [ref=e156]:
+          - listitem [ref=e157]:
+            - text: →
+            - strong [ref=e158]: Routes
+            - text: — Log climbs with grade, sport type, state (Project, Done, Flashed, Onsight), notes, and photos
+          - listitem [ref=e159]:
+            - text: →
+            - strong [ref=e160]: Locations
+            - text: — Create indoor and outdoor venues with MapKit, sport type, and access info
+          - listitem [ref=e161]:
+            - text: →
+            - strong [ref=e162]: Overview
+            - text: — Dashboard with statistics, recent sends, and active projects
+          - listitem [ref=e163]:
+            - text: →
+            - strong [ref=e164]: Photo gallery
+            - text: — Attach photos to any route with cropping and a full-screen gallery viewer
+          - listitem [ref=e165]:
+            - text: →
+            - strong [ref=e166]: iCloud sync
+            - text: — All your data syncs across devices automatically via CloudKit
+          - listitem [ref=e167]:
+            - text: →
+            - strong [ref=e168]: Filters and sorting
+            - text: — Filter routes by state, sport, grade, or location — sort by grade, date, or name
+          - listitem [ref=e169]:
+            - text: →
+            - strong [ref=e170]: Bookmarks
+            - text: — Save routes you want to remember or revisit
+          - listitem [ref=e171]:
+            - text: →
+            - strong [ref=e172]: Unknown grade
+            - text: — Routes without a confirmed grade can be logged as "Unknown" instead of forcing a guess
+          - listitem [ref=e173]:
+            - text: →
+            - strong [ref=e174]: Share Extension
+            - text: — Share images from Photos, Safari, or anywhere else directly into a route
+          - listitem [ref=e175]:
+            - text: →
+            - strong [ref=e176]: Swipe navigation
+            - text: — Swipe left and right through routes or locations in the detail view — respects your active filters and sort order
+          - listitem [ref=e177]:
+            - text: →
+            - strong [ref=e178]: Search bar
+            - text: — Always visible instead of hidden behind a scroll gesture
+          - listitem [ref=e179]:
+            - text: →
+            - strong [ref=e180]: Toast notifications
+            - text: — A brief confirmation appears when you change a route's state
+        - heading "Improved" [level=3] [ref=e181]
+        - list [ref=e182]:
+          - listitem [ref=e183]:
+            - text: →
+            - strong [ref=e184]: Home redesign
+            - text: — New layout with clearer stats and better hierarchy
+          - listitem [ref=e185]:
+            - text: →
+            - strong [ref=e186]: Filters
+            - text: — More intuitive filter sheet with a clearer active filter summary
+          - listitem [ref=e187]:
+            - text: →
+            - strong [ref=e188]: Location form
+            - text: — Map search moved to the top of the form where it belongs
+          - listitem [ref=e189]:
+            - text: →
+            - strong [ref=e190]: List tap targets
+            - text: — Route and location rows have larger tap areas
+  - contentinfo [ref=e191]:
+    - paragraph [ref=e192]:
+      - text: © 2025 •
+      - link "Griplog" [ref=e193] [cursor=pointer]:
+        - /url: /
+      - text: •
+      - link "Features" [ref=e194] [cursor=pointer]:
+        - /url: /features
+      - text: •
+      - link "DuoTimer" [ref=e195] [cursor=pointer]:
+        - /url: /duotimer
+      - text: •
+      - link "Changelog" [ref=e196] [cursor=pointer]:
+        - /url: /roadmap
+      - text: •
+      - link "Privacy" [ref=e197] [cursor=pointer]:
+        - /url: /privacy

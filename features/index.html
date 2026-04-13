@@ -47,13 +47,16 @@
 	</head>
 	<body>
 
-		<!-- Sticky nav -->
-		<nav class="feat-nav">
-			<div class="feat-nav-inner">
-				<a href="/" class="feat-nav-logo">Griplog</a>
-				<a href="/" class="feat-nav-back">← Back to Home</a>
+		<!-- Site Header -->
+		<header class="site-header">
+			<div class="site-header-inner">
+				<a href="/" class="site-nav-logo">Griplog</a>
+				<nav class="site-nav-links">
+					<a href="/features/" class="site-nav-link active">Features</a>
+					<a href="/duotimer/" class="site-nav-link">DuoTimer</a>
+				</nav>
 			</div>
-		</nav>
+		</header>
 
 		<!-- Hero -->
 		<section class="feat-hero">
@@ -335,6 +338,7 @@
 		<footer class="footer">
 			<p>
 				© 2025 • <a href="/">Griplog</a> • <a href="/features">Features</a> •
+				<a href="/duotimer">DuoTimer</a> •
 				<a href="/roadmap">Changelog</a> •
 				<a href="/privacy">Privacy</a>
 			</p>
@@ -358,6 +362,16 @@
 				card.style.transitionDelay = `${(i % 3) * 0.08}s`;
 				observer.observe(card);
 			});
+		</script>
+
+		<!-- Header scroll transparency -->
+		<script>
+			(function () {
+				var header = document.querySelector('.site-header');
+				function update() { header.classList.toggle('scrolled', window.scrollY > 10); }
+				window.addEventListener('scroll', update, { passive: true });
+				update();
+			})();
 		</script>
 	</body>
 </html>

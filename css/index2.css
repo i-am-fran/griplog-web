@@ -13,7 +13,7 @@
 	position: relative;
 	padding: 6rem 2rem;
 	overflow: hidden;
-	padding-top: calc(20px + env(safe-area-inset-top));
+	padding-top: calc(60px + env(safe-area-inset-top));
 }
 
 .v2-hero::before {
@@ -512,4 +512,170 @@ html {
 
 .landing-v2 .newsletter-form-button:hover {
 	background: rgba(255, 255, 255, 0.9);
+}
+
+/* ==========================================
+   Companion Apps Section (Home Page)
+   ========================================== */
+
+.v2-companion {
+	background: #000000;
+	padding: 8rem 2rem;
+}
+
+.v2-companion-inner {
+	max-width: 900px;
+	margin: 0 auto;
+}
+
+.v2-companion-subtitle {
+	text-align: center;
+	font-size: 1.125rem;
+	color: rgba(255, 255, 255, 0.45);
+	line-height: 1.6;
+	margin-top: -2.5rem;
+	margin-bottom: 3rem;
+}
+
+.v2-companion-grid {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+	gap: 1.5rem;
+}
+
+.v2-companion-card {
+	background: rgba(255, 255, 255, 0.03);
+	border: 1px solid rgba(255, 255, 255, 0.08);
+	border-radius: 24px;
+	padding: 2.5rem;
+	display: flex;
+	gap: 1.5rem;
+	align-items: flex-start;
+	text-decoration: none;
+	color: inherit;
+	position: relative;
+	overflow: hidden;
+	/* scroll animation */
+	opacity: 0;
+	transform: translateY(20px);
+	transition:
+		opacity 0.6s ease,
+		transform 0.6s ease,
+		border-color 0.3s ease,
+		background 0.3s ease;
+}
+
+.v2-companion-card::before {
+	content: "";
+	position: absolute;
+	top: -60px;
+	right: -60px;
+	width: 200px;
+	height: 200px;
+	background: radial-gradient(
+		ellipse,
+		rgba(255, 124, 97, 0.07) 0%,
+		transparent 65%
+	);
+	pointer-events: none;
+	opacity: 0;
+	transition: opacity 0.3s ease;
+}
+
+.v2-companion-card.is-visible {
+	opacity: 1;
+	transform: translateY(0);
+}
+
+.v2-companion-card.is-visible:hover {
+	border-color: rgba(255, 124, 97, 0.25);
+	transform: translateY(-4px);
+	background: rgba(255, 255, 255, 0.04);
+}
+
+.v2-companion-card.is-visible:hover::before {
+	opacity: 1;
+}
+
+.v2-companion-icon {
+	width: 64px;
+	height: 64px;
+	border-radius: 14px;
+	flex-shrink: 0;
+	object-fit: cover;
+}
+
+.v2-companion-body {
+	flex: 1;
+	min-width: 0;
+}
+
+.v2-companion-eyebrow {
+	font-size: 0.7rem;
+	font-weight: 700;
+	text-transform: uppercase;
+	letter-spacing: 0.12em;
+	color: #ff7c61;
+	margin-bottom: 0.4rem;
+}
+
+.v2-companion-name {
+	font-family: "CabinetGrotesk-Variable";
+	font-weight: 800;
+	font-size: 1.4rem;
+	line-height: 1.2;
+	letter-spacing: -0.02em;
+	color: #fff;
+	margin-bottom: 0.6rem;
+}
+
+.v2-companion-desc {
+	font-size: 0.95rem;
+	line-height: 1.6;
+	color: rgba(255, 255, 255, 0.5);
+}
+
+.v2-companion-arrow {
+	color: rgba(255, 255, 255, 0.25);
+	font-size: 1.25rem;
+	flex-shrink: 0;
+	align-self: center;
+	transition: color 0.2s ease, transform 0.2s ease;
+}
+
+.v2-companion-card.is-visible:hover .v2-companion-arrow {
+	color: #ff7c61;
+	transform: translateX(4px);
+}
+
+@media (max-width: 768px) {
+	.v2-companion {
+		padding: 5rem 1.5rem;
+	}
+
+	.v2-companion-card {
+		padding: 2rem;
+		gap: 1.25rem;
+	}
+
+	.v2-companion-icon {
+		width: 56px;
+		height: 56px;
+	}
+}
+
+@media (max-width: 480px) {
+	.v2-companion {
+		padding: 4rem 1.25rem;
+	}
+
+	.v2-companion-card {
+		padding: 1.75rem;
+	}
+
+	.v2-companion-icon {
+		width: 48px;
+		height: 48px;
+		border-radius: 11px;
+	}
 }

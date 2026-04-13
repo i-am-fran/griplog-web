@@ -80,6 +80,18 @@
 		<link rel="stylesheet" href="css/index2.css" />
 	</head>
 	<body class="landing-v2">
+
+		<!-- Site Header -->
+		<header class="site-header">
+			<div class="site-header-inner">
+				<a href="/" class="site-nav-logo">Griplog</a>
+				<nav class="site-nav-links">
+					<a href="/features/" class="site-nav-link">Features</a>
+					<a href="/duotimer/" class="site-nav-link">DuoTimer</a>
+				</nav>
+			</div>
+		</header>
+
 		<!-- Hero Section -->
 		<section class="v2-hero">
 			<div class="v2-hero-content">
@@ -264,6 +276,33 @@
 			</div>
 		</section>
 
+		<!-- Companion Apps Section -->
+		<section class="v2-companion">
+			<div class="v2-companion-inner">
+				<h2 class="v2-section-title">Companion apps</h2>
+				<p class="v2-companion-subtitle">Tools built for climbers, by the same team.</p>
+
+				<div class="v2-companion-grid">
+					<a href="/duotimer" class="v2-companion-card">
+						<img
+							src="images/duotimer-icon.png"
+							alt="DuoTimer app icon"
+							class="v2-companion-icon"
+						/>
+						<div class="v2-companion-body">
+							<div class="v2-companion-eyebrow">Coming Soon</div>
+							<div class="v2-companion-name">DuoTimer</div>
+							<p class="v2-companion-desc">
+								A minimalist interval timer for hangboard and grip training.
+								Two independently-timed phases, custom audio cues, iCloud sync.
+							</p>
+						</div>
+						<span class="v2-companion-arrow">→</span>
+					</a>
+				</div>
+			</div>
+		</section>
+
 		<!-- CTA Section -->
 		<section class="v2-cta">
 			<div class="v2-cta-content">
@@ -312,11 +351,29 @@
 		<!-- Footer -->
 		<footer class="v2-footer">
 			<p>
-				© 2025 • <a href="/">Griplog</a> • <a href="/features">Features</a> •
+				© 2026 • <a href="/">Home</a> •
 				<a href="/roadmap">Changelog</a> •
 				<a href="/privacy">Privacy</a>
 			</p>
 		</footer>
+
+		<!-- Companion card scroll-in animation -->
+		<script>
+			const companionObserver = new IntersectionObserver(
+				(entries) => {
+					entries.forEach((entry) => {
+						if (entry.isIntersecting) {
+							entry.target.classList.add("is-visible");
+							companionObserver.unobserve(entry.target);
+						}
+					});
+				},
+				{ threshold: 0.1 }
+			);
+			document.querySelectorAll(".v2-companion-card").forEach((card) => {
+				companionObserver.observe(card);
+			});
+		</script>
 
 		<!-- Loops Form Handler -->
 		<script>
@@ -427,6 +484,16 @@
 					.addEventListener("click", resetFormHandler);
 				formContainer.classList.add("newsletter-handlers-added");
 			}
+		</script>
+
+		<!-- Header scroll transparency -->
+		<script>
+			(function () {
+				var header = document.querySelector('.site-header');
+				function update() { header.classList.toggle('scrolled', window.scrollY > 10); }
+				window.addEventListener('scroll', update, { passive: true });
+				update();
+			})();
 		</script>
 	</body>
 </html>

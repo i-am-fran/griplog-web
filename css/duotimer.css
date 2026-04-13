@@ -1,0 +1,197 @@
+/* ==========================================
+   DuoTimer Page
+   Extends: styles.css, features.css, index2.css
+   ========================================== */
+
+
+/* ---- App icon ---- */
+.duo-app-icon {
+	width: 96px;
+	height: 96px;
+	border-radius: 22px;
+	margin: 0 auto 1.5rem;
+	display: block;
+	box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5), 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+/* ---- Hero: override hardcoded red glow from features.css ---- */
+.duo-hero {
+	background:
+		radial-gradient(ellipse 90% 55% at 50% -5%, rgba(255, 124, 97, 0.14) 0%, transparent 65%),
+		#000;
+}
+
+/* ---- feat-span-3 glow: override hardcoded red from features.css ---- */
+.duotimer .feat-span-3::before {
+	background: radial-gradient(ellipse, rgba(255, 124, 97, 0.07) 0%, transparent 65%);
+}
+
+/* ---- Phase visualiser (inside the span-2 card) ---- */
+.duo-phases {
+	display: flex;
+	align-items: center;
+	gap: 0.875rem;
+	margin-top: 1.75rem;
+	flex-wrap: wrap;
+}
+
+.duo-phase {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 0.4rem;
+	padding: 1rem 1.5rem;
+	border-radius: 16px;
+	border: 1px solid rgba(255, 255, 255, 0.08);
+	background: rgba(255, 255, 255, 0.03);
+	flex: 1;
+	min-width: 90px;
+}
+
+.duo-phase-work {
+	border-color: rgba(255, 124, 97, 0.3);
+	background: rgba(255, 124, 97, 0.06);
+}
+
+.duo-phase-rest {
+	border-color: rgba(255, 255, 255, 0.12);
+	background: rgba(255, 255, 255, 0.04);
+}
+
+.duo-phase-repeat {
+	border-color: rgba(255, 255, 255, 0.08);
+	background: rgba(255, 255, 255, 0.025);
+}
+
+.duo-phase-label {
+	font-size: 0.68rem;
+	font-weight: 600;
+	text-transform: uppercase;
+	letter-spacing: 0.12em;
+	color: rgba(255, 255, 255, 0.35);
+}
+
+.duo-phase-time {
+	font-family: "CabinetGrotesk-Variable";
+	font-weight: 800;
+	font-size: clamp(1.6rem, 3vw, 2.25rem);
+	letter-spacing: -0.02em;
+	color: #fff;
+	line-height: 1;
+}
+
+.duo-phase-work .duo-phase-time {
+	color: #ff7c61;
+}
+
+.duo-phase-arrow {
+	color: rgba(255, 255, 255, 0.2);
+	font-size: 1.2rem;
+	flex-shrink: 0;
+}
+
+/* ---- CTA section ---- */
+.duo-cta {
+	background: linear-gradient(180deg, #0a0a0a 0%, #000000 100%);
+	padding: 8rem 2rem;
+	text-align: center;
+	position: relative;
+	overflow: hidden;
+}
+
+.duo-cta::before {
+	content: "";
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	width: 100%;
+	max-width: 1000px;
+	height: 400px;
+	background: radial-gradient(
+		ellipse at center,
+		rgba(255, 124, 97, 0.1) 0%,
+		transparent 70%
+	);
+	pointer-events: none;
+}
+
+.duo-cta-inner {
+	position: relative;
+	z-index: 2;
+	max-width: 560px;
+	margin: 0 auto;
+}
+
+.duo-cta-title {
+	font-family: "CabinetGrotesk-Variable";
+	font-weight: 900;
+	font-size: clamp(2rem, 5vw, 3rem);
+	line-height: 1.2;
+	letter-spacing: -0.02em;
+	margin-bottom: 1rem;
+}
+
+.duo-cta-sub {
+	font-size: 1.125rem;
+	line-height: 1.7;
+	color: rgba(255, 255, 255, 0.5);
+}
+
+.duo-cta-link {
+	color: #ff7c61;
+	text-decoration: none;
+	transition: opacity 0.2s ease;
+}
+
+.duo-cta-link:hover {
+	opacity: 0.8;
+}
+
+/* ---- Responsive ---- */
+@media (max-width: 768px) {
+	.duo-app-icon {
+		width: 80px;
+		height: 80px;
+		border-radius: 18px;
+	}
+
+	.duo-phases {
+		gap: 0.75rem;
+	}
+
+	.duo-phase {
+		padding: 0.875rem 1rem;
+		min-width: 80px;
+	}
+
+	.duo-cta {
+		padding: 5rem 1.5rem;
+	}
+}
+
+@media (max-width: 480px) {
+	.duo-app-icon {
+		width: 72px;
+		height: 72px;
+		border-radius: 16px;
+	}
+
+	.duo-phase-arrow {
+		display: none;
+	}
+
+	.duo-phases {
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		gap: 0.75rem;
+	}
+
+	.duo-phase-repeat {
+		grid-column: 1 / -1;
+	}
+
+	.duo-cta {
+		padding: 4rem 1.25rem;
+	}
+}
