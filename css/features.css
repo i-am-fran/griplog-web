@@ -294,6 +294,24 @@
 	font-size: 0.72rem;
 }
 
+/* ---- Plus tag (premium feature marker) ---- */
+.feat-plus-tag {
+	display: inline-flex;
+	align-items: center;
+	padding: 0.1rem 0.5rem;
+	margin-left: 0.4rem;
+	background: rgba(248, 33, 61, 0.12);
+	border: 1px solid rgba(248, 33, 61, 0.3);
+	border-radius: 999px;
+	font-size: 0.62rem;
+	font-weight: 700;
+	text-transform: uppercase;
+	letter-spacing: 0.08em;
+	color: var(--color-highlight);
+	vertical-align: middle;
+	white-space: nowrap;
+}
+
 /* ---- Route state badges ---- */
 .feat-states {
 	display: flex;
