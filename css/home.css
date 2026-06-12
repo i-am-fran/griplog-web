@@ -295,3 +295,96 @@ img {
 .newsletter-back-button:hover {
 	color: var(--accent);
 }
+
+/* ---------- Features ---------- */
+.v2-features {
+	padding: 5rem 0;
+}
+
+.v2-features .v2-container {
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
+	gap: 1.5rem;
+}
+
+.v2-feature-card {
+	background: var(--surface-raised);
+	border: 1px solid var(--separator);
+	border-radius: var(--radius-card);
+	box-shadow: var(--shadow-card);
+	padding: 2rem;
+	display: flex;
+	flex-direction: column;
+	gap: 1.5rem;
+	transition: box-shadow 0.25s ease, transform 0.25s ease;
+}
+
+.v2-feature-card:hover {
+	box-shadow: var(--shadow-card-hover);
+	transform: translateY(-2px);
+}
+
+.v2-feature-large {
+	grid-column: 1 / -1;
+	flex-direction: row;
+	align-items: center;
+}
+
+.v2-feature-large .v2-feature-content {
+	flex: 1;
+}
+
+.v2-feature-large .v2-feature-image {
+	flex: 1;
+}
+
+.v2-feature-label {
+	font-size: 0.8rem;
+	font-weight: 600;
+	text-transform: uppercase;
+	letter-spacing: 0.06em;
+	color: var(--accent);
+	margin-bottom: 0.6rem;
+}
+
+.v2-feature-title {
+	font-size: clamp(1.5rem, 3vw, 2rem);
+	margin-bottom: 0.75rem;
+}
+
+.v2-feature-title-small {
+	font-size: 1.25rem;
+	margin-bottom: 0.6rem;
+}
+
+.v2-feature-description,
+.v2-feature-description-small {
+	color: var(--text-secondary);
+	font-size: 0.98rem;
+}
+
+.v2-feature-image {
+	background: var(--fill-secondary);
+	border-radius: 14px;
+	overflow: hidden;
+}
+
+.v2-feature-image img {
+	width: 100%;
+}
+
+.v2-see-all {
+	text-align: center;
+	margin-top: 3rem;
+}
+
+.v2-see-all a {
+	font-size: 0.95rem;
+	font-weight: 500;
+	color: var(--text-tertiary);
+	transition: color 0.2s ease;
+}
+
+.v2-see-all a:hover {
+	color: var(--accent);
+}
