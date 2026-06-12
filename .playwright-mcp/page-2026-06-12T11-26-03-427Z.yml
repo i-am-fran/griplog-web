@@ -1,0 +1,99 @@
+- generic [active] [ref=e1]:
+  - banner [ref=e2]:
+    - generic [ref=e3]:
+      - link "Griplog" [ref=e4] [cursor=pointer]:
+        - /url: /
+      - navigation [ref=e5]:
+        - link "DuoTimer" [ref=e6] [cursor=pointer]:
+          - /url: /duotimer/
+  - generic [ref=e8]:
+    - img "DuoTimer app icon" [ref=e9]
+    - generic [ref=e10]: Now in Beta
+    - heading "Two phases. One clean timer." [level=1] [ref=e12]:
+      - text: Two phases.
+      - text: One clean timer.
+    - paragraph [ref=e13]: A minimalist interval timer for hangboard and grip training. Set work and rest independently. Run your protocol. Don't think about anything else.
+  - generic [ref=e15]:
+    - generic [ref=e16]:
+      - generic [ref=e17]:
+        - generic [ref=e18]: Core
+        - heading "Two phases, timed independently" [level=2] [ref=e19]
+        - paragraph [ref=e20]: Set a work duration and a rest duration. They run back to back, cycling through your repeat count. Perfect for 7-second hangs with 3-second rests, or any protocol your training demands.
+      - generic [ref=e21]:
+        - generic [ref=e22]:
+          - generic [ref=e23]: Phase 1 · Work
+          - generic [ref=e24]: 7s
+        - generic [ref=e25]: →
+        - generic [ref=e26]:
+          - generic [ref=e27]: Phase 2 · Rest
+          - generic [ref=e28]: 3s
+        - generic [ref=e29]: →
+        - generic [ref=e30]:
+          - generic [ref=e31]: Repeat
+          - generic [ref=e32]: ×10
+    - generic [ref=e34]:
+      - generic [ref=e35]: Repeats
+      - heading "Finite or endless" [level=3] [ref=e36]
+      - paragraph [ref=e37]: Set 1–99 repeats for a structured protocol, or enable infinite loop mode for open-ended sessions. A repeat counter keeps track during your workout.
+      - list [ref=e38]:
+        - listitem [ref=e39]: ✓ 1–99 repeat count
+        - listitem [ref=e40]: ✓ Infinite loop mode
+        - listitem [ref=e41]: ✓ Repeat counter shown during run
+    - generic [ref=e43]:
+      - generic [ref=e44]: Audio
+      - heading "Custom tones per phase" [level=3] [ref=e45]
+      - paragraph [ref=e46]: Choose a different sound cue for each phase. Know instantly whether you're starting work or rest without looking at the screen.
+      - list [ref=e47]:
+        - listitem [ref=e48]: ✓ Independent tone per phase
+        - listitem [ref=e49]: ✓ Plays through silent mode
+        - listitem [ref=e50]: ✓ Distinct cue on phase transition
+    - generic [ref=e52]:
+      - generic [ref=e53]: Running View
+      - heading "Full-screen, full focus" [level=3] [ref=e54]
+      - paragraph [ref=e55]: A black screen, a large countdown, and a color-coded progress ring. Nothing else. Each phase has its own color so you always know where you are at a glance.
+      - list [ref=e56]:
+        - listitem [ref=e57]: ✓ Color-coded progress ring
+        - listitem [ref=e58]: ✓ Large, legible countdown
+        - listitem [ref=e59]: ✓ Distraction-free black background
+    - generic [ref=e61]:
+      - generic [ref=e62]: Sync & Organise
+      - heading "Your timers, everywhere" [level=3] [ref=e63]
+      - paragraph [ref=e64]: Add a title and notes to each timer. iCloud sync keeps your protocols up to date across all your devices automatically, with no account required.
+      - list [ref=e65]:
+        - listitem [ref=e66]: ✓ Title and notes per timer
+        - listitem [ref=e67]: ✓ iCloud sync via CloudKit
+        - listitem [ref=e68]: ✓ No account required
+    - generic [ref=e69]:
+      - generic [ref=e70]:
+        - generic [ref=e71]: Details
+        - heading "Minimal on purpose" [level=2] [ref=e72]
+        - paragraph [ref=e73]: "Built for one thing: running your protocol without friction."
+      - generic [ref=e74]:
+        - generic [ref=e75]: Black full-screen timer
+        - generic [ref=e76]: Color-coded phases
+        - generic [ref=e77]: Plays through silent mode
+        - generic [ref=e78]: iCloud sync
+        - generic [ref=e79]: No account required
+        - generic [ref=e80]: Infinite loop mode
+        - generic [ref=e81]: Custom tones per phase
+        - generic [ref=e82]: Save unlimited timers
+        - generic [ref=e83]: Title and notes per timer
+        - generic [ref=e84]: Native iOS performance
+  - generic [ref=e86]:
+    - heading "Coming soon." [level=2] [ref=e87]
+    - paragraph [ref=e88]:
+      - text: DuoTimer is currently in beta. Follow
+      - link "Griplog" [ref=e89] [cursor=pointer]:
+        - /url: /
+      - text: for updates when it launches on the App Store.
+  - contentinfo [ref=e90]:
+    - paragraph [ref=e91]:
+      - text: © 2026 •
+      - link "Home" [ref=e92] [cursor=pointer]:
+        - /url: /
+      - text: •
+      - link "DuoTimer" [ref=e93] [cursor=pointer]:
+        - /url: /duotimer
+      - text: •
+      - link "Privacy" [ref=e94] [cursor=pointer]:
+        - /url: /privacy

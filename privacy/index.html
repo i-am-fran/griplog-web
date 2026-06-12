@@ -36,34 +36,39 @@
 			href="../assets/apple-touch-icon.png"
 		/>
 
+		<!-- Fonts -->
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap"
+			rel="stylesheet"
+		/>
+
 		<!-- Stylesheet -->
-		<link rel="stylesheet" href="../css/styles.css" />
+		<link rel="stylesheet" href="../css/home.css" />
 	</head>
-	<body class="roadmap">
+	<body class="landing-v2">
 
 		<!-- Site Header -->
 		<header class="site-header">
 			<div class="site-header-inner">
 				<a href="/" class="site-nav-logo">Griplog</a>
 				<nav class="site-nav-links">
-					<a href="/features/" class="site-nav-link">Features</a>
 					<a href="/duotimer/" class="site-nav-link">DuoTimer</a>
 				</nav>
 			</div>
 		</header>
 
 		<!-- Hero Section -->
-		<section class="hero">
-			<div class="hero-content">
-				<h1 class="hero-title">
-					<span class="word">Privacy Policy</span>
-				</h1>
+		<section class="v2-page-hero">
+			<div class="v2-container-narrow">
+				<h1 class="v2-page-title">Privacy Policy</h1>
 			</div>
 		</section>
 
 		<!-- Content Section -->
-		<section class="content">
-			<div class="privacy-container">
+		<section class="v2-prose-section">
+			<div class="v2-container-narrow v2-prose">
 				<p class="privacy-updated">Last updated: April 2026</p>
 
 				<div class="privacy-section">
@@ -171,23 +176,12 @@
 		</section>
 
 		<!-- Footer -->
-		<footer class="footer">
+		<footer class="v2-footer">
 			<p>
-				© 2025 • <a href="/">Griplog</a> • <a href="/features">Features</a> •
+				© 2026 • <a href="/">Home</a> •
 				<a href="/duotimer">DuoTimer</a> •
-				<a href="/roadmap">Changelog</a> •
 				<a href="/privacy">Privacy</a>
 			</p>
 		</footer>
-
-		<!-- Header scroll transparency -->
-		<script>
-			(function () {
-				var header = document.querySelector('.site-header');
-				function update() { header.classList.toggle('scrolled', window.scrollY > 10); }
-				window.addEventListener('scroll', update, { passive: true });
-				update();
-			})();
-		</script>
 	</body>
 </html>

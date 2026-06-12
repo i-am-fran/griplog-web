@@ -72,42 +72,48 @@
 			href="assets/android-chrome-512x512.png"
 		/>
 
+		<!-- Fonts -->
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap"
+			rel="stylesheet"
+		/>
+
 		<!-- Stylesheet -->
-		<link rel="stylesheet" href="css/styles.css" />
+		<link rel="stylesheet" href="css/home.css" />
 	</head>
-	<body>
-		<!-- Hero Section -->
-		<section class="hero">
-			<div class="hero-content">
-				<img src="images/party-emoji.png" alt="Party emoji" class="app-icon" />
-				<h1 class="hero-title">
-					<span class="word">Boom!</span>
-					<span class="word">You're</span>
-					<span class="word">in...</span>
-				</h1>
-				<p class="hero-subtitle">
-					<span class="word">You'll</span>
-					<span class="word">soon</span>
-					<span class="word">hear</span>
-					<span class="word">from</span>
-					<span class="word">us.</span>
+	<body class="landing-v2">
+		<!-- Site Header -->
+		<header class="site-header">
+			<div class="site-header-inner">
+				<a href="/" class="site-nav-logo">Griplog</a>
+				<nav class="site-nav-links">
+					<a href="/duotimer/" class="site-nav-link">DuoTimer</a>
+				</nav>
+			</div>
+		</header>
+
+		<!-- Confirmation -->
+		<section class="v2-confirm">
+			<div class="v2-confirm-card">
+				<img src="images/party-emoji.png" alt="Party emoji" class="v2-confirm-emoji" />
+				<h1 class="v2-confirm-title">You're in!</h1>
+				<p class="v2-confirm-text">
+					Thanks for joining the waitlist. We'll be in touch as soon as Griplog
+					is ready for early access.
 				</p>
-				<a class="hero-subtitle" href="/">
-					<span class="newsletter-form-button word">Go back</span>
-				</a>
+				<a href="/" class="newsletter-form-button v2-confirm-button">Back to home</a>
 			</div>
 		</section>
 
-		 <!-- Footer --
-		<footer class="footer">
+		<!-- Footer -->
+		<footer class="v2-footer">
 			<p>
-				© 2025 • <a href="/">Griplog</a> •
-				<a href="/roadmap">Changelog</a> •
-				<a href="/url-builder">URL Builder</a>
+				© 2026 • <a href="/">Home</a> •
+				<a href="/duotimer">DuoTimer</a> •
+				<a href="/privacy">Privacy</a>
 			</p>
 		</footer>
-
-		 <!-- Main JavaScript --
-		<script src="js/main.js"></script>
 	</body>
 </html>

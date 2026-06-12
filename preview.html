@@ -57,374 +57,36 @@
 			href="assets/apple-touch-icon.png"
 		/>
 
+		<!-- Fonts -->
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap"
+			rel="stylesheet"
+		/>
+
 		<!-- Stylesheet -->
-		<link rel="stylesheet" href="css/styles.css" />
-
-		<style>
-			.preview-hero {
-				min-height: 50vh;
-				display: flex;
-				flex-direction: column;
-				align-items: center;
-				justify-content: center;
-				background-image: url("images/hero-bg-02.jpg");
-				background-size: cover;
-				background-position: center;
-				position: relative;
-				padding: 4rem 2rem;
-			}
-
-			.preview-hero::before {
-				content: "";
-				position: absolute;
-				top: 0;
-				left: 0;
-				right: 0;
-				bottom: 0;
-				background: linear-gradient(to bottom, #0a0a0a30, #0a0a0a);
-				z-index: 1;
-			}
-
-			.preview-hero-content {
-				position: relative;
-				z-index: 2;
-				text-align: center;
-				max-width: 800px;
-			}
-
-			.preview-container {
-				max-width: 600px;
-				margin: -4rem auto 4rem;
-				position: relative;
-				z-index: 10;
-			}
-
-			.route-card {
-				background: rgba(0, 0, 0, 0.95);
-				border: 1px solid rgba(255, 255, 255, 0.15);
-				border-radius: 20px;
-				padding: 0;
-				box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
-				overflow: hidden;
-			}
-
-			.route-header {
-				background: linear-gradient(
-					135deg,
-					rgba(248, 33, 61, 0.1) 0%,
-					rgba(0, 0, 0, 0.2) 100%
-				);
-				padding: 2.5rem 2rem;
-				border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-				text-align: center;
-			}
-
-			.route-grade {
-				font-family:
-					"CabinetGrotesk-Variable",
-					-apple-system,
-					sans-serif;
-				font-size: 4rem;
-				font-weight: 900;
-				color: var(--color-highlight);
-				margin-bottom: 0.5rem;
-				letter-spacing: -0.02em;
-			}
-
-			.route-sport {
-				font-size: 1rem;
-				text-transform: uppercase;
-				letter-spacing: 0.1em;
-				color: rgba(255, 255, 255, 0.6);
-				font-weight: 600;
-			}
-
-			.route-body {
-				padding: 2rem;
-			}
-
-			.route-name {
-				font-family:
-					"CabinetGrotesk-Variable",
-					-apple-system,
-					sans-serif;
-				font-size: 1.75rem;
-				font-weight: 700;
-				margin-bottom: 1.5rem;
-				color: var(--color-text-primary);
-				text-align: center;
-			}
-
-			.route-name.unnamed {
-				font-style: italic;
-				color: rgba(255, 255, 255, 0.5);
-			}
-
-			.route-details {
-				display: flex;
-				flex-direction: column;
-				gap: 1rem;
-				margin-bottom: 2rem;
-			}
-
-			.detail-row {
-				display: flex;
-				align-items: center;
-				justify-content: space-between;
-				padding: 0.75rem 0;
-				border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-			}
-
-			.detail-row:last-child {
-				border-bottom: none;
-			}
-
-			.route-notes {
-				margin-bottom: 2rem;
-				padding: 1rem;
-				background: rgba(255, 255, 255, 0.04);
-				border-radius: 10px;
-				border: 1px solid rgba(255, 255, 255, 0.08);
-			}
-
-			.route-notes-label {
-				font-size: 0.875rem;
-				text-transform: uppercase;
-				letter-spacing: 0.05em;
-				color: rgba(255, 255, 255, 0.5);
-				font-weight: 600;
-				margin-bottom: 0.5rem;
-			}
-
-			.route-notes-text {
-				font-size: 0.9375rem;
-				color: var(--color-text-primary);
-				line-height: 1.6;
-				white-space: pre-wrap;
-				word-break: break-word;
-			}
-
-			.route-notes-text a {
-				color: var(--color-highlight);
-				text-decoration: none;
-			}
-
-			.route-notes-text a:hover {
-				text-decoration: underline;
-			}
-
-			.detail-label {
-				font-size: 0.875rem;
-				text-transform: uppercase;
-				letter-spacing: 0.05em;
-				color: rgba(255, 255, 255, 0.5);
-				font-weight: 600;
-			}
-
-			.detail-value {
-				font-size: 1rem;
-				color: var(--color-text-primary);
-				font-weight: 500;
-				text-align: right;
-			}
-
-			.route-actions {
-				display: flex;
-				flex-direction: column;
-				gap: 0.75rem;
-			}
-
-			.add-button {
-				width: 100%;
-				padding: 1rem 2rem;
-				font-size: 1.05rem;
-				font-weight: 600;
-				border: none;
-				border-radius: 12px;
-				background: linear-gradient(
-					135deg,
-					var(--color-highlight) 0%,
-					#d91639 100%
-				);
-				color: white;
-				cursor: pointer;
-				transition: all 0.2s ease;
-				text-decoration: none;
-				display: inline-block;
-				text-align: center;
-			}
-
-			.add-button:hover {
-				transform: translateY(-2px);
-				box-shadow: 0 8px 24px rgba(248, 33, 61, 0.3);
-			}
-
-			.add-button:active {
-				transform: translateY(0);
-			}
-
-			.secondary-button {
-				width: 100%;
-				padding: 0.875rem 2rem;
-				font-size: 0.95rem;
-				font-weight: 500;
-				border: 1px solid rgba(255, 255, 255, 0.2);
-				border-radius: 12px;
-				background: transparent;
-				color: rgba(255, 255, 255, 0.8);
-				cursor: pointer;
-				transition: all 0.2s ease;
-				text-decoration: none;
-				display: inline-block;
-				text-align: center;
-			}
-
-			.secondary-button:hover {
-				background: rgba(255, 255, 255, 0.05);
-				border-color: rgba(255, 255, 255, 0.3);
-				color: var(--color-text-primary);
-			}
-
-			.app-badge {
-				display: flex;
-				align-items: center;
-				justify-content: center;
-				gap: 0.5rem;
-				padding: 0.75rem;
-				background: rgba(255, 255, 255, 0.03);
-				border-radius: 12px;
-				margin-top: 1.5rem;
-				font-size: 0.85rem;
-				color: rgba(255, 255, 255, 0.6);
-			}
-
-			.app-badge img {
-				width: 24px;
-				height: 24px;
-				border-radius: 6px;
-			}
-
-			.map-preview {
-				width: 100%;
-				height: 200px;
-				border-radius: 12px;
-				overflow: hidden;
-				margin-bottom: 1.5rem;
-				background: rgba(255, 255, 255, 0.05);
-				border: 1px solid rgba(255, 255, 255, 0.1);
-				transition: all 0.2s ease;
-				position: relative;
-			}
-
-			.map-preview:hover {
-				border-color: rgba(255, 255, 255, 0.3);
-				transform: translateY(-2px);
-				box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
-			}
-
-			.map-preview img {
-				width: 100%;
-				height: 100%;
-				object-fit: cover;
-				transition: opacity 0.2s ease;
-			}
-
-			.map-preview:hover img {
-				opacity: 0.9;
-			}
-
-			.map-preview::after {
-				content: "Click to open in OpenStreetMap";
-				position: absolute;
-				bottom: 0;
-				left: 0;
-				right: 0;
-				padding: 0.5rem;
-				background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
-				color: rgba(255, 255, 255, 0.8);
-				font-size: 0.75rem;
-				text-align: center;
-				opacity: 0;
-				transition: opacity 0.2s ease;
-			}
-
-			.map-preview:hover::after {
-				opacity: 1;
-			}
-
-			.route-photo {
-				width: 100%;
-				max-height: 320px;
-				object-fit: cover;
-				display: block;
-			}
-
-			.route-photo-skeleton {
-				width: 100%;
-				height: 220px;
-				background: linear-gradient(90deg, rgba(255,255,255,0.04) 25%, rgba(255,255,255,0.08) 50%, rgba(255,255,255,0.04) 75%);
-				background-size: 200% 100%;
-				animation: shimmer 1.4s infinite;
-			}
-
-			@keyframes shimmer {
-				0% { background-position: 200% 0; }
-				100% { background-position: -200% 0; }
-			}
-
-			.error-state {
-				text-align: center;
-				padding: 3rem 2rem;
-			}
-
-			.error-icon {
-				font-size: 4rem;
-				margin-bottom: 1rem;
-			}
-
-			.error-title {
-				font-size: 1.5rem;
-				font-weight: 700;
-				margin-bottom: 0.5rem;
-				color: var(--color-text-primary);
-			}
-
-			.error-message {
-				color: rgba(255, 255, 255, 0.6);
-				margin-bottom: 2rem;
-			}
-
-			@media (max-width: 640px) {
-				.preview-container {
-					margin: -3rem 1rem 2rem;
-				}
-
-				.route-grade {
-					font-size: 3rem;
-				}
-
-				.route-header {
-					padding: 2rem 1.5rem;
-				}
-
-				.route-body {
-					padding: 1.5rem;
-				}
-			}
-		</style>
+		<link rel="stylesheet" href="css/home.css" />
 	</head>
-	<body>
+	<body class="landing-v2">
+		<!-- Site Header -->
+		<header class="site-header">
+			<div class="site-header-inner">
+				<a href="/" class="site-nav-logo">Griplog</a>
+				<nav class="site-nav-links">
+					<a href="/duotimer/" class="site-nav-link">DuoTimer</a>
+				</nav>
+			</div>
+		</header>
+
 		<div class="preview-hero">
 			<div class="preview-hero-content">
 				<img
 					src="images/app-icon.png"
 					alt="Griplog App Icon"
-					class="app-icon"
-					style="width: 80px; height: 80px; border-radius: 18px"
+					class="preview-app-icon"
 				/>
-				<h1 class="hero-title">
-					<span class="word">Shared Route</span>
-				</h1>
+				<h1 class="preview-hero-title">Shared Route</h1>
 			</div>
 		</div>
 
@@ -486,22 +148,20 @@
 				</div>
 			</div>
 
-			<div class="container" style="margin-top: 4rem">
-				<div class="intro">
-					<p>
-						Griplog is a private climbing logbook for tracking routes, planning trips,
-						and documenting beta. Download the app to save this route and build your
-						personal climbing collection.
-					</p>
-				</div>
+			<div class="preview-outro">
+				<p>
+					Griplog is a private climbing logbook for tracking routes, planning trips,
+					and documenting beta. Download the app to save this route and build your
+					personal climbing collection.
+				</p>
 			</div>
 		</section>
 
-		<footer class="footer">
+		<footer class="v2-footer">
 			<p>
-				© 2025 • <a href="/">Griplog</a> •
-				<a href="/roadmap">Changelog</a> •
-				<a href="/url-builder">URL Builder</a>
+				© 2026 • <a href="/">Home</a> •
+				<a href="/duotimer">DuoTimer</a> •
+				<a href="/privacy">Privacy</a>
 			</p>
 		</footer>
 
@@ -834,7 +494,7 @@
 				routeDisplay.style.display = "block";
 
 				// Update the hero title
-				document.querySelector(".hero-title .word").textContent = "Shared Location";
+				document.querySelector(".preview-hero-title").textContent = "Shared Location";
 
 				// Update header to show location type instead of grade
 				const gradeEl = document.getElementById("route-grade");

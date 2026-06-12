@@ -1,0 +1,51 @@
+- generic [active] [ref=e1]:
+  - banner [ref=e2]:
+    - generic [ref=e3]:
+      - link "Griplog" [ref=e4] [cursor=pointer]:
+        - /url: /
+      - navigation [ref=e5]:
+        - link "DuoTimer" [ref=e6] [cursor=pointer]:
+          - /url: /duotimer/
+  - generic [ref=e8]:
+    - img "Griplog App Icon" [ref=e9]
+    - heading "Shared Route" [level=1] [ref=e10]
+  - generic [ref=e11]:
+    - generic [ref=e13]:
+      - generic [ref=e14]:
+        - generic [ref=e15]: 7B
+        - generic [ref=e16]: Bouldering
+      - generic [ref=e17]:
+        - heading "Crimpy Problem" [level=2] [ref=e18]
+        - generic [ref=e19]:
+          - generic [ref=e20]:
+            - generic [ref=e21]: Location
+            - generic [ref=e22]: Fontainebleau
+          - generic [ref=e23]:
+            - generic [ref=e24]: Area
+            - generic [ref=e25]: Bas Cuvier
+          - generic [ref=e26]:
+            - generic [ref=e27]: Angle
+            - generic [ref=e28]: Overhang
+        - generic [ref=e29]:
+          - generic [ref=e30]: Notes
+          - generic [ref=e31]: Powerful crux on small crimps. Heel hook to finish.
+        - generic [ref=e32]:
+          - link "Add to Griplog" [ref=e33] [cursor=pointer]:
+            - /url: griplog://x-callback-url/route?grade=7B&sport=bouldering&name=Crimpy+Problem&location=Fontainebleau&area=Bas+Cuvier&angle=overhang&notes=Powerful+crux+on+small+crimps.+Heel+hook+to+finish.
+          - link "Explore Griplog" [ref=e34] [cursor=pointer]:
+            - /url: /
+        - generic [ref=e35]:
+          - img "Griplog" [ref=e36]
+          - generic [ref=e37]: Shared from Griplog
+    - paragraph [ref=e39]: Griplog is a private climbing logbook for tracking routes, planning trips, and documenting beta. Download the app to save this route and build your personal climbing collection.
+  - contentinfo [ref=e40]:
+    - paragraph [ref=e41]:
+      - text: © 2026 •
+      - link "Home" [ref=e42] [cursor=pointer]:
+        - /url: /
+      - text: •
+      - link "DuoTimer" [ref=e43] [cursor=pointer]:
+        - /url: /duotimer
+      - text: •
+      - link "Privacy" [ref=e44] [cursor=pointer]:
+        - /url: /privacy

@@ -35,29 +35,41 @@
 			href="../assets/apple-touch-icon.png"
 		/>
 
+		<!-- Fonts -->
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap"
+			rel="stylesheet"
+		/>
+
 		<!-- Stylesheet -->
-		<link rel="stylesheet" href="../css/styles.css" />
+		<link rel="stylesheet" href="../css/home.css" />
 	</head>
 
-	<body class="roadmap">
+	<body class="landing-v2">
+		<!-- Site Header -->
+		<header class="site-header">
+			<div class="site-header-inner">
+				<a href="/" class="site-nav-logo">Griplog</a>
+				<nav class="site-nav-links">
+					<a href="/duotimer/" class="site-nav-link">DuoTimer</a>
+				</nav>
+			</div>
+		</header>
+
 		<!-- Hero Section -->
-		<section class="hero">
-			<div class="hero-content">
-				<h1 class="hero-title">
-					<span class="word">URL Builder</span>
-				</h1>
-				<!-- Back to Home Link -->
-				<div class="roadmap-nav">
-					<a href="/" class="back-link">← Back to Home</a>
-				</div>
+		<section class="v2-page-hero">
+			<div class="v2-container-narrow">
+				<h1 class="v2-page-title">URL Builder</h1>
 			</div>
 		</section>
 
 		<!-- Content Section -->
-		<section class="content">
-			<div class="container">
+		<section class="v2-prose-section">
+			<div class="v2-container-narrow builder-page">
 				<!-- Overview -->
-				<div class="intro" style="margin-top: 4rem">
+				<div class="builder-intro">
 					<p>
 						Share routes with friends or use them in automation tools like iOS
 						Shortcuts. The URL scheme lets you create deep links that open Griplog
@@ -640,10 +652,11 @@
 		</div>
 
 		<!-- Footer -->
-		<footer class="footer">
+		<footer class="v2-footer">
 			<p>
-				© 2025 • <a href="/">Griplog</a> • <a href="/roadmap">Changelog</a> •
-				<a href="/url-builder">URL Builder</a>
+				© 2026 • <a href="/">Home</a> •
+				<a href="/duotimer">DuoTimer</a> •
+				<a href="/privacy">Privacy</a>
 			</p>
 		</footer>
 

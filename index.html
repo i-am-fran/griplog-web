@@ -93,7 +93,6 @@
 			<div class="site-header-inner">
 				<a href="/" class="site-nav-logo">Griplog</a>
 				<nav class="site-nav-links">
-					<a href="/features/" class="site-nav-link">Features</a>
 					<a href="/duotimer/" class="site-nav-link">DuoTimer</a>
 				</nav>
 			</div>
@@ -184,9 +183,8 @@
 						<div class="v2-feature-label">Rich Details</div>
 						<h3 class="v2-feature-title-small">Everything about a route</h3>
 						<p class="v2-feature-description-small">
-							Group routes by location and area. Include important details like rock
-							type, wall angle, and much more. Quick access to the information that
-							matters.
+							Group routes by location and area. Capture rock type, wall angle,
+							and the details that matter most.
 						</p>
 					</div>
 					<div class="v2-feature-image v2-feature-image-small">
@@ -200,8 +198,8 @@
 						<div class="v2-feature-label">Document Beta</div>
 						<h3 class="v2-feature-title-small">Mark sequences, add notes</h3>
 						<p class="v2-feature-description-small">
-							Draw on route photos to remember sequences. Add beta notes and crux
-							details. Visualise your climbing.
+							Draw sequences right on your route photos. Add beta notes and crux
+							details to remember every move.
 						</p>
 					</div>
 					<div class="v2-feature-image v2-feature-image-small">
@@ -215,8 +213,8 @@
 						<div class="v2-feature-label">Track Attempts</div>
 						<h3 class="v2-feature-title-small">Your climbing history</h3>
 						<p class="v2-feature-description-small">
-							Log every attempt with notes. See your progression over time. Understand
-							your climbing journey.
+							Log every attempt with notes and dates. See your progression
+							build over time, session by session.
 						</p>
 					</div>
 					<div class="v2-feature-image v2-feature-image-small">
@@ -230,17 +228,14 @@
 						<div class="v2-feature-label">Share Routes</div>
 						<h3 class="v2-feature-title-small">Send to friends</h3>
 						<p class="v2-feature-description-small">
-							Share routes via message, email, or social. View them on the web or
-							import them directly in the app.
+							Share routes by message, email, or social. Open them on the web
+							or import straight into the app.
 						</p>
 					</div>
 					<div class="v2-feature-image v2-feature-image-small">
 						<img src="images/shareChat.png" alt="Share routes" />
 					</div>
 				</div>
-			</div>
-			<div class="v2-see-all">
-				<a href="/features">See all features →</a>
 			</div>
 		</section>
 
@@ -281,6 +276,47 @@
 							No gamification. No streaks. No social pressure. Just you and your
 							climbing projects.
 						</p>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<!-- Griplog Plus Section -->
+		<section class="v2-plus">
+			<div class="v2-container-narrow">
+				<h2 class="v2-section-title">Free to start. Plus when you want more.</h2>
+				<p class="v2-plus-intro">
+					The free app is a complete climbing journal. Plus adds the extras for
+					when you climb across devices or want more depth.
+				</p>
+
+				<div class="v2-plus-grid">
+					<div class="v2-plus-card">
+						<div class="v2-plus-card-head">
+							<h3 class="v2-plus-card-title">Free</h3>
+							<span class="v2-plus-card-tag">Always free</span>
+						</div>
+						<ul class="v2-plus-list">
+							<li>Unlimited routes, locations and events</li>
+							<li>Full journal and climbing history</li>
+							<li>Beta drawing and route photos</li>
+							<li>Every grading system</li>
+							<li>Filters, search and export</li>
+						</ul>
+					</div>
+
+					<div class="v2-plus-card v2-plus-card-featured">
+						<div class="v2-plus-card-head">
+							<h3 class="v2-plus-card-title">Griplog Plus</h3>
+							<span class="v2-plus-card-tag v2-plus-card-tag-accent">Coming soon</span>
+						</div>
+						<ul class="v2-plus-list">
+							<li>iCloud sync across your devices</li>
+							<li>Video on routes</li>
+							<li>Unsplash cover photos</li>
+							<li>Custom share images</li>
+							<li>The detail pack — hold types, wall angle, move styles, height, bolt count</li>
+						</ul>
 					</div>
 				</div>
 			</div>
@@ -361,7 +397,7 @@
 		<footer class="v2-footer">
 			<p>
 				© 2026 • <a href="/">Home</a> •
-				<a href="/roadmap">Changelog</a> •
+				<a href="/duotimer">DuoTimer</a> •
 				<a href="/privacy">Privacy</a>
 			</p>
 		</footer>
@@ -493,16 +529,6 @@
 					.addEventListener("click", resetFormHandler);
 				formContainer.classList.add("newsletter-handlers-added");
 			}
-		</script>
-
-		<!-- Header scroll transparency -->
-		<script>
-			(function () {
-				var header = document.querySelector('.site-header');
-				function update() { header.classList.toggle('scrolled', window.scrollY > 10); }
-				window.addEventListener('scroll', update, { passive: true });
-				update();
-			})();
 		</script>
 	</body>
 </html>
