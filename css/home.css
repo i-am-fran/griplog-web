@@ -658,6 +658,51 @@ img {
 	font-size: clamp(2rem, 5vw, 3rem);
 }
 
+.support-hero-subtitle {
+	margin-top: 0.75rem;
+	font-size: 1.1rem;
+	color: var(--text-secondary);
+}
+
+/* ---------- Support page ---------- */
+.support-question {
+	font-family: var(--font-display);
+	font-size: 1.1rem;
+	font-weight: 600;
+	color: var(--text);
+	margin-top: 1.75rem;
+	margin-bottom: 0.5rem;
+}
+
+.support-contact {
+	text-align: center;
+}
+
+.support-contact-button,
+.v2-prose a.support-contact-button {
+	display: inline-block;
+	margin-top: 1.25rem;
+	padding: 0.85rem 2rem;
+	font-family: var(--font-body);
+	font-size: 1rem;
+	font-weight: 600;
+	color: var(--on-accent);
+	background: var(--accent);
+	border-radius: 12px;
+	text-decoration: none;
+	transition: background 0.2s ease, transform 0.1s ease;
+}
+
+.support-contact-button:hover,
+.v2-prose a.support-contact-button:hover {
+	background: var(--accent-pressed);
+	color: var(--on-accent);
+}
+
+.support-contact-button:active {
+	transform: translateY(1px);
+}
+
 .v2-prose-section {
 	padding: 2rem 1.5rem 5rem;
 	background-color: var(--surface);
