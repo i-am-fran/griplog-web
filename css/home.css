@@ -1,1 +1,90 @@
 /* Griplog home page — warm light theme */
+
+/* ---------- Reset ---------- */
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+/* ---------- Tokens ---------- */
+:root {
+	--surface: #fdfbf7;
+	--surface-raised: #ffffff;
+	--fill: #e9e4db;
+	--fill-secondary: #f0ece4;
+	--separator: #e4ded4;
+	--text: #1f1b16;
+	--text-secondary: #6e665b;
+	--text-tertiary: #9c9388;
+	--accent: #f8213d;
+	--accent-pressed: #d5172f;
+	--on-accent: #ffffff;
+
+	--radius-card: 20px;
+	--shadow-card: 0 1px 2px rgba(31, 27, 22, 0.04), 0 8px 24px rgba(31, 27, 22, 0.06);
+	--shadow-card-hover: 0 2px 4px rgba(31, 27, 22, 0.06), 0 16px 40px rgba(31, 27, 22, 0.1);
+	--maxw: 1100px;
+
+	--font-display: "Fraunces", Georgia, "Times New Roman", serif;
+	--font-body: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
+/* ---------- Base ---------- */
+html {
+	scroll-behavior: smooth;
+}
+
+body {
+	font-family: var(--font-body);
+	color: var(--text);
+	background-color: var(--surface);
+	line-height: 1.6;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+h1, h2, h3 {
+	font-family: var(--font-display);
+	font-weight: 600;
+	line-height: 1.1;
+	letter-spacing: -0.01em;
+	color: var(--text);
+}
+
+p {
+	color: var(--text-secondary);
+}
+
+a {
+	color: inherit;
+	text-decoration: none;
+}
+
+img {
+	display: block;
+	max-width: 100%;
+}
+
+/* ---------- Utilities ---------- */
+.is-hidden {
+	display: none;
+}
+
+.v2-container {
+	max-width: var(--maxw);
+	margin: 0 auto;
+	padding: 0 1.5rem;
+}
+
+.v2-container-narrow {
+	max-width: 820px;
+	margin: 0 auto;
+	padding: 0 1.5rem;
+}
+
+.v2-section-title {
+	font-size: clamp(1.75rem, 4vw, 2.75rem);
+	text-align: center;
+	margin-bottom: 2.5rem;
+}
