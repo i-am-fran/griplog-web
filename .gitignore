@@ -29,6 +29,9 @@ Temporary Items
 *.swo
 *~
 
+# Playwright MCP artifacts
+.playwright-mcp/
+
 # Log files
 npm-debug.log*
 yarn-debug.log*
