@@ -88,3 +88,53 @@ img {
 	text-align: center;
 	margin-bottom: 2.5rem;
 }
+
+/* ---------- Header ---------- */
+.site-header {
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	z-index: 100;
+	transition: background-color 0.3s ease, border-color 0.3s ease, backdrop-filter 0.3s ease;
+	border-bottom: 1px solid transparent;
+}
+
+.site-header.scrolled {
+	background-color: rgba(253, 251, 247, 0.8);
+	backdrop-filter: blur(12px) saturate(180%);
+	-webkit-backdrop-filter: blur(12px) saturate(180%);
+	border-bottom-color: var(--separator);
+}
+
+.site-header-inner {
+	max-width: var(--maxw);
+	margin: 0 auto;
+	padding: 1rem 1.5rem;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+
+.site-nav-logo {
+	font-family: var(--font-display);
+	font-weight: 700;
+	font-size: 1.35rem;
+	color: var(--text);
+}
+
+.site-nav-links {
+	display: flex;
+	gap: 1.5rem;
+}
+
+.site-nav-link {
+	font-weight: 500;
+	font-size: 0.95rem;
+	color: var(--text-secondary);
+	transition: color 0.2s ease;
+}
+
+.site-nav-link:hover {
+	color: var(--accent);
+}
