@@ -388,3 +388,54 @@ img {
 .v2-see-all a:hover {
 	color: var(--accent);
 }
+
+/* ---------- Principles ---------- */
+.v2-principles {
+	padding: 5rem 0;
+	background: var(--surface);
+}
+
+.v2-principles .v2-container-narrow {
+	max-width: var(--maxw);
+}
+
+.v2-principles-grid {
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	gap: 1.5rem;
+}
+
+.v2-principle {
+	background: var(--surface-raised);
+	border: 1px solid var(--separator);
+	border-radius: var(--radius-card);
+	box-shadow: var(--shadow-card);
+	padding: 2rem;
+	text-align: center;
+}
+
+.v2-principle-icon {
+	width: 56px;
+	height: 56px;
+	margin: 0 auto 1.25rem;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background: var(--fill);
+	border-radius: 14px;
+}
+
+.v2-principle-icon img {
+	width: 30px;
+	height: 30px;
+}
+
+.v2-principle h3 {
+	font-size: 1.2rem;
+	margin-bottom: 0.6rem;
+}
+
+.v2-principle p {
+	color: var(--text-secondary);
+	font-size: 0.95rem;
+}
