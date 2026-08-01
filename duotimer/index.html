@@ -12,11 +12,11 @@
 		<meta name="title" content="DuoTimer • Interval Timer for Climbers" />
 		<meta
 			name="description"
-			content="A minimalist dual-phase interval timer for hangboard and grip training. Set work and rest independently. Made for climbers."
+			content="A minimalist dual-phase interval timer for hangboard and grip training. Set work and rest independently. Organize reps into sets with rest between blocks. Made for climbers."
 		/>
 		<meta
 			name="keywords"
-			content="interval timer, hangboard timer, climbing timer, grip training, fingerboard, campus board, crimp training"
+			content="interval timer, hangboard timer, climbing timer, grip training, fingerboard, campus board, crimp training, sets and reps timer"
 		/>
 		<meta name="author" content="Griplog" />
 
@@ -26,7 +26,7 @@
 		<meta property="og:title" content="DuoTimer • Interval Timer for Climbers" />
 		<meta
 			property="og:description"
-			content="A minimalist dual-phase interval timer for hangboard and grip training. Set work and rest independently."
+			content="A minimalist dual-phase interval timer for hangboard and grip training. Set work and rest independently. Organize reps into sets with rest between blocks."
 		/>
 		<meta property="og:image" content="https://griplog.app/assets/social.png" />
 
@@ -36,7 +36,7 @@
 		<meta property="twitter:title" content="DuoTimer • Interval Timer for Climbers" />
 		<meta
 			property="twitter:description"
-			content="A minimalist dual-phase interval timer for hangboard and grip training. Set work and rest independently."
+			content="A minimalist dual-phase interval timer for hangboard and grip training. Set work and rest independently. Organize reps into sets with rest between blocks."
 		/>
 		<meta
 			property="twitter:image"
@@ -143,6 +143,42 @@
 					</div>
 				</div>
 
+				<!-- Sets — new feature, given hero-level prominence -->
+				<div class="v2-feature-card v2-span-all">
+					<div class="v2-feature-content">
+						<div class="v2-feature-label">Training</div>
+						<h2 class="v2-feature-title">Group your reps into sets</h2>
+						<p class="v2-feature-description">
+							Structure a full training session, not just one block of reps.
+							Turn on Sets for a finite-repeat timer and DuoTimer automatically
+							inserts a longer rest between each set — no more restarting the
+							timer or eyeballing your own break. A "Set X of Y" counter runs
+							alongside your rep counter so you always know where you are.
+						</p>
+					</div>
+					<div class="duo-phases">
+						<div class="duo-phase">
+							<div class="duo-phase-label">Set 1 · 6 reps</div>
+							<div class="duo-phase-time">×6</div>
+						</div>
+						<div class="duo-phase-arrow">→</div>
+						<div class="duo-phase duo-phase-rest">
+							<div class="duo-phase-label">Set Rest</div>
+							<div class="duo-phase-time">3m</div>
+						</div>
+						<div class="duo-phase-arrow">→</div>
+						<div class="duo-phase">
+							<div class="duo-phase-label">Set 2 · 6 reps</div>
+							<div class="duo-phase-time">×6</div>
+						</div>
+						<div class="duo-phase-arrow">→</div>
+						<div class="duo-phase duo-phase-repeat">
+							<div class="duo-phase-label">Set 3 · 6 reps</div>
+							<div class="duo-phase-time">×6</div>
+						</div>
+					</div>
+				</div>
+
 				<!-- Repeats -->
 				<div class="v2-feature-card">
 					<div class="v2-feature-content">
@@ -165,13 +201,13 @@
 				<div class="v2-feature-card">
 					<div class="v2-feature-content">
 						<div class="v2-feature-label">Audio</div>
-						<h3 class="v2-feature-title-small">Custom tones per phase</h3>
+						<h3 class="v2-feature-title-small">A distinct tone per phase</h3>
 						<p class="v2-feature-description-small">
-							Choose a different sound cue for each phase. Know instantly
-							whether you're starting work or rest without looking at the screen.
+							Each phase has its own sound cue. Know instantly whether you're
+							starting work or rest without looking at the screen.
 						</p>
 						<ul class="v2-feature-list">
-							<li>Independent tone per phase</li>
+							<li>Distinct tone per phase</li>
 							<li>Plays through silent mode</li>
 							<li>Distinct cue on phase transition</li>
 						</ul>
@@ -230,6 +266,7 @@
 						<span class="v2-pill">iCloud sync</span>
 						<span class="v2-pill">No account required</span>
 						<span class="v2-pill">Infinite loop mode</span>
+						<span class="v2-pill">Sets with rest between blocks</span>
 						<span class="v2-pill">Save unlimited timers</span>
 						<span class="v2-pill">Title and notes per timer</span>
 						<span class="v2-pill">Native iOS performance</span>
