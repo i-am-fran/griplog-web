@@ -116,17 +116,22 @@
 					Built for climbers who want a focused logbook without the noise.
 				</p>
 
-				<!-- Substack Embed -->
-				<div class="v2-substack-embed">
-					<p class="v2-substack-label">Get updates as we build Griplog.</p>
-					<iframe
-						src="https://griplog.substack.com/embed"
-						width="480"
-						height="320"
-						style="border: 1px solid #EEE; background: white"
-						frameborder="0"
-						scrolling="no"
-					></iframe>
+				<!-- Subscribe Actions -->
+				<div class="v2-subscribe-actions">
+					<p class="v2-subscribe-label">Get updates as we build Griplog.</p>
+					<div class="v2-subscribe-buttons">
+						<a
+							href="https://griplog.substack.com/subscribe"
+							target="_blank"
+							rel="noopener noreferrer"
+							class="v2-subscribe-button"
+						>
+							Subscribe on Substack
+						</a>
+						<button type="button" class="v2-appstore-button js-appstore-trigger">
+							<img src="images/app-store-badge.svg" alt="Download on the App Store" />
+						</button>
+					</div>
 				</div>
 			</div>
 
@@ -332,19 +337,43 @@
 				<h2 class="v2-cta-title">Stay in the loop</h2>
 				<p class="v2-cta-subtitle">Get updates on new features and launch news</p>
 
-				<!-- Substack Embed -->
-				<div class="v2-substack-embed">
-					<iframe
-						src="https://griplog.substack.com/embed"
-						width="480"
-						height="320"
-						style="border: 1px solid #EEE; background: white"
-						frameborder="0"
-						scrolling="no"
-					></iframe>
+				<!-- Subscribe Actions -->
+				<div class="v2-subscribe-actions">
+					<div class="v2-subscribe-buttons">
+						<a
+							href="https://griplog.substack.com/subscribe"
+							target="_blank"
+							rel="noopener noreferrer"
+							class="v2-subscribe-button"
+						>
+							Subscribe on Substack
+						</a>
+						<button type="button" class="v2-appstore-button js-appstore-trigger">
+							<img src="images/app-store-badge.svg" alt="Download on the App Store" />
+						</button>
+					</div>
 				</div>
 			</div>
 		</section>
+
+		<!-- App Store Coming Soon Modal -->
+		<div class="v2-modal-overlay is-hidden" id="app-store-modal">
+			<div
+				class="v2-modal"
+				role="dialog"
+				aria-modal="true"
+				aria-labelledby="app-store-modal-title"
+			>
+				<button type="button" class="v2-modal-close" aria-label="Close">
+					&times;
+				</button>
+				<h2 id="app-store-modal-title" class="v2-modal-title">Coming soon</h2>
+				<p class="v2-modal-text">
+					Griplog isn't on the App Store yet. Subscribe on Substack and we'll
+					let you know the moment it launches.
+				</p>
+			</div>
+		</div>
 
 		<!-- Footer -->
 		<footer class="v2-footer">
@@ -371,6 +400,37 @@
 			);
 			document.querySelectorAll(".v2-companion-card").forEach((card) => {
 				companionObserver.observe(card);
+			});
+		</script>
+
+		<!-- App Store Coming Soon Modal -->
+		<script>
+			const appStoreModal = document.getElementById("app-store-modal");
+
+			function openAppStoreModal() {
+				appStoreModal.classList.remove("is-hidden");
+			}
+
+			function closeAppStoreModal() {
+				appStoreModal.classList.add("is-hidden");
+			}
+
+			document.querySelectorAll(".js-appstore-trigger").forEach((button) => {
+				button.addEventListener("click", openAppStoreModal);
+			});
+
+			appStoreModal
+				.querySelector(".v2-modal-close")
+				.addEventListener("click", closeAppStoreModal);
+
+			appStoreModal.addEventListener("click", (event) => {
+				if (event.target === appStoreModal) closeAppStoreModal();
+			});
+
+			document.addEventListener("keydown", (event) => {
+				if (event.key === "Escape" && !appStoreModal.classList.contains("is-hidden")) {
+					closeAppStoreModal();
+				}
 			});
 		</script>
 	</body>

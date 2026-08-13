@@ -206,22 +206,132 @@ img {
 	width: 100%;
 }
 
-/* ---------- Substack embed ---------- */
-.v2-substack-embed {
+/* ---------- Subscribe actions ---------- */
+.v2-subscribe-actions {
 	max-width: 480px;
 	margin: 0 auto;
 }
 
-.v2-substack-embed iframe {
-	max-width: 100%;
-}
-
-.v2-substack-label {
+.v2-subscribe-label {
 	font-family: var(--font-body);
 	font-size: 0.95rem;
 	font-weight: 500;
 	color: var(--text-secondary);
 	margin-bottom: 0.75rem;
+}
+
+.v2-subscribe-buttons {
+	display: flex;
+	gap: 0.75rem;
+	flex-wrap: wrap;
+	justify-content: center;
+	align-items: center;
+}
+
+.v2-subscribe-button {
+	display: inline-block;
+	padding: 0.85rem 1.6rem;
+	font-family: var(--font-body);
+	font-size: 1rem;
+	font-weight: 600;
+	color: var(--on-accent);
+	background: var(--accent);
+	border-radius: 12px;
+	text-decoration: none;
+	transition: background 0.2s ease, transform 0.1s ease;
+}
+
+.v2-subscribe-button:hover {
+	background: var(--accent-pressed);
+	color: var(--on-accent);
+}
+
+.v2-subscribe-button:active {
+	transform: translateY(1px);
+}
+
+.v2-appstore-button {
+	display: inline-flex;
+	padding: 0;
+	background: none;
+	border: none;
+	cursor: pointer;
+	line-height: 0;
+	transition: opacity 0.2s ease, transform 0.1s ease;
+}
+
+.v2-appstore-button:hover {
+	opacity: 0.85;
+}
+
+.v2-appstore-button:active {
+	transform: translateY(1px);
+}
+
+.v2-appstore-button img {
+	height: 48px;
+	width: auto;
+	display: block;
+}
+
+/* ---------- Coming soon modal ---------- */
+.v2-modal-overlay {
+	position: fixed;
+	inset: 0;
+	background: rgba(31, 27, 22, 0.5);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	padding: 1.5rem;
+	z-index: 100;
+}
+
+.v2-modal-overlay.is-hidden {
+	display: none;
+}
+
+.v2-modal {
+	position: relative;
+	width: 100%;
+	max-width: 380px;
+	padding: 2rem;
+	background: var(--surface-raised);
+	border-radius: var(--radius-card);
+	box-shadow: var(--shadow-card);
+	text-align: center;
+}
+
+.v2-modal-close {
+	position: absolute;
+	top: 0.75rem;
+	right: 0.75rem;
+	width: 32px;
+	height: 32px;
+	font-size: 1.5rem;
+	line-height: 1;
+	color: var(--text-secondary);
+	background: none;
+	border: none;
+	border-radius: 50%;
+	cursor: pointer;
+	transition: background 0.2s ease, color 0.2s ease;
+}
+
+.v2-modal-close:hover {
+	color: var(--text);
+	background: var(--separator);
+}
+
+.v2-modal-title {
+	font-family: var(--font-display);
+	font-size: 1.4rem;
+	color: var(--text);
+	margin-bottom: 0.75rem;
+}
+
+.v2-modal-text {
+	color: var(--text-secondary);
+	line-height: 1.6;
 }
 
 /* ---------- Features ---------- */
@@ -1339,7 +1449,7 @@ img {
 	animation: fadeInUp 0.8s ease-out 0.2s both;
 }
 
-.v2-hero .v2-substack-embed {
+.v2-hero .v2-subscribe-actions {
 	animation: fadeInUp 0.8s ease-out 0.3s both;
 }
 
