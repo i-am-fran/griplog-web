@@ -116,40 +116,17 @@
 					Built for climbers who want a focused logbook without the noise.
 				</p>
 
-				<!-- Email Form -->
-				<div class="v2-newsletter-form-container">
-					<form
-						class="newsletter-form"
-						action="https://app.loops.so/api/newsletter-form/cmj5p0ogv0cij0iwkecvznw1v"
-						method="POST"
-					>
-						<input
-							type="email"
-							name="email"
-							placeholder="Enter your email"
-							class="newsletter-form-input"
-							required
-							aria-label="Email address"
-						/>
-						<button type="submit" class="newsletter-form-button">
-							Get Early Access
-						</button>
-						<button
-							type="button"
-							class="newsletter-loading-button is-hidden"
-						>
-							Please wait...
-						</button>
-					</form>
-					<div class="newsletter-success is-hidden">
-						<p>Thanks! We'll be in touch!</p>
-					</div>
-					<div class="newsletter-error is-hidden">
-						<p>Oops! Something went wrong, please try again</p>
-					</div>
-					<button class="newsletter-back-button is-hidden" type="button">
-						&larr; Back
-					</button>
+				<!-- Substack Embed -->
+				<div class="v2-substack-embed">
+					<p class="v2-substack-label">Get updates as we build Griplog.</p>
+					<iframe
+						src="https://griplog.substack.com/embed"
+						width="480"
+						height="320"
+						style="border: 1px solid #EEE; background: white"
+						frameborder="0"
+						scrolling="no"
+					></iframe>
 				</div>
 			</div>
 
@@ -352,43 +329,19 @@
 		<!-- CTA Section -->
 		<section class="v2-cta">
 			<div class="v2-cta-content">
-				<h2 class="v2-cta-title">Ready to get started?</h2>
-				<p class="v2-cta-subtitle">Join the waitlist for early access</p>
+				<h2 class="v2-cta-title">Stay in the loop</h2>
+				<p class="v2-cta-subtitle">Get updates on new features and launch news</p>
 
-				<!-- Email Form -->
-				<div class="v2-newsletter-form-container">
-					<form
-						class="newsletter-form"
-						action="https://app.loops.so/api/newsletter-form/cmj5p0ogv0cij0iwkecvznw1v"
-						method="POST"
-					>
-						<input
-							type="email"
-							name="email"
-							placeholder="Enter your email"
-							class="newsletter-form-input"
-							required
-							aria-label="Email address"
-						/>
-						<button type="submit" class="newsletter-form-button">
-							Get Early Access
-						</button>
-						<button
-							type="button"
-							class="newsletter-loading-button is-hidden"
-						>
-							Please wait...
-						</button>
-					</form>
-					<div class="newsletter-success is-hidden">
-						<p>Thanks! We'll be in touch!</p>
-					</div>
-					<div class="newsletter-error is-hidden">
-						<p>Oops! Something went wrong, please try again</p>
-					</div>
-					<button class="newsletter-back-button is-hidden" type="button">
-						&larr; Back
-					</button>
+				<!-- Substack Embed -->
+				<div class="v2-substack-embed">
+					<iframe
+						src="https://griplog.substack.com/embed"
+						width="480"
+						height="320"
+						style="border: 1px solid #EEE; background: white"
+						frameborder="0"
+						scrolling="no"
+					></iframe>
 				</div>
 			</div>
 		</section>
@@ -419,117 +372,6 @@
 			document.querySelectorAll(".v2-companion-card").forEach((card) => {
 				companionObserver.observe(card);
 			});
-		</script>
-
-		<!-- Loops Form Handler -->
-		<script>
-			function submitHandler(event) {
-				event.preventDefault();
-				var container = event.target.parentNode;
-				var form = container.querySelector(".newsletter-form");
-				var formInput = container.querySelector(".newsletter-form-input");
-				var success = container.querySelector(".newsletter-success");
-				var errorContainer = container.querySelector(".newsletter-error");
-				var errorMessage = container.querySelector(".newsletter-error-message");
-				var backButton = container.querySelector(".newsletter-back-button");
-				var submitButton = container.querySelector(".newsletter-form-button");
-				var loadingButton = container.querySelector(".newsletter-loading-button");
-
-				const rateLimit = () => {
-					errorContainer.style.display = "flex";
-					errorMessage.innerText =
-						"Too many signups, please try again in a little while";
-					submitButton.style.display = "none";
-					formInput.style.display = "none";
-					backButton.style.display = "block";
-				};
-
-				// Rate limiting
-				var time = new Date();
-				var timestamp = time.valueOf();
-				var previousTimestamp = localStorage.getItem("loops-form-timestamp");
-
-				if (previousTimestamp && Number(previousTimestamp) + 60000 > timestamp) {
-					rateLimit();
-					return;
-				}
-				localStorage.setItem("loops-form-timestamp", timestamp);
-
-				submitButton.style.display = "none";
-				loadingButton.style.display = "flex";
-
-				var formBody =
-					"userGroup=Framer%2001&mailingLists=cmj5p9cz61o8s0ixtgcf49gxv&email=" +
-					encodeURIComponent(formInput.value);
-
-				fetch(event.target.action, {
-					method: "POST",
-					body: formBody,
-					headers: {
-						"Content-Type": "application/x-www-form-urlencoded",
-					},
-				})
-					.then((res) => [res.ok, res.json(), res])
-					.then(([ok, dataPromise, res]) => {
-						if (ok) {
-							window.location.href = "success.html";
-						} else {
-							dataPromise.then((data) => {
-								errorContainer.style.display = "flex";
-								errorMessage.innerText = data.message ? data.message : res.statusText;
-							});
-						}
-					})
-					.catch((error) => {
-						if (error.message === "Failed to fetch") {
-							rateLimit();
-							return;
-						}
-						errorContainer.style.display = "flex";
-						if (error.message) errorMessage.innerText = error.message;
-						localStorage.setItem("loops-form-timestamp", "");
-					})
-					.finally(() => {
-						formInput.style.display = "none";
-						loadingButton.style.display = "none";
-						backButton.style.display = "block";
-					});
-			}
-
-			function resetFormHandler(event) {
-				var container = event.target.parentNode;
-				var formInput = container.querySelector(".newsletter-form-input");
-				var success = container.querySelector(".newsletter-success");
-				var errorContainer = container.querySelector(".newsletter-error");
-				var errorMessage = container.querySelector(".newsletter-error-message");
-				var backButton = container.querySelector(".newsletter-back-button");
-				var submitButton = container.querySelector(".newsletter-form-button");
-
-				success.style.display = "none";
-				errorContainer.style.display = "none";
-				errorMessage.innerText = "Oops! Something went wrong, please try again";
-				backButton.style.display = "none";
-				formInput.style.display = "flex";
-				submitButton.style.display = "flex";
-			}
-
-			var formContainers = document.getElementsByClassName(
-				"v2-newsletter-form-container",
-			);
-			for (var i = 0; i < formContainers.length; i++) {
-				var formContainer = formContainers[i];
-				var handlersAdded = formContainer.classList.contains(
-					"newsletter-handlers-added",
-				);
-				if (handlersAdded) continue;
-				formContainer
-					.querySelector(".newsletter-form")
-					.addEventListener("submit", submitHandler);
-				formContainer
-					.querySelector(".newsletter-back-button")
-					.addEventListener("click", resetFormHandler);
-				formContainer.classList.add("newsletter-handlers-added");
-			}
 		</script>
 	</body>
 </html>
